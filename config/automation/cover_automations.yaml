@@ -120,3 +120,32 @@
     service: cover.stop_cover
     data_template:
       entity_id: '{{ trigger.entity_id }}'
+- alias: 'close covers when windows closes at night time'
+  id: '1629923876'
+  trigger:
+    - platform: state
+      entity_id: 'binary_sensor.window_openclose_1'
+      to: 'off'
+    - platform: state
+      entity_id: 'binary_sensor.window_openclose_2'
+      to: 'off'
+    - platform: state
+      entity_id: 'binary_sensor.window_openclose_3'
+      to: 'off'
+    - platform: state
+      entity_id: 'binary_sensor.window_openclose_4'
+      to: 'off'
+  condition: "{{ states('sensor.time') >= (state_attr('input_datetime.time_close_covers_night', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+    - service: cover.close_cover
+      data_template:
+        entity_id: >
+          {% if trigger.entity_id == 'binary_sensor.window_openclose_1' -%}
+            cover.fyrtur_1
+          {% elif trigger.entity_id == 'binary_sensor.window_openclose_2' -%}
+            cover.fyrtur_2
+          {% elif trigger.entity_id == 'binary_sensor.window_openclose_3' -%}
+            cover.fyrtur_3
+          {% elif trigger.entity_id == 'binary_sensor.window_openclose_4' -%}
+            cover.fyrtur_4
+          {% endif %}
