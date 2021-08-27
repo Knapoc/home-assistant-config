@@ -108,9 +108,3 @@ panel_iframe:
     title: 'Phoscon'
     url: !secret phoscon_url
     icon: mdi:zigbee
-
-speedtestdotnet:
-  monitored_conditions:
-    - ping
-    - download
-    - upload
