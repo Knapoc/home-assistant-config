@@ -1,19 +1,23 @@
 ---
 # zone configuration
 
-- name: home
-  latitude: !secret hass_config_lat
-  longitude: !secret hass_config_long
-  radius: 100
-  icon: mdi:home
-- name: !secret zone00_name
-  latitude: !secret hass_config_lat
-  longitude: !secret hass_config_long
-  radius: 100
-  icon: mdi:home
-  passive: true
 - name: !secret zone1_name
-  latitude: !secret work1_lat
-  longitude: !secret work1_long
+  latitude: !secret zone1_lat
+  longitude: !secret zone1_long
   radius: 100
-  icon: mdi:domain
+  icon: !secret zone1_icon
+- name: !secret zone2_name
+  latitude: !secret zone2_lat
+  longitude: !secret zone2_long
+  radius: 100
+  icon: !secret zone2_icon
+- name: !secret zone3_name
+  latitude: !secret zone3_lat
+  longitude: !secret zone3_long
+  radius: 100
+  icon: !secret zone3_icon
+- name: !secret zone4_name
+  latitude: !secret zone4_lat
+  longitude: !secret zone4_long
+  radius: 100
+  icon: !secret zone4_icon

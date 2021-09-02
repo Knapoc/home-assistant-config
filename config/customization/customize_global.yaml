@@ -8,8 +8,6 @@
   icon: mdi:spotlight
 "script.scene_*":
   icon: mdi:spotlight
-"zone.*home":
-  friendly_name: home
 "zone.*":
   track_ios: false
 "sensor.*temperature*":

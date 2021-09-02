@@ -3,5 +3,3 @@
 
 script.tasmota_upgrade_sonoff_3082:
   can_cancel: false
-!secret zone1_fullname:
-  friendly_name: !secret zone1_friendly_name
