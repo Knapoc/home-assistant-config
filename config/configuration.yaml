@@ -93,9 +93,6 @@ mqtt:
 
 owntracks:
   max_gps_accuracy: 200
-  waypoints: true
-  waypoint_whitelist:
-    - !secret name_1
   new_device_defaults:
     track_new_devices: false
 
