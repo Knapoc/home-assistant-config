@@ -9,22 +9,6 @@
   name: Raspberry Pi
   count: 2
   scan_interval: 60
-- platform: template
-  sensors:
-    is_home:
-      friendly_name: 'Is someone home?'
-      unique_id: 'C14BD5FE-1DF8-4FD7-9562-BFADB487918D'
-      device_class: presence
-      value_template: !secret template_1
-    bed_occupancy:
-      device_class: occupancy
-      value_template: >-
-        {{ (states('sensor.bed_pressure_1')|float > 0.15)
-        or (states('sensor.bed_pressure_2')|float > 0.15) }}
-      delay_on:
-        minutes: 3
-      delay_off:
-        minutes: 5
 - platform: meteoalarm
   country: !secret meteo_country
   province: !secret meteo_province

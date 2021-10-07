@@ -72,6 +72,7 @@ plant: !include integrations/plant.yaml
 sensor: !include_dir_merge_list integrations/sensor/
 shell_command: !include integrations/shell_command.yaml
 switch: !include integrations/switch.yaml
+template: !include integrations/template.yaml
 zone: !include integrations/zone.yaml
 
 ### other components
