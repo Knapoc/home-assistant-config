@@ -39,7 +39,7 @@
   state_topic: 'telegraf/intelnuc/disk'
   unit_of_measurement: '%'
   value_template: >-
-    {% if value_json['tags'].device == 'sdb1' %}
+    {% if value_json['tags'].path == '/mnt/timemachine' %}
       {{ (value_json['fields'].used_percent | float) | round(2) }}
     {% else %}
       {{ states('sensor.disk_use_percent_sdb1') }}
@@ -50,7 +50,7 @@
   state_topic: 'telegraf/intelnuc/disk'
   unit_of_measurement: '%'
   value_template: >-
-    {% if value_json['tags'].device == 'sdb2' %}
+    {% if value_json['tags'].path == '/mnt/data' %}
       {{ (value_json['fields'].used_percent | float) | round(2) }}
     {% else %}
       {{ states('sensor.disk_use_percent_sdb2') }}
@@ -61,7 +61,7 @@
   state_topic: 'telegraf/intelnuc/disk'
   unit_of_measurement: '%'
   value_template: >-
-    {% if value_json['tags'].device == 'sda1' %}
+    {% if value_json['tags'].path == '/mnt/ssd' %}
       {{ (value_json['fields'].used_percent | float) | round(2) }}
     {% else %}
       {{ states('sensor.disk_use_percent_sda1') }}
