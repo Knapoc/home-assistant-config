@@ -5,7 +5,7 @@ media_player.sony_bravia_tv:
   friendly_name: Sony Bravia TV
   icon: mdi:television
   source_list:
-    - 'ORF eins HD'
+    - 'ORF 1 HD'
     - 'ORF 2 Wien HD'
     - 'ATV HD'
     - 'PULS 4 HD'
