@@ -1,7 +1,7 @@
 ---
 # presence automations
 
-- alias: left home device1
+- alias: left home person 1
   id: '1515583360'
   trigger:
     - platform: state

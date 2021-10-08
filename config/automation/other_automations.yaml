@@ -7,14 +7,14 @@
     - platform: time
       at: '07:00:00'
     - platform: state
-      entity_id: !secret device3
+      entity_id: !secret device_1
       to: 'home'
       for: '00:30:00'
   condition:
     condition: and
     conditions:
       - condition: state
-        entity_id: !secret device3
+        entity_id: !secret device_1
         state: 'home'
       - condition: state
         entity_id: binary_sensor.workday_sensor
@@ -38,7 +38,7 @@
     - platform: time
       at: '19:00:00'
     - platform: state
-      entity_id: !secret device3
+      entity_id: !secret device_1
       to: 'not_home'
       for: '00:30:00'
   condition:
