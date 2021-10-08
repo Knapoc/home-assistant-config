@@ -46,6 +46,7 @@ __pycache__
 *.db
 *.db-journal
 *.log
+*.log.*
 *.noload
 *.txt
 *.sqlite
@@ -109,3 +110,4 @@ ui-lovelace-old.yaml
 config/custom_components/hacs/services.yaml
 config/www/*.png
 config/image
+*.sync-conflict-*
