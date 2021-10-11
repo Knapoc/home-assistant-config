@@ -2,113 +2,113 @@
 # template integration
 
 - binary_sensor:
-  - name: bed_occupancy
-    device_class: occupancy
-    state: >-
-        {{ (states('sensor.bed_pressure_1')|float > 0.10)
-        or (states('sensor.bed_pressure_2')|float > 0.10) }}
-    delay_on:
-      minutes: 3
-    delay_off:
-      minutes: 5
-  - name: is_home
-    unique_id: 'C14BD5FE-1DF8-4FD7-9562-BFADB487918D'
-    device_class: presence
-    state: !secret template_1
+    - name: bed_occupancy
+      device_class: occupancy
+      state: >-
+          {{ (states('sensor.bed_pressure_1')|float > 0.10)
+          or (states('sensor.bed_pressure_2')|float > 0.10) }}
+      delay_on:
+        minutes: 3
+      delay_off:
+        minutes: 5
+    - name: is_home
+      unique_id: 'C14BD5FE-1DF8-4FD7-9562-BFADB487918D'
+      device_class: presence
+      state: !secret template_1
 - sensor:
-  - name: wakeup_start_time_lights
-    state: >
-        {% if states('input_datetime.wakeup_alarm_time') and states('input_number.wakeup_duration') %}
-        {% set alarmtime = states('input_datetime.wakeup_alarm_time') %}
-        {% set alarm_hour = alarmtime.split(':')[0] | int %}
-        {% set alarm_min = alarmtime.split(':')[1] | int %}
-        {% set light_dur = states('input_number.wakeup_duration') | int %}
-        {% set alarm_min_light = alarm_min - light_dur %}
-        {% if alarm_min_light  < 0 %}
-        {% set alarm_min_light = alarm_min_light + 60 %}
-        {% set alarm_hour_light = alarm_hour - 1 %}
-        {% if alarm_hour_light < 0 %}{% set alarm_hour_light = 23 %}{% endif %}
-        {% if alarm_hour_light < 10 %}0{% endif %}{{ alarm_hour_light}}:{% if alarm_min_light < 10 %}0{% endif %}{{ alarm_min_light }}
-        {% else %}
-        {% if alarm_hour < 10 %}0{% endif %}{{ alarm_hour }}:{% if alarm_min_light < 10 %}0{% endif %}{{ alarm_min_light }}
-        {% endif %}
-        {% endif %}
-  - name: wakeup_open_time_covers
-    state: >
-        {% if states('input_datetime.wakeup_alarm_time') and states('input_number.wakeup_cover_open_delay') %}
-        {% set alarmtime = states('input_datetime.wakeup_alarm_time') %}
-        {% set alarm_hour = alarmtime.split(':')[0] | int %}
-        {% set alarm_min = alarmtime.split(':')[1] | int %}
-        {% set cover_dur = states('input_number.wakeup_cover_open_delay') | int %}
-        {% set alarm_min_cover = alarm_min + cover_dur %}
-        {% if alarm_min_cover  > 59 %}
-        {% set alarm_min_cover = alarm_min_cover - 60 %}
-        {% set alarm_hour_cover = alarm_hour + 1 %}
-        {% if alarm_hour_cover > 23 %}{% set alarm_hour_cover = 0 %}{% endif %}
-        {% if alarm_hour_cover < 10 %}0{% endif %}{{ alarm_hour_cover}}:{% if alarm_min_cover < 10 %}0{% endif %}{{ alarm_min_cover }}
-        {% else %}
-        {% if alarm_hour < 10 %}0{% endif %}{{ alarm_hour }}:{% if alarm_min_cover < 10 %}0{% endif %}{{ alarm_min_cover }}
-        {% endif %}
-        {% endif %}
-  - name: count_automations
-    state: "{{ states.automation | list | length }}"
-  - name: count_covers
-    state: "{{ states.cover | list | length }}"
-  - name: count_scripts
-    state: "{{ states.script | list | length }}"
-  - name: count_device_trackers
-    state: "{{ states.device_tracker | list | length }}"
-  - name: count_binary_sensors
-    state: "{{ states.binary_sensor | list | length }}"
-  - name: count_sensors
-    state: "{{ states.sensor | list | length }}"
-  - name: count_switches
-    state: "{{ states.switch | list | length }}"
-  - name: count_zones
-    state: "{{ states.zone | list | length }}"
-  - name: count_input_booleans
-    state: "{{ states.input_boolean | list | length }}"
-  - name: count_input_numbers
-    state: "{{ states.input_number | list | length }}"
-  - name: count_input_texts
-    state: "{{ states.input_text | list | length }}"
-  - name: count_input_selects
-    state: "{{ states.input_select | list | length }}"
-  - name: count_input_datetimes
-    state: "{{ states.input_datetime | list | length }}"
-  - name: count_lights
-    state: "{{ states.light | list | length }}"
-  - name: lights_on
-    state: "{{ states.light | selectattr('state', 'equalto', 'on') | rejectattr('attributes.is_deconz_group') | list | length }}"
-  - name: esp32_living_room_uptime
-    state: "{{ ((states('sensor.esp32_living_room_uptime_raw') | float) / 60 / 60) | round(2) }}"
-    unit_of_measurement: "h"
-  - name: esp32_living_room_version
-    state: "{{ states('sensor.esp32_living_room_version_raw').split(' ',1)[0] }}"
-  - name: esp32_bed_room_uptime
-    state: "{{ ((states('sensor.esp32_bed_room_uptime_raw') | float) / 60 / 60) | round(2) }}"
-    unit_of_measurement: "h"
-  - name: esp32_bed_room_version
-    state: "{{ states('sensor.esp32_bed_room_version_raw').split(' ',1)[0] }}"
-  - name: roborock_main_brush_hours
-    state: "{{ ((states('sensor.roborock_main_brush') | float) / 60 ) | round(2) }}"
-    unit_of_measurement: "h"
-  - name: roborock_main_filter_hours
-    state: "{{ ((states('sensor.roborock_main_filter') | float) / 60 ) | round(2) }}"
-    unit_of_measurement: "h"
-  - name: roborock_right_side_brush_hours
-    state: "{{ ((states('sensor.roborock_right_brush') | float) / 60 ) | round(2) }}"
-    unit_of_measurement: "h"
-  - name: roborock_sensor_hours
-    state: "{{ ((states('sensor.roborock_sensor_cleaning') | float) / 60 ) | round(2) }}"
-    unit_of_measurement: "h"
-  - name: sonoffs20_desk_uptime
-    state: "{{ ((states('sensor.sonoffs20_desk_uptime_raw') | float) / 60 / 60) | round(2) }}"
-    unit_of_measurement: "h"
-  - name: sonoffs20_desk_version
-    state: "{{ states('sensor.sonoffs20_desk_version_raw').split(' ',1)[0] }}"
-  - name: sonoffs20_magicmirror_uptime
-    state: "{{ ((states('sensor.sonoffs20_magicmirror_uptime_raw') | float) / 60 / 60) | round(2) }}"
-    unit_of_measurement: "h"
-  - name: sonoffs20_magicmirror_version
-    state: "{{ states('sensor.sonoffs20_magicmirror_version_raw').split(' ',1)[0] }}"
+    - name: wakeup_start_time_lights
+      state: >
+          {% if states('input_datetime.wakeup_alarm_time') and states('input_number.wakeup_duration') %}
+          {% set alarmtime = states('input_datetime.wakeup_alarm_time') %}
+          {% set alarm_hour = alarmtime.split(':')[0] | int %}
+          {% set alarm_min = alarmtime.split(':')[1] | int %}
+          {% set light_dur = states('input_number.wakeup_duration') | int %}
+          {% set alarm_min_light = alarm_min - light_dur %}
+          {% if alarm_min_light  < 0 %}
+          {% set alarm_min_light = alarm_min_light + 60 %}
+          {% set alarm_hour_light = alarm_hour - 1 %}
+          {% if alarm_hour_light < 0 %}{% set alarm_hour_light = 23 %}{% endif %}
+          {% if alarm_hour_light < 10 %}0{% endif %}{{ alarm_hour_light}}:{% if alarm_min_light < 10 %}0{% endif %}{{ alarm_min_light }}
+          {% else %}
+          {% if alarm_hour < 10 %}0{% endif %}{{ alarm_hour }}:{% if alarm_min_light < 10 %}0{% endif %}{{ alarm_min_light }}
+          {% endif %}
+          {% endif %}
+    - name: wakeup_open_time_covers
+      state: >
+          {% if states('input_datetime.wakeup_alarm_time') and states('input_number.wakeup_cover_open_delay') %}
+          {% set alarmtime = states('input_datetime.wakeup_alarm_time') %}
+          {% set alarm_hour = alarmtime.split(':')[0] | int %}
+          {% set alarm_min = alarmtime.split(':')[1] | int %}
+          {% set cover_dur = states('input_number.wakeup_cover_open_delay') | int %}
+          {% set alarm_min_cover = alarm_min + cover_dur %}
+          {% if alarm_min_cover  > 59 %}
+          {% set alarm_min_cover = alarm_min_cover - 60 %}
+          {% set alarm_hour_cover = alarm_hour + 1 %}
+          {% if alarm_hour_cover > 23 %}{% set alarm_hour_cover = 0 %}{% endif %}
+          {% if alarm_hour_cover < 10 %}0{% endif %}{{ alarm_hour_cover}}:{% if alarm_min_cover < 10 %}0{% endif %}{{ alarm_min_cover }}
+          {% else %}
+          {% if alarm_hour < 10 %}0{% endif %}{{ alarm_hour }}:{% if alarm_min_cover < 10 %}0{% endif %}{{ alarm_min_cover }}
+          {% endif %}
+          {% endif %}
+    - name: count_automations
+      state: "{{ states.automation | list | length }}"
+    - name: count_covers
+      state: "{{ states.cover | list | length }}"
+    - name: count_scripts
+      state: "{{ states.script | list | length }}"
+    - name: count_device_trackers
+      state: "{{ states.device_tracker | list | length }}"
+    - name: count_binary_sensors
+      state: "{{ states.binary_sensor | list | length }}"
+    - name: count_sensors
+      state: "{{ states.sensor | list | length }}"
+    - name: count_switches
+      state: "{{ states.switch | list | length }}"
+    - name: count_zones
+      state: "{{ states.zone | list | length }}"
+    - name: count_input_booleans
+      state: "{{ states.input_boolean | list | length }}"
+    - name: count_input_numbers
+      state: "{{ states.input_number | list | length }}"
+    - name: count_input_texts
+      state: "{{ states.input_text | list | length }}"
+    - name: count_input_selects
+      state: "{{ states.input_select | list | length }}"
+    - name: count_input_datetimes
+      state: "{{ states.input_datetime | list | length }}"
+    - name: count_lights
+      state: "{{ states.light | list | length }}"
+    - name: lights_on
+      state: "{{ states.light | selectattr('state', 'equalto', 'on') | rejectattr('attributes.is_deconz_group') | list | length }}"
+    - name: esp32_living_room_uptime
+      state: "{{ ((states('sensor.esp32_living_room_uptime_raw') | float) / 60 / 60) | round(2) }}"
+      unit_of_measurement: "h"
+    - name: esp32_living_room_version
+      state: "{{ states('sensor.esp32_living_room_version_raw').split(' ',1)[0] }}"
+    - name: esp32_bed_room_uptime
+      state: "{{ ((states('sensor.esp32_bed_room_uptime_raw') | float) / 60 / 60) | round(2) }}"
+      unit_of_measurement: "h"
+    - name: esp32_bed_room_version
+      state: "{{ states('sensor.esp32_bed_room_version_raw').split(' ',1)[0] }}"
+    - name: roborock_main_brush_hours
+      state: "{{ ((states('sensor.roborock_main_brush') | float) / 60 ) | round(2) }}"
+      unit_of_measurement: "h"
+    - name: roborock_main_filter_hours
+      state: "{{ ((states('sensor.roborock_main_filter') | float) / 60 ) | round(2) }}"
+      unit_of_measurement: "h"
+    - name: roborock_right_side_brush_hours
+      state: "{{ ((states('sensor.roborock_right_brush') | float) / 60 ) | round(2) }}"
+      unit_of_measurement: "h"
+    - name: roborock_sensor_hours
+      state: "{{ ((states('sensor.roborock_sensor_cleaning') | float) / 60 ) | round(2) }}"
+      unit_of_measurement: "h"
+    - name: sonoffs20_desk_uptime
+      state: "{{ ((states('sensor.sonoffs20_desk_uptime_raw') | float) / 60 / 60) | round(2) }}"
+      unit_of_measurement: "h"
+    - name: sonoffs20_desk_version
+      state: "{{ states('sensor.sonoffs20_desk_version_raw').split(' ',1)[0] }}"
+    - name: sonoffs20_magicmirror_uptime
+      state: "{{ ((states('sensor.sonoffs20_magicmirror_uptime_raw') | float) / 60 / 60) | round(2) }}"
+      unit_of_measurement: "h"
+    - name: sonoffs20_magicmirror_version
+      state: "{{ states('sensor.sonoffs20_magicmirror_version_raw').split(' ',1)[0] }}"
