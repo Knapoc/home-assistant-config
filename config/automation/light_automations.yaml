@@ -161,24 +161,24 @@
         entity_id: scene.deckenleuchte_grp_nightlight
 
 - id: '1519077406'
-  alias: Ready for bed
+  alias: Adaptive lighting - sleep mode on
   trigger:
-    at: '21:30:00'
+    at: '22:30:00'
     platform: time
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: below_horizon
-    - condition: state
-      entity_id: !secret person_1
-      state: home
-    - condition: state
-      entity_id: binary_sensor.workday_sensor
-      state: 'on'
   action:
-    - service: scene.turn_on
+    - service: switch.turn_on
       data:
-        entity_id: scene.deckenleuchte_grp_nightlight
+        entity_id: switch.adaptive_lighting_sleep_mode_main_lights
+
+- id: '1634566416'
+  alias: Adaptive lighting - sleep mode off
+  trigger:
+    at: '07:00:00'
+    platform: time
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.adaptive_lighting_sleep_mode_main_lights
 
 - id: '1609948156898'
   alias: Motion-activated toilet light
