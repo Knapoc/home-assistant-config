@@ -8,5 +8,11 @@ magic_mirror_shutdown:
       timeout: '00:10:00'
     - delay: 00:01:30
     - service: switch.turn_off
+      entity_id: switch.sonoff_s20_magicmirror_relay
+
+adaptive_lighting_manual_control_reset:
+  sequence:
+    - service: adaptive_lighting.set_manual_control
+      entity_id: switch.adaptive_lighting_main_lights
       data:
-        entity_id: switch.sonoff_s20_magicmirror_relay
+        manual_control: false

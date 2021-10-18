@@ -25,6 +25,7 @@
       - light.light_10
       - light.light_11
       - media_player.playstation_4
+      - script.adaptive_lighting_manual_control_reset
       - sensor.living_room_humidity
       - sensor.living_room_temperature
       - vacuum.roborock
