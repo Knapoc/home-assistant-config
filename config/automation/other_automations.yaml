@@ -2,14 +2,14 @@
 # other automations
 
 - alias: Turn on desk plug
-  id: '1597432589'
+  id: '1634799371'
   trigger:
     - platform: time
       at: '07:00:00'
     - platform: state
       entity_id: !secret device_1
       to: 'home'
-      for: '00:30:00'
+      for: '00:10:00'
   condition:
     condition: and
     conditions:
