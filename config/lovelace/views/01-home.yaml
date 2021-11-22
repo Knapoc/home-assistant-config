@@ -324,7 +324,7 @@
                     action: call-service
                     service: scene.turn_on
                     service_data:
-                      entity_id: scene.deckenleuchte_grp_bright
+                      entity_id: scene.deckenleuchte_bright
                     haptic: medium
                 - type: markdown
                   content: |

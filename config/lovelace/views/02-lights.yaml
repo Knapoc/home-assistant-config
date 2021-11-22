@@ -193,7 +193,7 @@
                     action: call-service
                     service: scene.turn_on
                     service_data:
-                      entity_id: scene.deckenleuchte_grp_bright
+                      entity_id: scene.deckenleuchte_bright
                     haptic: medium
                 - type: markdown
                   content: |
@@ -257,7 +257,7 @@
                     action: call-service
                     service: scene.turn_on
                     service_data:
-                      entity_id: scene.deckenleuchte_grp_energize
+                      entity_id: scene.deckenleuchte_energize
                     haptic: medium
                 - type: markdown
                   content: |
@@ -321,7 +321,7 @@
                     action: call-service
                     service: scene.turn_on
                     service_data:
-                      entity_id: scene.deckenleuchte_grp_read
+                      entity_id: scene.deckenleuchte_read
                     haptic: medium
                 - type: markdown
                   content: |
@@ -385,7 +385,7 @@
                     action: call-service
                     service: scene.turn_on
                     service_data:
-                      entity_id: scene.deckenleuchte_grp_nightlight
+                      entity_id: scene.deckenleuchte_nightlight
                     haptic: medium
                 - type: markdown
                   content: |

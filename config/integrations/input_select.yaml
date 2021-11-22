@@ -14,3 +14,15 @@ log_level:
     - debug
     - notset
   initial: none
+main_light_living_room_scene:
+  options:
+    - deckenleuchte_bright
+    - deckenleuchte_energize
+    - deckenleuchte_nightlight
+    - deckenleuchte_read
+main_light_bed_room_scene:
+  options:
+    - deckenspots_bright
+    - deckenspots_energize
+    - deckenspots_nightlight
+    - deckenspots_read
