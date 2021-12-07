@@ -16,3 +16,22 @@
           entity_id: switch.sonoff_s20_magicmirror_relay
       turn_off:
         service: script.magic_mirror_shutdown
+    tv_mute:
+      value_template: >
+        {% if is_state_attr('media_player.sony_bravia_tv', 'is_volume_muted', True) %}
+         True
+        {% else %}
+         False
+        {% endif %}
+      turn_on:
+        service: media_player.volume_mute
+        target:
+          entity_id: media_player.sony_bravia_tv
+        data:
+          is_volume_muted: true
+      turn_off:
+        service: media_player.volume_mute
+        target:
+          entity_id: media_player.sony_bravia_tv
+        data:
+          is_volume_muted: false

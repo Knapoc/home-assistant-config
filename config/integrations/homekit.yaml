@@ -59,6 +59,8 @@
       name: "Temparatur"
     switch.magic_mirror:
       name: "Magic Mirror"
+    switch.tv_mute:
+      name: "Stummschaltung"
     vacuum.roborock:
       name: "Staubsauger"
 - name: Fernseher
