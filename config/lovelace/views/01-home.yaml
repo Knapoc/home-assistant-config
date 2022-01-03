@@ -696,12 +696,12 @@
               cards:
                 - type: entities
                   entities:
-                    - entity: vacuum.roborock
+                    - entity: vacuum.valetudo_roborock
                       type: custom:multiple-entity-row
                       name: Roborock
                       show_state: false
                       entities:
-                        - entity: vacuum.roborock
+                        - entity: vacuum.valetudo_roborock
                           name: Status
                         - attribute: battery_level
                           name: Battery
@@ -717,7 +717,7 @@
                   cards:
                     - type: custom:button-card
                       color: auto
-                      entity: vacuum.roborock
+                      entity: vacuum.valetudo_roborock
                       size: 30%
                       icon: mdi:play
                       show_name: false
@@ -728,10 +728,10 @@
                         action: call-service
                         service: vacuum.start
                         service_data:
-                          entity_id: vacuum.roborock
+                          entity_id: vacuum.valetudo_roborock
                     - type: custom:button-card
                       color: auto
-                      entity: vacuum.roborock
+                      entity: vacuum.valetudo_roborock
                       size: 30%
                       icon: mdi:pause
                       show_name: false
@@ -742,10 +742,10 @@
                         action: call-service
                         service: vacuum.pause
                         service_data:
-                          entity_id: vacuum.roborock
+                          entity_id: vacuum.valetudo_roborock
                     - type: custom:button-card
                       color: auto
-                      entity: vacuum.roborock
+                      entity: vacuum.valetudo_roborock
                       size: 30%
                       icon: mdi:stop
                       show_name: false
@@ -756,10 +756,10 @@
                         action: call-service
                         service: vacuum.stop
                         service_data:
-                          entity_id: vacuum.roborock
+                          entity_id: vacuum.valetudo_roborock
                     - type: custom:button-card
                       color: auto
-                      entity: vacuum.roborock
+                      entity: vacuum.valetudo_roborock
                       size: 30%
                       icon: mdi:broom
                       show_name: false
@@ -770,10 +770,10 @@
                         action: call-service
                         service: vacuum.clean_spot
                         service_data:
-                          entity_id: vacuum.roborock
+                          entity_id: vacuum.valetudo_roborock
                     - type: custom:button-card
                       color: auto
-                      entity: vacuum.roborock
+                      entity: vacuum.valetudo_roborock
                       size: 30%
                       icon: mdi:map-marker
                       show_name: false
@@ -784,10 +784,10 @@
                         action: call-service
                         service: vacuum.locate
                         service_data:
-                          entity_id: vacuum.roborock
+                          entity_id: vacuum.valetudo_roborock
                     - type: custom:button-card
                       color: auto
-                      entity: vacuum.roborock
+                      entity: vacuum.valetudo_roborock
                       size: 30%
                       icon: mdi:home-map-marker
                       show_name: false
@@ -798,7 +798,7 @@
                         action: call-service
                         service: vacuum.return_to_base
                         service_data:
-                          entity_id: vacuum.roborock
+                          entity_id: vacuum.valetudo_roborock
             - type: 'custom:button-card'
               show_icon: false
               show_name: false

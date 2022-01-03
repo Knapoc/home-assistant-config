@@ -45,6 +45,22 @@ class ValetudoMapCard extends HTMLElement {
     this.cardContainer.appendChild(this.controlContainerStyle);
   };
 
+  getMapEntityName(vacuum_name) {
+    return "camera." + vacuum_name + "_map_data";
+  }
+
+  getVacuumEntityName(vacuum_name) {
+    return "vacuum." + vacuum_name;
+  }
+
+  getMapEntity(vacuum_name) {
+    return this._hass.states[this.getMapEntityName(vacuum_name)];
+  }
+
+  getVacuumEntity(vacuum_name) {
+    return this._hass.states[this.getVacuumEntityName(vacuum_name)];
+  }
+
   shouldDrawMap() {
     return !this.drawingMap;
   };
@@ -156,26 +172,14 @@ class ValetudoMapCard extends HTMLElement {
 
   getVirtualWallPoints(attributes) {
     return this.getEntities(attributes, 'virtual_wall');
-
   };
 
   getPathPoints(attributes) {
-    let layer = this.getEntities(attributes, 'path', 1)[0];
-    if (layer === undefined) {
-      return null;
-    }
-
-    return layer.points;
+    return this.getEntities(attributes, 'path');
   };
 
   getPredictedPathPoints(attributes) {
-    let layer = this.getEntities(attributes, 'predicted_path', 1)[0];
-    if (layer === undefined) {
-      return null;
-    }
-
-    return layer.points;
-
+    return this.getEntities(attributes, 'predicted_path');
   };
 
   getActiveZones(attributes) {
@@ -185,8 +189,12 @@ class ValetudoMapCard extends HTMLElement {
   getNoGoAreas(attributes) {
     return this.getEntities(attributes, 'no_go_area');
   };
+  
+  getNoMopAreas(attributes) {
+    return this.getEntities(attributes, 'no_mop_area');
+  };
 
-  drawMap(mapContainer, attributes, mapHeight, mapWidth, boundingBox, floorColor, wallColor, currentlyCleanedZoneColor, noGoAreaColor, virtualWallColor, pathColor, chargerColor, vacuumColor, gotoTargetColor) {
+  drawMap(mapContainer, attributes, mapHeight, mapWidth, boundingBox, floorColor, wallColor, currentlyCleanedZoneColor, noGoAreaColor, noMopAreaColor, virtualWallColor, pathColor, chargerColor, vacuumColor, gotoTargetColor) {
     // Points to pixels
     let pixelSize = 50;
     pixelSize = attributes.pixelSize;
@@ -408,6 +416,39 @@ class ValetudoMapCard extends HTMLElement {
       }
       mapCtx.globalAlpha = 1.0;
     }
+    
+    let noMopAreas = this.getNoMopAreas(attributes);
+    if (noMopAreas && this._config.show_no_mop_areas) {
+      mapCtx.strokeStyle = noMopAreaColor;
+      mapCtx.lineWidth = 2;
+      mapCtx.fillStyle = noMopAreaColor;
+      for (let item of noMopAreas) {
+        mapCtx.globalAlpha = this._config.no_mop_area_opacity;
+        mapCtx.beginPath();
+        let points = item['points'];
+        for (let i = 0; i < points.length; i+=2) {
+          let x = Math.floor(points[i] / widthScale) - objectLeftOffset - mapLeftOffset;
+          let y = Math.floor(points[i + 1] / heightScale) - objectTopOffset - mapTopOffset;
+          if (i === 0) {
+            mapCtx.moveTo(x, y);
+          } else {
+            mapCtx.lineTo(x, y);
+          }
+          if (this.isOutsideBounds(x, y, drawnMapCanvas, this._config)) {
+            // noinspection UnnecessaryContinueJS
+            continue;
+          }
+        }
+        mapCtx.fill();
+
+        if (this._config.show_no_mop_area_border) {
+          mapCtx.closePath();
+          mapCtx.globalAlpha = 1.0;
+          mapCtx.stroke();
+        }
+      }
+      mapCtx.globalAlpha = 1.0;
+    }
 
     let virtualWallPoints = this.getVirtualWallPoints(attributes);
     if (virtualWallPoints && this._config.show_virtual_walls && this._config.virtual_wall_width > 0) {
@@ -431,31 +472,31 @@ class ValetudoMapCard extends HTMLElement {
       mapCtx.globalAlpha = 1;
     }
 
+    const pathCtx = pathCanvas.getContext("2d");
+    pathCtx.globalAlpha = this._config.path_opacity;
+    pathCtx.strokeStyle = pathColor;
+    pathCtx.lineWidth = this._config.path_width;
+
     let pathPoints = this.getPathPoints(attributes);
-    if (pathPoints) {
-      const pathCtx = pathCanvas.getContext("2d");
-      pathCtx.globalAlpha = this._config.path_opacity;
-
-      pathCtx.strokeStyle = pathColor;
-      pathCtx.lineWidth = this._config.path_width;
-
-      let x = 0;
-      let y = 0;
-      let first = true;
-      pathCtx.beginPath();
-      for (let i = 0; i < pathPoints.length; i+=2) {
-        x = Math.floor((pathPoints[i]) / widthScale) - objectLeftOffset - mapLeftOffset;
-        y = Math.floor((pathPoints[i + 1]) / heightScale) - objectTopOffset - mapTopOffset;
-        if (this.isOutsideBounds(x, y, drawnMapCanvas, this._config)) continue;
-        if (first) {
-          pathCtx.moveTo(x, y);
-          first = false;
-        } else {
-          pathCtx.lineTo(x, y);
+    if (Array.isArray(pathPoints) && pathPoints.length > 0 && (this._config.show_path && this._config.path_width > 0)) {
+      for (let item of pathPoints) {
+        let x = 0;
+        let y = 0;
+        let first = true;
+        pathCtx.beginPath();
+        for (let i = 0; i < item.points.length; i+=2) {
+          x = Math.floor((item.points[i]) / widthScale) - objectLeftOffset - mapLeftOffset;
+          y = Math.floor((item.points[i + 1]) / heightScale) - objectTopOffset - mapTopOffset;
+          if (this.isOutsideBounds(x, y, drawnMapCanvas, this._config)) continue;
+          if (first) {
+            pathCtx.moveTo(x, y);
+            first = false;
+          } else {
+            pathCtx.lineTo(x, y);
+          }
         }
+        pathCtx.stroke();
       }
-
-      if (this._config.show_path && this._config.path_width > 0) pathCtx.stroke();
 
       // Update vacuum angle
       vacuumHTML.style.transform = `scale(${this._config.icon_scale}, ${this._config.icon_scale}) rotate(${robotInfo[2]}deg)`;
@@ -464,31 +505,26 @@ class ValetudoMapCard extends HTMLElement {
     }
 
     let predictedPathPoints = this.getPredictedPathPoints(attributes);
-    if (predictedPathPoints) {
-      const pathCtx = pathCanvas.getContext("2d");
-      pathCtx.globalAlpha = this._config.path_opacity;
-
+    if (Array.isArray(predictedPathPoints) && predictedPathPoints.length > 0 && (this._config.show_predicted_path && this._config.path_width > 0)) {
       pathCtx.setLineDash([5,3]);
-      pathCtx.strokeStyle = pathColor;
-      pathCtx.lineWidth = this._config.path_width;
-
-      let x = 0;
-      let y = 0;
-      let first = true;
-      pathCtx.beginPath();
-      for (let i = 0; i < predictedPathPoints.length; i+=2) {
-        x = Math.floor((predictedPathPoints[i]) / widthScale) - objectLeftOffset - mapLeftOffset;
-        y = Math.floor((predictedPathPoints[i + 1]) / heightScale) - objectTopOffset - mapTopOffset;
-        if (this.isOutsideBounds(x, y, drawnMapCanvas, this._config)) continue;
-        if (first) {
-          pathCtx.moveTo(x, y);
-          first = false;
-        } else {
-          pathCtx.lineTo(x, y);
+      for (let item of predictedPathPoints) {
+        let x = 0;
+        let y = 0;
+        let first = true;
+        pathCtx.beginPath();
+        for (let i = 0; i < item.points.length; i+=2) {
+          x = Math.floor((item.points[i]) / widthScale) - objectLeftOffset - mapLeftOffset;
+          y = Math.floor((item.points[i + 1]) / heightScale) - objectTopOffset - mapTopOffset;
+          if (this.isOutsideBounds(x, y, drawnMapCanvas, this._config)) continue;
+          if (first) {
+            pathCtx.moveTo(x, y);
+            first = false;
+          } else {
+            pathCtx.lineTo(x, y);
+          }
         }
+        pathCtx.stroke();
       }
-
-      if (this._config.show_path && this._config.path_width > 0 && this._config.show_predicted_path) pathCtx.stroke();
 
       pathCtx.globalAlpha = 1;
     }
@@ -506,20 +542,27 @@ class ValetudoMapCard extends HTMLElement {
     // Title settings
     if (this._config.title === undefined) this._config.title = "Vacuum";
 
-    // Show settings
+    // Core show settings
+    if (this._config.show_map === undefined) this._config.show_map = true;
+
+    // Map show settings
     if (this._config.show_floor === undefined) this._config.show_floor = true;
     if (this._config.show_dock === undefined) this._config.show_dock = true;
     if (this._config.show_vacuum === undefined) this._config.show_vacuum = true;
     if (this._config.show_walls === undefined) this._config.show_walls = true;
     if (this._config.show_currently_cleaned_zones === undefined) this._config.show_currently_cleaned_zones = true;
     if (this._config.show_no_go_areas === undefined) this._config.show_no_go_areas = true;
+    if (this._config.show_no_mop_areas === undefined) this._config.show_no_mop_areas = true;
     if (this._config.show_virtual_walls === undefined) this._config.show_virtual_walls = true;
     if (this._config.show_path === undefined) this._config.show_path = true;
     if (this._config.show_currently_cleaned_zones_border === undefined) this._config.show_currently_cleaned_zones_border = true;
     if (this._config.show_no_go_area_border === undefined) this._config.show_no_go_area_border = true;
+    if (this._config.show_no_mop_area_border === undefined) this._config.show_no_mop_area_border = true;
     if (this._config.show_predicted_path === undefined) this._config.show_predicted_path = true;
     if (this._config.show_goto_target === undefined) this._config.show_goto_target = true;
     if (this._config.show_segments === undefined) this._config.show_segments = true;
+
+    // Info show settings
     if (this._config.show_status === undefined) this._config.show_status = true;
     if (this._config.show_battery_level === undefined) this._config.show_battery_level = true;
 
@@ -547,6 +590,7 @@ class ValetudoMapCard extends HTMLElement {
     if (this._config.wall_opacity === undefined) this._config.wall_opacity = 1;
     if (this._config.currently_cleaned_zone_opacity === undefined) this._config.currently_cleaned_zone_opacity = 0.5;
     if (this._config.no_go_area_opacity === undefined) this._config.no_go_area_opacity = 0.5;
+    if (this._config.no_mop_area_opacity === undefined) this._config.no_mop_area_opacity = 0.5;
     if (this._config.virtual_wall_opacity === undefined) this._config.virtual_wall_opacity = 1;
     if (this._config.path_opacity === undefined) this._config.path_opacity = 1;
 
@@ -596,23 +640,17 @@ class ValetudoMapCard extends HTMLElement {
 
     this._hass = hass;
 
-    let mapEntity = this._hass.states[this._config.entity];
-    let vacuumEntity;
+    let mapEntity = this.getMapEntity(this._config.vacuum);
+    let vacuumEntity = this.getVacuumEntity(this._config.vacuum);
     let shouldForcePoll = false;
 
     let attributes = mapEntity ? mapEntity.attributes : undefined;
 
-    if(this._config.vacuum_entity && this._hass.states[this._config.vacuum_entity]) {
-      vacuumEntity = this._hass.states[this._config.vacuum_entity];
-
-
-      if (vacuumEntity.state !== this.lastRobotState) {
-        this.pollInterval = POLL_INTERVAL_STATE_MAP[vacuumEntity.state] || 10000;
-        shouldForcePoll = true;
-        this.lastRobotState = vacuumEntity.state;
-      }
+    if (vacuumEntity && vacuumEntity.state !== this.lastRobotState) {
+      this.pollInterval = POLL_INTERVAL_STATE_MAP[vacuumEntity.state] || 10000;
+      shouldForcePoll = true;
+      this.lastRobotState = vacuumEntity.state;
     }
-
 
     if (mapEntity && mapEntity['state'] !== 'unavailable' && attributes && attributes["entity_picture"]) {
       if (new Date().getTime() - this.pollInterval > this.lastMapPoll.getTime() || shouldForcePoll) {
@@ -662,13 +700,32 @@ class ValetudoMapCard extends HTMLElement {
 
   handleDrawing(hass, mapEntity, attributes) {
     const config = this._config;
-    let infoEntity = this._hass.states[this._config.vacuum_entity]
+    let infoEntity = this.getVacuumEntity(this._config.vacuum);
 
     let canDrawMap = false;
     let canDrawControls = true;
 
     if (attributes.__class === 'ValetudoMap') {
       canDrawMap = true;
+    }
+    
+    if (attributes.metaData?.version === 2 && Array.isArray(attributes.layers)) {
+      attributes.layers.forEach(layer => {
+        if(layer.pixels.length === 0 && layer.compressedPixels.length !== 0) {
+          for (let i = 0; i < layer.compressedPixels.length; i = i + 3) {
+            const xStart = layer.compressedPixels[i];
+            const y = layer.compressedPixels[i+1]
+            const count = layer.compressedPixels[i+2]
+
+            for(let j = 0; j < count; j++) {
+              layer.pixels.push(
+                  xStart + j,
+                  y
+              );
+            }
+          }
+        }
+      })
     }
 
     if (!infoEntity || infoEntity['state'] === 'unavailable' || !infoEntity.attributes) {
@@ -677,24 +734,27 @@ class ValetudoMapCard extends HTMLElement {
       this.lastUpdatedControls = ""
     }
 
-    if (!canDrawMap && this._config.entity) {
+    if (!canDrawMap || !this._config.show_map) {
       // Remove the map
       this.mapContainer.style.display = 'none';
-
-      // Show the warning
-      this.entityWarning1.textContent = `Entity not available: ${this._config.entity}`;
-      this.entityWarning1.style.display = 'block';
     } else {
-      this.entityWarning1.style.display = 'none';
       this.mapContainer.style.display = 'block';
     }
 
-    if (!canDrawControls && this._config.vacuum_entity) {
+    if (!canDrawMap && this._config.show_map) {
+      // Show the warning
+      this.entityWarning1.textContent = `Entity not available: ${this.getMapEntityName(this._config.vacuum)}`;
+      this.entityWarning1.style.display = 'block';
+    } else {
+      this.entityWarning1.style.display = 'none';
+    }
+
+    if (!canDrawControls) {
       // Remove the controls
       this.controlContainer.style.display = 'none';
 
       // Show the warning
-      this.entityWarning2.textContent = `Entity not available: ${this._config.vacuum_entity}`;
+      this.entityWarning2.textContent = `Entity not available: ${this.getVacuumEntityName(this._config.vacuum)}`;
       this.entityWarning2.style.display = 'block';
     } else {
       this.entityWarning2.style.display = 'none';
@@ -777,17 +837,18 @@ class ValetudoMapCard extends HTMLElement {
       const wallColor = this.calculateColor(homeAssistant, this._config.wall_color, '--valetudo-map-wall-color', '--accent-color');
       const currentlyCleanedZoneColor = this.calculateColor(homeAssistant, this._config.currently_cleaned_zone_color, '--valetudo-currently_cleaned_zone_color', '--secondary-text-color');
       const noGoAreaColor = this.calculateColor(homeAssistant, this._config.no_go_area_color, '--valetudo-no-go-area-color', '--accent-color');
+      const noMopAreaColor = this.calculateColor(homeAssistant, this._config.no_mop_area_color, '--valetudo-no-mop-area-color', '--secondary-text-color');
       const virtualWallColor = this.calculateColor(homeAssistant, this._config.virtual_wall_color, '--valetudo-virtual-wall-color', '--accent-color');
       const pathColor = this.calculateColor(homeAssistant, this._config.path_color, '--valetudo-map-path-color', '--primary-text-color');
       const chargerColor = this.calculateColor(homeAssistant, this._config.dock_color, 'green');
       const vacuumColor = this.calculateColor(homeAssistant, this._config.vacuum_color, '--primary-text-color');
       const gotoTargetColor = this.calculateColor(homeAssistant, this._config.goto_target_color, 'blue');
 
-      if (this.shouldDrawMap()) {
+      if (this.shouldDrawMap() && this._config.show_map) {
         // Start drawing map
         this.drawingMap = true;
 
-        this.drawMap(this.mapContainer, attributes, mapHeight, mapWidth, boundingBox, floorColor, wallColor, currentlyCleanedZoneColor, noGoAreaColor, virtualWallColor, pathColor, chargerColor, vacuumColor, gotoTargetColor);
+        this.drawMap(this.mapContainer, attributes, mapHeight, mapWidth, boundingBox, floorColor, wallColor, currentlyCleanedZoneColor, noGoAreaColor, noMopAreaColor, virtualWallColor, pathColor, chargerColor, vacuumColor, gotoTargetColor);
 
         this.drawingMap = false;
       }
@@ -814,7 +875,7 @@ class ValetudoMapCard extends HTMLElement {
         }
       `
 
-      let infoEntity = this._hass.states[this._config.vacuum_entity]
+      let infoEntity = this.getVacuumEntity(this._config.vacuum);
       if (this.shouldDrawControls(infoEntity)) {
         // Start drawing controls
         this.drawingControls = true;
@@ -822,22 +883,9 @@ class ValetudoMapCard extends HTMLElement {
         this.infoBox = document.createElement('div');
         this.infoBox.classList.add('flex-box');
 
-        // Default to MQTT status, fall back to Home Assistant Xiaomi status
-        let status = null;
-        if (infoEntity && infoEntity.attributes && infoEntity.attributes.valetudo_state && infoEntity.attributes.valetudo_state.name) {
-          status = infoEntity.attributes.valetudo_state.name;
-        } else if (infoEntity && infoEntity.attributes && infoEntity.attributes.status) {
-          status = infoEntity.attributes.status;
-        }
-        if (infoEntity && infoEntity.attributes && infoEntity.attributes.valetudo_state) {
-          status = infoEntity.attributes.valetudo_state;
-        } else if (infoEntity && infoEntity.attributes && infoEntity.attributes.status) {
-          status = infoEntity.attributes.status;
-        }
-
-        if (status && this._config.show_status) {
+        if (infoEntity && infoEntity.state && this._config.show_status) {
           const statusInfo = document.createElement('p');
-          statusInfo.innerHTML = status;
+          statusInfo.innerHTML = infoEntity.state[0].toUpperCase() + infoEntity.state.substring(1);
           this.infoBox.appendChild(statusInfo)
         }
 
@@ -866,7 +914,7 @@ class ValetudoMapCard extends HTMLElement {
           startButton.appendChild(startIcon);
           startButton.appendChild(startRipple);
           startButton.addEventListener('click', (event) => {
-            this._hass.callService('vacuum', 'start', { entity_id: this._config.vacuum_entity }).then();
+            this._hass.callService('vacuum', 'start', { entity_id: this.getVacuumEntityName(this._config.vacuum) }).then();
           });
           this.controlFlexBox.appendChild(startButton);
         }
@@ -879,7 +927,7 @@ class ValetudoMapCard extends HTMLElement {
           pauseButton.appendChild(pauseIcon);
           pauseButton.appendChild(pauseRipple);
           pauseButton.addEventListener('click', (event) => {
-            this._hass.callService('vacuum', 'pause', { entity_id: this._config.vacuum_entity }).then();
+            this._hass.callService('vacuum', 'pause', { entity_id: this.getVacuumEntityName(this._config.vacuum) }).then();
           });
           this.controlFlexBox.appendChild(pauseButton);
         }
@@ -892,7 +940,7 @@ class ValetudoMapCard extends HTMLElement {
           stopButton.appendChild(stopIcon);
           stopButton.appendChild(stopRipple);
           stopButton.addEventListener('click', (event) => {
-            this._hass.callService('vacuum', 'stop', { entity_id: this._config.vacuum_entity }).then();
+            this._hass.callService('vacuum', 'stop', { entity_id: this.getVacuumEntityName(this._config.vacuum) }).then();
           });
           this.controlFlexBox.appendChild(stopButton);
         }
@@ -905,7 +953,7 @@ class ValetudoMapCard extends HTMLElement {
           homeButton.appendChild(homeIcon);
           homeButton.appendChild(homeRipple);
           homeButton.addEventListener('click', (event) => {
-            this._hass.callService('vacuum', 'return_to_base', { entity_id: this._config.vacuum_entity }).then();
+            this._hass.callService('vacuum', 'return_to_base', { entity_id: this.getVacuumEntityName(this._config.vacuum) }).then();
           });
           this.controlFlexBox.appendChild(homeButton);
         }
@@ -918,7 +966,7 @@ class ValetudoMapCard extends HTMLElement {
           locateButton.appendChild(locateIcon);
           locateButton.appendChild(locateRipple);
           locateButton.addEventListener('click', (event) => {
-            this._hass.callService('vacuum', 'locate', { entity_id: this._config.vacuum_entity }).then();
+            this._hass.callService('vacuum', 'locate', { entity_id: this.getVacuumEntityName(this._config.vacuum) }).then();
           });
           this.controlFlexBox.appendChild(locateButton);
         }

@@ -28,7 +28,7 @@
       - script.adaptive_lighting_manual_control_reset
       - sensor.living_room_humidity
       - sensor.living_room_temperature
-      - vacuum.roborock
+      - vacuum.valetudo_roborock
     exclude_entities:
       - cover.living_room_group
       - cover.bed_room_group
@@ -61,7 +61,7 @@
       name: "Magic Mirror"
     switch.tv_mute:
       name: "Stummschaltung"
-    vacuum.roborock:
+    vacuum.valetudo_roborock:
       name: "Staubsauger"
 - name: Fernseher
   mode: accessory
