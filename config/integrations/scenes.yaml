@@ -45,20 +45,20 @@
       min_mireds: 153
       max_mireds: 454
       supported_color_modes:
-      - color_temp
+        - color_temp
       color_mode: color_temp
       brightness: 249
       color_temp: 432
       hs_color:
-      - 29.412
-      - 79.714
+        - 29.412
+        - 79.714
       rgb_color:
-      - 255
-      - 151
-      - 51
+        - 255
+        - 151
+        - 51
       xy_color:
-      - 0.567
-      - 0.389
+        - 0.567
+        - 0.389
       is_deconz_group: false
       friendly_name: Deckenleuchte
       supported_features: 40
@@ -70,20 +70,20 @@
       min_mireds: 153
       max_mireds: 454
       supported_color_modes:
-      - color_temp
+        - color_temp
       color_mode: color_temp
       brightness: 249
       color_temp: 192
       hs_color:
-      - 27.275
-      - 16.489
+        - 27.275
+        - 16.489
       rgb_color:
-      - 255
-      - 232
-      - 212
+        - 255
+        - 232
+        - 212
       xy_color:
-      - 0.364
-      - 0.348
+        - 0.364
+        - 0.348
       is_deconz_group: false
       friendly_name: Deckenleuchte
       supported_features: 40
@@ -95,20 +95,20 @@
       min_mireds: 153
       max_mireds: 454
       supported_color_modes:
-      - color_temp
+        - color_temp
       color_mode: color_temp
       brightness: 249
       color_temp: 241
       hs_color:
-      - 26.757
-      - 32.237
+        - 26.757
+        - 32.237
       rgb_color:
-      - 255
-      - 209
-      - 172
+        - 255
+        - 209
+        - 172
       xy_color:
-      - 0.412
-      - 0.363
+        - 0.412
+        - 0.363
       is_deconz_group: false
       friendly_name: Deckenleuchte
       supported_features: 40
@@ -120,20 +120,20 @@
       min_mireds: 153
       max_mireds: 454
       supported_color_modes:
-      - color_temp
+        - color_temp
       color_mode: color_temp
       brightness: 2
       color_temp: 451
       hs_color:
-      - 29.737
-      - 83.879
+        - 29.737
+        - 83.879
       rgb_color:
-      - 255
-      - 147
-      - 41
+        - 255
+        - 147
+        - 41
       xy_color:
-      - 0.577
-      - 0.388
+        - 0.577
+        - 0.388
       is_deconz_group: false
       friendly_name: Deckenleuchte
       supported_features: 40
@@ -145,24 +145,24 @@
       min_mireds: 153
       max_mireds: 500
       effect_list:
-      - colorloop
+        - colorloop
       supported_color_modes:
-      - color_temp
-      - hs
-      - xy
+        - color_temp
+        - hs
+        - xy
       color_mode: color_temp
       brightness: 249
       color_temp: 428
       hs_color:
-      - 29.343
-      - 78.812
+        - 29.343
+        - 78.812
       rgb_color:
-      - 255
-      - 152
-      - 54
+        - 255
+        - 152
+        - 54
       xy_color:
-      - 0.564
-      - 0.389
+        - 0.564
+        - 0.389
       is_deconz_group: true
       all_on: true
       friendly_name: Deckenspots
@@ -176,23 +176,23 @@
       min_mireds: 153
       max_mireds: 500
       effect_list:
-      - colorloop
+        - colorloop
       supported_color_modes:
-      - color_temp
-      - hs
-      - xy
+        - color_temp
+        - hs
+        - xy
       color_mode: xy
       brightness: 249
       hs_color:
-      - 120
-      - 3.922
+        - 120
+        - 3.922
       rgb_color:
-      - 245
-      - 255
-      - 245
+        - 245
+        - 255
+        - 245
       xy_color:
-      - 0.3186
-      - 0.3395
+        - 0.3186
+        - 0.3395
       is_deconz_group: true
       all_on: true
       friendly_name: Deckenspots
@@ -206,24 +206,24 @@
       min_mireds: 153
       max_mireds: 500
       effect_list:
-      - colorloop
+        - colorloop
       supported_color_modes:
-      - color_temp
-      - hs
-      - xy
+        - color_temp
+        - hs
+        - xy
       color_mode: color_temp
       brightness: 249
       color_temp: 241
       hs_color:
-      - 26.757
-      - 32.237
+        - 26.757
+        - 32.237
       rgb_color:
-      - 255
-      - 209
-      - 172
+        - 255
+        - 209
+        - 172
       xy_color:
-      - 0.412
-      - 0.363
+        - 0.412
+        - 0.363
       is_deconz_group: true
       all_on: true
       friendly_name: Deckenspots
@@ -237,24 +237,24 @@
       min_mireds: 153
       max_mireds: 500
       effect_list:
-      - colorloop
+        - colorloop
       supported_color_modes:
-      - color_temp
-      - hs
-      - xy
+        - color_temp
+        - hs
+        - xy
       color_mode: color_temp
       brightness: 2
       color_temp: 497
       hs_color:
-      - 30.548
-      - 93.899
+        - 30.548
+        - 93.899
       rgb_color:
-      - 255
-      - 137
-      - 15
+        - 255
+        - 137
+        - 15
       xy_color:
-      - 0.597
-      - 0.383
+        - 0.597
+        - 0.383
       is_deconz_group: true
       all_on: true
       friendly_name: Deckenspots

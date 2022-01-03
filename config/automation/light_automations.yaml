@@ -276,57 +276,57 @@
     input:
       remote: 938228f202a949d19fa3e810ee9520d3
       button_one_short_release:
-      - service: light.turn_on
-        target:
-          entity_id: light.deckenleuchte
-        data:
-          transition: 1
+        - service: light.turn_on
+          target:
+            entity_id: light.deckenleuchte
+          data:
+            transition: 1
       button_one_hold:
-      - service: light.turn_on
-        target:
-          entity_id: light.stehlampe
+        - service: light.turn_on
+          target:
+            entity_id: light.stehlampe
       button_two_short_release:
-      - condition: state
-        entity_id: light.deckenleuchte
-        state: 'on'
-      - service: scene.turn_on
-        data_template:
-          transition: 1
-          entity_id: >
-            scene.{{states("input_select.main_light_living_room_scene").replace(" ","_") | regex_replace(find="[\(\)]", replace="")}}
-      - service: input_select.select_next
-        target:
-          entity_id: input_select.main_light_living_room_scene
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 30
-          milliseconds: 0
-      - service: input_select.select_first
-        target:
-          entity_id: input_select.main_light_living_room_scene
+        - condition: state
+          entity_id: light.deckenleuchte
+          state: 'on'
+        - service: scene.turn_on
+          data_template:
+            transition: 1
+            entity_id: >
+              scene.{{states("input_select.main_light_living_room_scene").replace(" ","_") | regex_replace(find="[\(\)]", replace="")}}
+        - service: input_select.select_next
+          target:
+            entity_id: input_select.main_light_living_room_scene
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 30
+            milliseconds: 0
+        - service: input_select.select_first
+          target:
+            entity_id: input_select.main_light_living_room_scene
       button_two_hold:
-      - service: light.turn_on
-        target:
-          entity_id: light.deckenleuchte
-        data:
-          transition: 1
-          brightness_step_pct: 10
+        - service: light.turn_on
+          target:
+            entity_id: light.deckenleuchte
+          data:
+            transition: 1
+            brightness_step_pct: 10
       button_three_hold:
-      - service: light.turn_on
-        target:
-          entity_id: light.deckenleuchte
-        data:
-          transition: 1
-          brightness_step_pct: -10
+        - service: light.turn_on
+          target:
+            entity_id: light.deckenleuchte
+          data:
+            transition: 1
+            brightness_step_pct: -10
       button_four_short_release:
-      - service: light.turn_off
-        target:
-          entity_id: light.deckenleuchte
+        - service: light.turn_off
+          target:
+            entity_id: light.deckenleuchte
       button_four_hold:
-      - service: light.turn_off
-        target:
-          entity_id: light.stehlampe
+        - service: light.turn_off
+          target:
+            entity_id: light.stehlampe
 - id: '1636754173407'
   alias: deCONZ - Philips Hue Dimmer Switch - Custom Actions
   description: ''
@@ -335,58 +335,58 @@
     input:
       remote: 9384270cc5b44d75918cd75e753cc28c
       button_one_short_release:
-      - service: light.turn_on
-        target:
-          entity_id: light.deckenspots
-        data:
-          transition: 1
+        - service: light.turn_on
+          target:
+            entity_id: light.deckenspots
+          data:
+            transition: 1
       button_one_hold:
-      - service: light.turn_on
-        target:
-          entity_id: light.nachttischlampe
+        - service: light.turn_on
+          target:
+            entity_id: light.nachttischlampe
       button_two_short_release:
-      - condition: state
-        entity_id: light.deckenspots
-        state: 'on'
-      - service: scene.turn_on
-        data_template:
-          transition: 1
-          entity_id: >
-            scene.{{states("input_select.main_light_bed_room_scene").replace(" ","_") | regex_replace(find="[\(\)]", replace="")}}
-      - service: input_select.select_next
-        target:
-          entity_id: input_select.main_light_bed_room_scene
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 30
-          milliseconds: 0
-      - service: input_select.select_first
-        target:
-          entity_id: input_select.main_light_bed_room_scene
+        - condition: state
+          entity_id: light.deckenspots
+          state: 'on'
+        - service: scene.turn_on
+          data_template:
+            transition: 1
+            entity_id: >
+              scene.{{states("input_select.main_light_bed_room_scene").replace(" ","_") | regex_replace(find="[\(\)]", replace="")}}
+        - service: input_select.select_next
+          target:
+            entity_id: input_select.main_light_bed_room_scene
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 30
+            milliseconds: 0
+        - service: input_select.select_first
+          target:
+            entity_id: input_select.main_light_bed_room_scene
       button_two_hold:
-      - service: light.turn_on
-        target:
-          entity_id: light.deckenspots
-        data:
-          transition: 1
-          brightness_step_pct: 10
+        - service: light.turn_on
+          target:
+            entity_id: light.deckenspots
+          data:
+            transition: 1
+            brightness_step_pct: 10
       button_three_short_release:
-      - service: light.toggle
-        target:
-          entity_id: light.schreibtischlampe
+        - service: light.toggle
+          target:
+            entity_id: light.schreibtischlampe
       button_three_hold:
-      - service: light.turn_on
-        target:
-          entity_id: light.deckenspots
-        data:
-          transition: 1
-          brightness_step_pct: -10
+        - service: light.turn_on
+          target:
+            entity_id: light.deckenspots
+          data:
+            transition: 1
+            brightness_step_pct: -10
       button_four_short_release:
-      - service: light.turn_off
-        target:
-          entity_id: light.deckenspots
+        - service: light.turn_off
+          target:
+            entity_id: light.deckenspots
       button_four_hold:
-      - service: light.turn_off
-        target:
-          entity_id: light.nachttischlampe
+        - service: light.turn_off
+          target:
+            entity_id: light.nachttischlampe
