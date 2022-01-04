@@ -72,7 +72,7 @@
   state_topic: 'telegraf/intelnuc/temp'
   unit_of_measurement: '°C'
   value_template: >-
-    {% if value_json['tags'].sensor == 'coretemp_package_id_0' %}
+    {% if value_json['tags'].sensor == 'coretemp_packageid0_input' %}
       {{ (value_json['fields'].temp | float) | round(2) }}
     {% else %}
       {{ states('sensor.cpu_temperature') }}
