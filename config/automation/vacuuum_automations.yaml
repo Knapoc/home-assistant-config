@@ -80,8 +80,11 @@
       data_template:
         message: "Staubsauger ist zu entleeren. Anzahl der Saugvorgänge: {{ states('counter.vacuum_dustbin') }}"
         data:
-          push:
-            category: emptyroborock
+          actions:
+            - action: "EMPTY_ROBOROCK_LATER"
+              title: "später"
+            - action: "EMPTY_ROBOROCK_NOW"
+              title: "jetzt"
 
 - alias: roborock maintenance notification
   id: '1610223727000'
@@ -120,9 +123,9 @@
   id: '1555975480'
   trigger:
     - platform: event
-      event_type: ios.notification_action_fired
+      event_type: mobile_app_notification_action
       event_data:
-        actionName: EMPTY_ROBOROCK_NOW
+        action: "EMPTY_ROBOROCK_NOW"
     - platform: event
       event_type: deconz_event
       event_data:
