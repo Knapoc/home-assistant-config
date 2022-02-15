@@ -39,7 +39,10 @@
   id: '1583686218'
   trigger:
     platform: template
-    value_template: "{{ states('sensor.time') == (state_attr('input_datetime.time_close_covers_night', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+    value_template: >-
+      {{ states('sensor.time') == (state_attr('input_datetime.time_close_covers_night', 'timestamp')
+        | int | timestamp_custom('%H:%M', False))
+      }}
   condition:
     condition: and
     conditions:
@@ -75,20 +78,11 @@
   action:
     service: cover.close_cover
     data_template:
-      entity_id: >
-        {% if is_state('binary_sensor.window_openclose_1', 'off') %}
-          {% set entities = 'cover.fyrtur_1' %}
-        {% endif %}
-        {% if is_state('binary_sensor.window_openclose_2', 'off') %}
-          {% set entities = entities + 'cover.fyrtur_2' %}
-        {% endif %}
-        {% if is_state('binary_sensor.window_openclose_3', 'off') %}
-          {% set entities = entities + 'cover.fyrtur_3' %}
-        {% endif %}
-        {% if is_state('binary_sensor.window_openclose_4', 'off') %}
-          {% set entities = entities + 'cover.fyrtur_4' %}
-        {% endif %}
-        {{ states | selectattr('entity_id','in', entities) | selectattr('attributes.current_position','>',0) | map(attribute='entity_id') | join(', ') }}
+      entity_id: >-
+        {{ states.binary_sensor | selectattr("object_id", "search", "^window_openclose_[0-9]$")
+          | selectattr('state','eq','off') | map(attribute='object_id') | join(',')
+          | replace('window_openclose', 'cover.fyrtur')
+        }}
 - alias: 'stop cover if window is open'
   id: '1585950689'
   trigger:
@@ -106,21 +100,13 @@
       to: 'closed'
   condition:
     - condition: template
-      value_template: >
-        {% if trigger.entity_id == "cover.fyrtur_1" %}
-          {{ is_state('binary_sensor.window_openclose_1', 'on') }}
-        {% elif trigger.entity_id == "cover.fyrtur_2" %}
-          {{ is_state('binary_sensor.window_openclose_2', 'on') }}
-        {% elif trigger.entity_id == "cover.fyrtur_3" %}
-          {{ is_state('binary_sensor.window_openclose_3', 'on') }}
-        {% elif trigger.entity_id == "cover.fyrtur_4" %}
-          {{ is_state('binary_sensor.window_openclose_4', 'on') }}
-        {% endif %}
+      value_template: >-
+        {{ is_state(trigger.object_id.replace('fyrtur', 'binary_sensor.window_openclose'), 'on') }}
   action:
     service: cover.stop_cover
     data_template:
       entity_id: '{{ trigger.entity_id }}'
-- alias: 'close covers when windows closes at night time'
+- alias: 'close covers at night time when still open'
   id: '1629923876'
   trigger:
     - platform: state
@@ -135,17 +121,23 @@
     - platform: state
       entity_id: 'binary_sensor.window_openclose_4'
       to: 'off'
-  condition: "{{ states('sensor.time') >= (state_attr('input_datetime.time_close_covers_night', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+    - platform: state
+      entity_id: !secret person_1
+      to: home
+  condition: >-
+    {{ states('sensor.time') >= (state_attr('input_datetime.time_close_covers_night', 'timestamp')
+      | int | timestamp_custom('%H:%M', False))
+      or states('sensor.time') < states('sensor.wakeup_open_time_covers')
+    }}
   action:
     - service: cover.close_cover
       data_template:
-        entity_id: >
-          {% if trigger.entity_id == 'binary_sensor.window_openclose_1' -%}
-            cover.fyrtur_1
-          {% elif trigger.entity_id == 'binary_sensor.window_openclose_2' -%}
-            cover.fyrtur_2
-          {% elif trigger.entity_id == 'binary_sensor.window_openclose_3' -%}
-            cover.fyrtur_3
-          {% elif trigger.entity_id == 'binary_sensor.window_openclose_4' -%}
-            cover.fyrtur_4
+        entity_id: >-
+          {%- if trigger.domain == 'binary_sensor' -%}
+            cover.{{trigger.object_id.replace('window_openclose', 'fyrtur')}}
+          {% else -%}
+            {{ states.binary_sensor | selectattr("object_id", "search", "^window_openclose_[0-9]$")
+              | selectattr('state','eq','off') | map(attribute='object_id') | join(',')
+              | replace('window_openclose', 'cover.fyrtur')
+            }}
           {% endif %}
