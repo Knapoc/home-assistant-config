@@ -5,8 +5,8 @@
     - name: bed_occupancy
       device_class: occupancy
       state: >-
-          {{ (states('sensor.bed_pressure_1')|float > 0.10)
-          or (states('sensor.bed_pressure_2')|float > 0.10) }}
+          {{ (states('sensor.bed_pressure_1')|float(default=0) > 0.20)
+          or (states('sensor.bed_pressure_2')|float(default=0) > 0.20) }}
       delay_on:
         minutes: 3
       delay_off:
@@ -81,34 +81,34 @@
     - name: lights_on
       state: "{{ states.light | selectattr('state', 'equalto', 'on') | rejectattr('attributes.is_deconz_group') | list | length }}"
     - name: esp32_living_room_uptime
-      state: "{{ ((states('sensor.esp32_living_room_uptime_raw') | float) / 60 / 60) | round(2) }}"
+      state: "{{ ((states('sensor.esp32_living_room_uptime_raw') | float(default=0)) / 60 / 60) | round(2) }}"
       unit_of_measurement: "h"
     - name: esp32_living_room_version
       state: "{{ states('sensor.esp32_living_room_version_raw').split(' ',1)[0] }}"
     - name: esp32_bed_room_uptime
-      state: "{{ ((states('sensor.esp32_bed_room_uptime_raw') | float) / 60 / 60) | round(2) }}"
+      state: "{{ ((states('sensor.esp32_bed_room_uptime_raw') | float(default=0)) / 60 / 60) | round(2) }}"
       unit_of_measurement: "h"
     - name: esp32_bed_room_version
       state: "{{ states('sensor.esp32_bed_room_version_raw').split(' ',1)[0] }}"
     - name: valetudo_roborock_main_brush_hours
-      state: "{{ ((states('sensor.valetudo_roborock_main_brush') | float) / 60 ) | round(2) }}"
+      state: "{{ ((states('sensor.valetudo_roborock_main_brush') | float(default=0)) / 60 ) | round(2) }}"
       unit_of_measurement: "h"
     - name: valetudo_roborock_main_filter_hours
-      state: "{{ ((states('sensor.valetudo_roborock_main_filter') | float) / 60 ) | round(2) }}"
+      state: "{{ ((states('sensor.valetudo_roborock_main_filter') | float(default=0)) / 60 ) | round(2) }}"
       unit_of_measurement: "h"
     - name: valetudo_roborock_right_side_brush_hours
-      state: "{{ ((states('sensor.valetudo_roborock_right_brush') | float) / 60 ) | round(2) }}"
+      state: "{{ ((states('sensor.valetudo_roborock_right_brush') | float(default=0)) / 60 ) | round(2) }}"
       unit_of_measurement: "h"
     - name: valetudo_roborock_sensor_hours
-      state: "{{ ((states('sensor.valetudo_roborock_sensor_cleaning') | float) / 60 ) | round(2) }}"
+      state: "{{ ((states('sensor.valetudo_roborock_sensor_cleaning') | float(default=0)) / 60 ) | round(2) }}"
       unit_of_measurement: "h"
     - name: sonoffs20_desk_uptime
-      state: "{{ ((states('sensor.sonoffs20_desk_uptime_raw') | float) / 60 / 60) | round(2) }}"
+      state: "{{ ((states('sensor.sonoffs20_desk_uptime_raw') | float(default=0)) / 60 / 60) | round(2) }}"
       unit_of_measurement: "h"
     - name: sonoffs20_desk_version
       state: "{{ states('sensor.sonoffs20_desk_version_raw').split(' ',1)[0] }}"
     - name: sonoffs20_magicmirror_uptime
-      state: "{{ ((states('sensor.sonoffs20_magicmirror_uptime_raw') | float) / 60 / 60) | round(2) }}"
+      state: "{{ ((states('sensor.sonoffs20_magicmirror_uptime_raw') | float(default=0)) / 60 / 60) | round(2) }}"
       unit_of_measurement: "h"
     - name: sonoffs20_magicmirror_version
       state: "{{ states('sensor.sonoffs20_magicmirror_version_raw').split(' ',1)[0] }}"
