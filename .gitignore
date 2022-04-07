@@ -83,6 +83,7 @@ ip_bans.yaml
 favicon*
 *.crt
 certificates/
+config/backups
 floorplan_old.svg
 floorplan.svg
 floorplan.yaml
