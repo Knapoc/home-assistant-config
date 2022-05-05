@@ -4,11 +4,15 @@
 - alias: 'open covers in the morning'
   id: '1583686217'
   trigger:
-    - platform: state
-      entity_id: binary_sensor.bed_occupancy
-      to: "off"
-      for:
-        minutes: "10"
+    # - platform: state
+    #   entity_id: binary_sensor.bed_occupancy
+    #   id: bed_occupancy_trigger
+    #   to: "off"
+    #   for:
+    #     minutes: "10"
+    - platform: template
+      value_template: "{{ states('sensor.time') == states('sensor.wakeup_open_time_covers') }}"
+      id: time_trigger
   condition:
     condition: and
     conditions:
@@ -26,6 +30,17 @@
             value_template: "{{ (state_attr('cover.fyrtur_3', 'current_position')|int) < 100 }}"
           - condition: template
             value_template: "{{ (state_attr('cover.fyrtur_4', 'current_position')|int) < 100 }}"
+      - condition: or
+        conditions:
+          # - condition: trigger
+          #   id: bed_occupancy_trigger
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: time_trigger
+              - condition: state
+                entity_id: binary_sensor.is_home
+                state: 'off'
   action:
     service: cover.open_cover
     data_template:
@@ -44,37 +59,32 @@
         | int | timestamp_custom('%H:%M', False))
       }}
   condition:
-    condition: and
+    condition: or
     conditions:
-      - condition: state
-        entity_id: !secret person_1
-        state: home
-      - condition: or
+      - condition: and
         conditions:
-          - condition: and
-            conditions:
-              - condition: template
-                value_template: "{{ (state_attr('cover.fyrtur_1', 'current_position')|int) > 0 }}"
-              - condition: template
-                value_template: "{{ is_state('binary_sensor.window_openclose_1', 'off') }}"
-          - condition: and
-            conditions:
-              - condition: template
-                value_template: "{{ (state_attr('cover.fyrtur_2', 'current_position')|int) > 0 }}"
-              - condition: template
-                value_template: "{{ is_state('binary_sensor.window_openclose_2', 'off') }}"
-          - condition: and
-            conditions:
-              - condition: template
-                value_template: "{{ (state_attr('cover.fyrtur_3', 'current_position')|int) > 0 }}"
-              - condition: template
-                value_template: "{{ is_state('binary_sensor.window_openclose_3', 'off') }}"
-          - condition: and
-            conditions:
-              - condition: template
-                value_template: "{{ (state_attr('cover.fyrtur_4', 'current_position')|int) > 0 }}"
-              - condition: template
-                value_template: "{{ is_state('binary_sensor.window_openclose_4', 'off') }}"
+          - condition: template
+            value_template: "{{ (state_attr('cover.fyrtur_1', 'current_position')|int) > 0 }}"
+          - condition: template
+            value_template: "{{ is_state('binary_sensor.window_openclose_1', 'off') }}"
+      - condition: and
+        conditions:
+          - condition: template
+            value_template: "{{ (state_attr('cover.fyrtur_2', 'current_position')|int) > 0 }}"
+          - condition: template
+            value_template: "{{ is_state('binary_sensor.window_openclose_2', 'off') }}"
+      - condition: and
+        conditions:
+          - condition: template
+            value_template: "{{ (state_attr('cover.fyrtur_3', 'current_position')|int) > 0 }}"
+          - condition: template
+            value_template: "{{ is_state('binary_sensor.window_openclose_3', 'off') }}"
+      - condition: and
+        conditions:
+          - condition: template
+            value_template: "{{ (state_attr('cover.fyrtur_4', 'current_position')|int) > 0 }}"
+          - condition: template
+            value_template: "{{ is_state('binary_sensor.window_openclose_4', 'off') }}"
   action:
     service: cover.close_cover
     data_template:
@@ -86,22 +96,26 @@
 - alias: 'stop cover if window is open'
   id: '1585950689'
   trigger:
-    - platform: state
+    - platform: numeric_state
       entity_id: 'cover.fyrtur_1'
-      to: 'closed'
-    - platform: state
+      attribute: current_position
+      below: 100
+    - platform: numeric_state
       entity_id: 'cover.fyrtur_2'
-      to: 'closed'
-    - platform: state
+      attribute: current_position
+      below: 100
+    - platform: numeric_state
       entity_id: 'cover.fyrtur_3'
-      to: 'closed'
-    - platform: state
+      attribute: current_position
+      below: 100
+    - platform: numeric_state
       entity_id: 'cover.fyrtur_4'
-      to: 'closed'
+      attribute: current_position
+      below: 100
   condition:
     - condition: template
       value_template: >-
-        {{ is_state(trigger.object_id.replace('fyrtur', 'binary_sensor.window_openclose'), 'on') }}
+        {{ is_state(trigger.entity_id.replace('cover.fyrtur', 'binary_sensor.window_openclose'), 'on') }}
   action:
     service: cover.stop_cover
     data_template:
@@ -133,11 +147,33 @@
     - service: cover.close_cover
       data_template:
         entity_id: >-
-          {%- if trigger.domain == 'binary_sensor' -%}
-            cover.{{trigger.object_id.replace('window_openclose', 'fyrtur')}}
+          {%- if trigger.to_state.domain == 'binary_sensor' -%}
+            {{trigger.entity_id.replace('binary_sensor.window_openclose', 'cover.fyrtur')}}
           {% else -%}
             {{ states.binary_sensor | selectattr("object_id", "search", "^window_openclose_[0-9]$")
               | selectattr('state','eq','off') | map(attribute='object_id') | join(',')
               | replace('window_openclose', 'cover.fyrtur')
             }}
           {% endif %}
+- id: '1644409440760'
+  alias: open/close remote - bedroom
+  description: ''
+  use_blueprint:
+    path: VanMak/deconz-ikea-tradfri-open-close-including-press-and-hold.yaml
+    input:
+      remote: 7883c31af8d6420a8181c1bb4a4e867b
+      cover:
+        entity_id:
+        - cover.fyrtur_3
+        - cover.fyrtur_4
+- id: '1644409576257'
+  alias: open/close remote - livingroom
+  description: ''
+  use_blueprint:
+    path: VanMak/deconz-ikea-tradfri-open-close-including-press-and-hold.yaml
+    input:
+      remote: 3485cbac2ada4844bdd401f8a8e00633
+      cover:
+        entity_id:
+          - cover.fyrtur_1
+          - cover.fyrtur_2
