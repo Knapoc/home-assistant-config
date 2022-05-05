@@ -55,7 +55,6 @@ scene: !include integrations/scenes.yaml
 script: !include_dir_merge_named script/
 sun:
 system_health:
-updater:
 zeroconf:
 
 ### one liners

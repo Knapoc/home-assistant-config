@@ -18,26 +18,6 @@
     - type: load_5m
     - type: load_15m
 
-- platform: cpuspeed
-
-- platform: uptime
-  name: Uptime
-
-- platform: version
-  name: hass_version
-
-- platform: sql
-  db_url: !secret mysql_db
-  queries:
-    - name: database size hass
-      query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "value" FROM information_schema.tables WHERE table_schema="hassdb" GROUP BY table_schema;'
-      column: 'value'
-      unit_of_measurement: MB
-    - name: database size nc
-      query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "value" FROM information_schema.tables WHERE table_schema="nextcloud" GROUP BY table_schema;'
-      column: 'value'
-      unit_of_measurement: MB
-
 - platform: fail2ban
   file_path: !secret path_fail2ban
   scan_interval: 180
