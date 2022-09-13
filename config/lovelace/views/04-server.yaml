@@ -269,6 +269,7 @@
                 - entity: sensor.disk_use_percent_sda1
                 - entity: sensor.disk_use_percent_sdb1
                 - entity: sensor.disk_use_percent_sdb2
+                - entity: sensor.disk_use_percent_sdb3
               height: 22px
               width: 70%
               severity:

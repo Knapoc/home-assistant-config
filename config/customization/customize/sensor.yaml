@@ -36,6 +36,9 @@ sensor.disk_use_percent_sdb1:
 sensor.disk_use_percent_sdb2:
   friendly_name: '/dev/sdb2'
   icon: mdi:harddisk
+sensor.disk_use_percent_sdb3:
+  friendly_name: '/dev/sdb3'
+  icon: mdi:harddisk
 sensor.disk_use_percent_sda1:
   friendly_name: '/dev/sda1'
   icon: mdi:harddisk

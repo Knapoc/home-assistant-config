@@ -25,6 +25,7 @@ entities:
   - sensor.disk_use_percent_sda1
   - sensor.disk_use_percent_sdb1
   - sensor.disk_use_percent_sdb2
+  - sensor.disk_use_percent_sdb3
   - sensor.memory_free
   - sensor.memory_use_percent
   - sensor.database_size
