@@ -75,4 +75,13 @@
     - service: !secret notify_ios
       data:
         title: "{{state_attr('binary_sensor.meteoalarm', 'headline')}}"
-        message: "{{state_attr('binary_sensor.meteoalarm', 'description')}} is effective on {{state_attr('binary_sensor.meteoalarm', 'effective')}}"
+        message: >-
+          {% if state_attr('binary_sensor.meteoalarm', 'description')[-1] == '.' %}
+          {{state_attr('binary_sensor.meteoalarm', 'description')[:-1]}}
+          {% else %}
+          {{state_attr('binary_sensor.meteoalarm', 'description')}}
+          {% endif %}from {{as_datetime(state_attr('binary_sensor.meteoalarm', 'onset'))}}
+          to {{as_datetime(state_attr('binary_sensor.meteoalarm', 'expires'))}}.
+
+
+          Is effective on {{as_datetime(state_attr('binary_sensor.meteoalarm', 'effective'))}}.
