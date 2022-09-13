@@ -164,8 +164,8 @@
       remote: 7883c31af8d6420a8181c1bb4a4e867b
       cover:
         entity_id:
-        - cover.fyrtur_3
-        - cover.fyrtur_4
+          - cover.fyrtur_3
+          - cover.fyrtur_4
 - id: '1644409576257'
   alias: open/close remote - livingroom
   description: ''
