@@ -1,8 +1,7 @@
 ---
 # mqtt sensors
 
-- platform: mqtt
-  name: disk_use_percent_lv
+- name: disk_use_percent_lv
   state_topic: 'telegraf/intelnuc/disk'
   unit_of_measurement: '%'
   value_template: >-
@@ -12,8 +11,7 @@
       {{ states('sensor.disk_use_percent_lv') }}
     {% endif %}
 
-- platform: mqtt
-  name: disk_use_percent_lv0
+- name: disk_use_percent_lv0
   state_topic: 'telegraf/intelnuc/disk'
   unit_of_measurement: '%'
   value_template: >-
@@ -23,8 +21,7 @@
       {{ states('sensor.disk_use_percent_lv0') }}
     {% endif %}
 
-- platform: mqtt
-  name: disk_use_percent_lv1
+- name: disk_use_percent_lv1
   state_topic: 'telegraf/intelnuc/disk'
   unit_of_measurement: '%'
   value_template: >-
@@ -34,8 +31,7 @@
       {{ states('sensor.disk_use_percent_lv1') }}
     {% endif %}
 
-- platform: mqtt
-  name: disk_use_percent_sdb1
+- name: disk_use_percent_sdb1
   state_topic: 'telegraf/intelnuc/disk'
   unit_of_measurement: '%'
   value_template: >-
@@ -45,8 +41,7 @@
       {{ states('sensor.disk_use_percent_sdb1') }}
     {% endif %}
 
-- platform: mqtt
-  name: disk_use_percent_sdb2
+- name: disk_use_percent_sdb2
   state_topic: 'telegraf/intelnuc/disk'
   unit_of_measurement: '%'
   value_template: >-
@@ -56,8 +51,17 @@
       {{ states('sensor.disk_use_percent_sdb2') }}
     {% endif %}
 
-- platform: mqtt
-  name: disk_use_percent_sda1
+- name: disk_use_percent_sdb3
+  state_topic: 'telegraf/intelnuc/disk'
+  unit_of_measurement: '%'
+  value_template: >-
+    {% if value_json['tags'].path == '/mnt/hdd' %}
+      {{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}
+    {% else %}
+      {{ states('sensor.disk_use_percent_sdb3') }}
+    {% endif %}
+
+- name: disk_use_percent_sda1
   state_topic: 'telegraf/intelnuc/disk'
   unit_of_measurement: '%'
   value_template: >-
@@ -67,8 +71,7 @@
       {{ states('sensor.disk_use_percent_sda1') }}
     {% endif %}
 
-- platform: mqtt
-  name: CPU Temperature
+- name: CPU Temperature
   state_topic: 'telegraf/intelnuc/temp'
   unit_of_measurement: '°C'
   value_template: >-
@@ -77,9 +80,3 @@
     {% else %}
       {{ states('sensor.cpu_temperature') }}
     {% endif %}
-
-- platform: mqtt
-  name: version_valetudo
-  state_topic: "homeassistant/vacuum/valetudo_XXXXXX/config"
-  value_template: "{{ value_json.device['sw_version'] }}"
-  scan_interval: 21600

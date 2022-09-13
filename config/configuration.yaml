@@ -92,6 +92,7 @@ mqtt:
   will_message:
     topic: 'hass/status'
     payload: 'offline'
+  sensor: !include integrations/mqtt_sensors.yaml
 
 owntracks:
   max_gps_accuracy: 200
