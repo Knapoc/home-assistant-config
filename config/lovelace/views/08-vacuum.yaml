@@ -2,8 +2,8 @@
 # Vacuum view
 
 - icon: mdi:robot-vacuum
-  title: vacuum
-  visible: false
+  title: Vacuum
+  subview: true
   path: vacuum
   cards:
     - type: vertical-stack

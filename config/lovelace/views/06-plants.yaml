@@ -2,8 +2,8 @@
 # Plants view
 
 - icon: mdi:sprout
-  title: plants
-  visible: false
+  title: Plants
+  subview: true
   path: plants
   cards:
     - type: vertical-stack
