@@ -11,11 +11,6 @@
   longitude: !secret zone2_long
   radius: 100
   icon: !secret zone2_icon
-- name: !secret zone3_name
-  latitude: !secret zone3_lat
-  longitude: !secret zone3_long
-  radius: 100
-  icon: !secret zone3_icon
 - name: !secret zone4_name
   latitude: !secret zone4_lat
   longitude: !secret zone4_long
