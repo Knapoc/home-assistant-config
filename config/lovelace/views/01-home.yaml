@@ -868,7 +868,7 @@
                     - light.light_7
                     - light.kuche
                     - light.schlafzimmer
-                    - light.light_8
+                    - light.color_temperature_light_15
                     - light.vorzimmer
                     - light.wohnzimmer
             - type: 'custom:button-card'  # Spacer

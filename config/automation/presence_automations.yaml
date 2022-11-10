@@ -22,7 +22,7 @@
           - light.light_7
           - light.kuche
           - light.vorzimmer
-          - light.light_8
+          - light.color_temperature_light_15
           - light.wohnzimmer
           - input_boolean.loop_livingcolors_1
           - input_boolean.loop_livingcolors_2
@@ -71,5 +71,5 @@
           - light.light_7
           - light.kuche
           - light.vorzimmer
-          - light.light_8
+          - light.color_temperature_light_15
           - light.wohnzimmer

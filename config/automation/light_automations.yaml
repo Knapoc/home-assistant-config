@@ -189,7 +189,7 @@
       no_motion_wait: '180'
       motion_entity: binary_sensor.motion_sensor
       light_target:
-        entity_id: light.light_8
+        entity_id: light.light.color_temperature_light_15
 
 - id: '1609948156902'
   alias: Motion-activated bathroom light
@@ -209,7 +209,7 @@
     path: knapoc/light_off_time.yaml
     input:
       on_time: '600'
-      light_entity: light.light_8
+      light_entity: light.light.color_temperature_light_15
 
 - id: '1609948156900'
   alias: turn bathroom lights off

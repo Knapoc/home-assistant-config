@@ -15,7 +15,7 @@ light.kuche:
 light.schlafzimmer:
   friendly_name: Zimmerlicht
   custom_ui_state_card: state-card-custom-light
-light.light_8:
+light.color_temperature_light_15:
   friendly_name: Toilettenlicht
   custom_ui_state_card: state-card-custom-light
 light.vorzimmer:
