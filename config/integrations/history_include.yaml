@@ -6,6 +6,7 @@ domains:
   - device_tracker
   - person
   - cover
+  - climate
 entities:
   - binary_sensor.bed_occupancy
   - binary_sensor.motion_sensor

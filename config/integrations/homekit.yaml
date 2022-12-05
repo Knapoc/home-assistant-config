@@ -10,6 +10,7 @@
       - switch
       - cover
     include_entities:
+      - climate.netatmo_smart_thermostat
       - input_boolean.loop_livingcolors_1
       - input_boolean.loop_livingcolors_2
       - light.deckenleuchte
@@ -28,6 +29,7 @@
       - script.adaptive_lighting_manual_control_reset
       - sensor.living_room_humidity
       - sensor.living_room_temperature
+      - sensor.netatmo_smart_thermostat_current_temperature
       - vacuum.valetudo_roborock
     exclude_entities:
       - cover.living_room_group
