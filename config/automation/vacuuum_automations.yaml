@@ -139,7 +139,7 @@
     - service: mqtt.publish
       data:
         topic: valetudo/roborock/GoToLocationCapability/go/set
-        payload: '{"coordinates":{"x":3440,"y":2591}}'
+        payload: '{"coordinates":{"x":2513,"y":1485}}'
     - wait_template: "{{ is_state('vacuum.valetudo_roborock', 'returning') }}"
     - service: counter.reset
       data:
