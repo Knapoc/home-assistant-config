@@ -16,7 +16,6 @@
                 ha-card {
                   --ha-card-background: none !important;
                   box-shadow: none !important;
-                  height: 70px !important;
                 }
               ha-markdown:
                 $: |
@@ -152,7 +151,6 @@
                 ha-card {
                   --ha-card-background: none !important;
                   box-shadow: none !important;
-                  height: 70px !important;
                 }
               ha-markdown:
                 $: |
@@ -209,7 +207,6 @@
                         ha-card {
                           --ha-card-background: none !important;
                           box-shadow: none !important;
-                          height: 70px !important;
                         }
                       ha-markdown:
                         $: |
@@ -273,7 +270,6 @@
                         ha-card {
                           --ha-card-background: none !important;
                           box-shadow: none !important;
-                          height: 70px !important;
                         }
                       ha-markdown:
                         $: |
@@ -337,7 +333,6 @@
                         ha-card {
                           --ha-card-background: none !important;
                           box-shadow: none !important;
-                          height: 70px !important;
                         }
                       ha-markdown:
                         $: |
@@ -364,7 +359,6 @@
                 ha-card {
                   --ha-card-background: none !important;
                   box-shadow: none !important;
-                  height: 70px !important;
                 }
               ha-markdown:
                 $: |
@@ -573,7 +567,6 @@
                 ha-card {
                   --ha-card-background: none !important;
                   box-shadow: none !important;
-                  height: 70px !important;
                 }
               ha-markdown:
                 $: |
@@ -819,7 +812,6 @@
                 ha-card {
                   --ha-card-background: none !important;
                   box-shadow: none !important;
-                  height: 70px !important;
                 }
               ha-markdown:
                 $: |
