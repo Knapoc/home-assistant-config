@@ -10,7 +10,7 @@
       cards:
         - type: markdown
           content: |
-            # valetudo_roborock
+            # Roborock
             ## Controls
           card_mod:
             style:
@@ -209,10 +209,17 @@
               vacuum: valetudo_roborock
               dock_icon: mdi:dots-vertical
               dock_color: '--secondary-text-color'
+              show_status: false
+              show_battery_level: false
+              show_start_button: false
+              show_pause_button: false
+              show_stop_button: false
+              show_home_button: false
+              show_locate_button: false
               card_mod:
                 style: |
                   ha-card {
-                    height: 230px;
+                    height: 410px;
                     --ha-card-background: 'rgba(11, 11, 11, 0.00)';
                     border-radius: 15px;
                     box-shadow: var(--softui-standard-boxshadow);

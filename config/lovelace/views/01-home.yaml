@@ -48,6 +48,7 @@
               show_header_toggle: false
               entities:
                 - !secret person_1
+                - !secret person_2
               card_mod:
                 style: |
                   ha-card {
@@ -392,7 +393,7 @@
                       - box-shadow: '2px 2px rgba(0,0,0,0.0)'
                       - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
-                  entity: light.deckenleuchte
+                  entity: light.ceiling_lamp
                   icon: 'mdi:wall-sconce-flat'
                   show_icon: true
                   show_name: false
@@ -426,7 +427,7 @@
                       - box-shadow: '2px 2px rgba(0,0,0,0.0)'
                       - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
-                  entity: light.stehlampe
+                  entity: light.floor_lamp
                   icon: 'mdi:floor-lamp'
                   show_icon: true
                   show_name: false
@@ -465,7 +466,7 @@
                       - box-shadow: '2px 2px rgba(0,0,0,0.0)'
                       - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
-                  entity: light.deckenspots
+                  entity: light.bathroom_spotsots
                   icon: 'mdi:track-light'
                   show_icon: true
                   show_name: false
@@ -867,10 +868,10 @@
                   entity_id:
                     - light.light_7
                     - light.kuche
-                    - light.schlafzimmer
+                    - light.bedroom
                     - light.color_temperature_light_15
-                    - light.vorzimmer
-                    - light.wohnzimmer
+                    - light.hall
+                    - light.living_room
             - type: 'custom:button-card'  # Spacer
               show_icon: false
               show_name: false
