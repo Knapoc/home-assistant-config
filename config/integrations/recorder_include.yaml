@@ -12,7 +12,4 @@ domains:
   - vacuum
   - cover
   - climate
-entities:
-  - binary_sensor.bed_occupancy
-  - binary_sensor.motion_sensor
-  - binary_sensor.motion_sensor_2
+  - binary_sensor
