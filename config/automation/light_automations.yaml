@@ -27,25 +27,25 @@
     - service: adaptive_lighting.set_manual_control
       data:
         entity_id: switch.adaptive_lighting_main_lights
-        lights: light.deckenspots
+        lights: light.bathroom_spotsots
         manual_control: true
     - service: light.turn_on
       data:
-        entity_id: light.deckenspots
+        entity_id: light.bathroom_spotsots
         brightness: 2
         color_temp: 497
     - delay:
         seconds: 1
     - service: light.turn_on
       data_template:
-        entity_id: light.deckenspots
+        entity_id: light.bathroom_spotsots
         brightness: "{{ states('input_number.wakeup_target_brightness') | int }}"
         transition: "{{ states('input_number.wakeup_duration') | multiply(60) | int }}"
     - delay: "{{ states('input_number.wakeup_duration') | multiply(120) | int }}"
     - service: adaptive_lighting.set_manual_control
       data:
         entity_id: switch.adaptive_lighting_main_lights
-        lights: light.deckenspots
+        lights: light.bathroom_spotsots
         manual_control: false
 
 - alias: Random light - Deckenspots
@@ -63,9 +63,9 @@
     state: 'on'
   action:
     service: light.turn_on
-    entity_id: light.deckenspots
+    entity_id: light.bathroom_spotsots
     data_template:
-      # entity_id: light.deckenspots
+      # entity_id: light.bathroom_spotsots
       # effect: random
       hs_color:
         - "{{ range(360)|random }}"
@@ -88,9 +88,9 @@
     state: 'on'
   action:
     service: light.turn_on
-    entity_id: light.stehlampe
+    entity_id: light.floor_lamp
     data_template:
-      # entity_id: light.stehlampe
+      # entity_id: light.floor_lamp
       # effect: random
       hs_color:
         - "{{ range(360)|random }}"
@@ -102,18 +102,18 @@
   alias: Turn off loop-effect
   trigger:
     - platform: state
-      entity_id: light.stehlampe
+      entity_id: light.floor_lamp
       to: 'off'
     - platform: state
-      entity_id: light.deckenspots
+      entity_id: light.bathroom_spotsots
       to: 'off'
   action:
     - service: input_boolean.turn_off
       data_template:
         entity_id: >
-          {% if trigger.entity_id == 'light.stehlampe' -%}
+          {% if trigger.entity_id == 'light.floor_lamp' -%}
             input_boolean.loop_livingcolors_2
-          {% elif trigger.entity_id == 'light.deckenspots' -%}
+          {% elif trigger.entity_id == 'light.bathroom_spotsots' -%}
             input_boolean.loop_livingcolors_1
           {% endif %}
 
@@ -138,7 +138,7 @@
         entity_id: input_boolean.loop_livingcolors_2
     - service: light.turn_off
       data:
-        entity_id: light.deckenleuchte
+        entity_id: light.ceiling_lamp
 
 - id: '1555301146'
   alias: Stop playing PS4
@@ -189,7 +189,7 @@
       no_motion_wait: '180'
       motion_entity: binary_sensor.motion_sensor
       light_target:
-        entity_id: light.light.color_temperature_light_15
+        entity_id: light.color_temperature_light_15
 
 - id: '1609948156902'
   alias: Motion-activated bathroom light
@@ -209,7 +209,7 @@
     path: knapoc/light_off_time.yaml
     input:
       on_time: '600'
-      light_entity: light.light.color_temperature_light_15
+      light_entity: light.color_temperature_light_15
 
 - id: '1609948156900'
   alias: turn bathroom lights off
@@ -220,14 +220,14 @@
       on_time: '2700'
       light_entity: light.light_7
 
-- id: '1609948156901'
-  alias: turn hall lights off
-  description: ''
-  use_blueprint:
-    path: knapoc/light_off_time.yaml
-    input:
-      on_time: '2700'
-      light_entity: light.light_9
+# - id: '1609948156901'
+#   alias: turn hall lights off
+#   description: ''
+#   use_blueprint:
+#     path: knapoc/light_off_time.yaml
+#     input:
+#       on_time: '2700'
+#       light_entity: light.light_9
 
 - id: '1609056340356'
   alias: Mi Magic Cube
@@ -254,7 +254,7 @@
       one_to_one:
         - type: toggle
           device_id: c415d227da5448fc83453f4441dde0c7
-          entity_id: light.deckenspots
+          entity_id: light.bathroom_spotsots
           domain: light
 
 - id: '1614239882832'
@@ -278,16 +278,16 @@
       button_one_short_release:
         - service: light.turn_on
           target:
-            entity_id: light.deckenleuchte
+            entity_id: light.ceiling_lamp
           data:
             transition: 1
       button_one_hold:
         - service: light.turn_on
           target:
-            entity_id: light.stehlampe
+            entity_id: light.floor_lamp
       button_two_short_release:
         - condition: state
-          entity_id: light.deckenleuchte
+          entity_id: light.ceiling_lamp
           state: 'on'
         - service: scene.turn_on
           data_template:
@@ -308,25 +308,34 @@
       button_two_hold:
         - service: light.turn_on
           target:
-            entity_id: light.deckenleuchte
+            entity_id: light.ceiling_lamp
           data:
             transition: 1
             brightness_step_pct: 10
       button_three_hold:
         - service: light.turn_on
           target:
-            entity_id: light.deckenleuchte
+            entity_id: light.ceiling_lamp
           data:
             transition: 1
             brightness_step_pct: -10
       button_four_short_release:
         - service: light.turn_off
           target:
-            entity_id: light.deckenleuchte
+            entity_id: light.ceiling_lamp
       button_four_hold:
         - service: light.turn_off
           target:
-            entity_id: light.stehlampe
+            entity_id: light.floor_lamp
+- id: '1670407983636'
+  alias: bathroom - light switch
+  description: ''
+  use_blueprint:
+    path: psychozz/deconz-ikea-tradfri-on-off-switch-incl-dimmer.yaml
+    input:
+      remote: 7efb7e96b12c4aaea91466a942707f1e
+      light:
+        entity_id: light.bathroom_spots
 - id: '1636754173407'
   alias: deCONZ - Philips Hue Dimmer Switch - Custom Actions
   description: ''
@@ -337,56 +346,56 @@
       button_one_short_release:
         - service: light.turn_on
           target:
-            entity_id: light.deckenspots
+            entity_id: light.light_8
           data:
             transition: 1
-      button_one_hold:
-        - service: light.turn_on
-          target:
-            entity_id: light.nachttischlampe
-      button_two_short_release:
-        - condition: state
-          entity_id: light.deckenspots
-          state: 'on'
-        - service: scene.turn_on
-          data_template:
-            transition: 1
-            entity_id: >
-              scene.{{states("input_select.main_light_bed_room_scene").replace(" ","_") | regex_replace(find="[\(\)]", replace="")}}
-        - service: input_select.select_next
-          target:
-            entity_id: input_select.main_light_bed_room_scene
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 30
-            milliseconds: 0
-        - service: input_select.select_first
-          target:
-            entity_id: input_select.main_light_bed_room_scene
+      # button_one_hold:
+      #   - service: light.turn_on
+      #     target:
+      #       entity_id: light.nachttischlampe
+      # button_two_short_release:
+      #   - condition: state
+      #     entity_id: light.bathroom_spotsots
+      #     state: 'on'
+      #   - service: scene.turn_on
+      #     data_template:
+      #       transition: 1
+      #       entity_id: >
+      #         scene.{{states("input_select.main_light_bed_room_scene").replace(" ","_") | regex_replace(find="[\(\)]", replace="")}}
+      #   - service: input_select.select_next
+      #     target:
+      #       entity_id: input_select.main_light_bed_room_scene
+      #   - delay:
+      #       hours: 0
+      #       minutes: 0
+      #       seconds: 30
+      #       milliseconds: 0
+      #   - service: input_select.select_first
+      #     target:
+      #       entity_id: input_select.main_light_bed_room_scene
       button_two_hold:
         - service: light.turn_on
           target:
-            entity_id: light.deckenspots
+            entity_id: light.light_8
           data:
             transition: 1
             brightness_step_pct: 10
-      button_three_short_release:
-        - service: light.toggle
-          target:
-            entity_id: light.schreibtischlampe
+      # button_three_short_release:
+      #   - service: light.toggle
+      #     target:
+      #       entity_id: light.schreibtischlampe
       button_three_hold:
         - service: light.turn_on
           target:
-            entity_id: light.deckenspots
+            entity_id: light.light_8
           data:
             transition: 1
             brightness_step_pct: -10
       button_four_short_release:
         - service: light.turn_off
           target:
-            entity_id: light.deckenspots
-      button_four_hold:
-        - service: light.turn_off
-          target:
-            entity_id: light.nachttischlampe
+            entity_id: light.light_8
+      # button_four_hold:
+      #   - service: light.turn_off
+      #     target:
+      #       entity_id: light.nachttischlampe

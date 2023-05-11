@@ -4,22 +4,22 @@
 light.light_7:
   friendly_name: Badezimmerlicht
   custom_ui_state_card: state-card-custom-light
-light.deckenleuchte:
+light.ceiling_lamp:
   friendly_name: Deckenleuchte
-light.deckenspots:
+light.bathroom_spotsots:
   friendly_name: Deckenspots
   custom_ui_state_card: state-card-custom-light
 light.kuche:
   friendly_name: Küchenlicht
   custom_ui_state_card: state-card-custom-light
-light.schlafzimmer:
+light.bedroom:
   friendly_name: Zimmerlicht
   custom_ui_state_card: state-card-custom-light
 light.color_temperature_light_15:
   friendly_name: Toilettenlicht
   custom_ui_state_card: state-card-custom-light
-light.vorzimmer:
+light.hall:
   friendly_name: Vorzimmerlicht
   custom_ui_state_card: state-card-custom-light
-light.wohnzimmer:
+light.living_room:
   friendly_name: Wohnzimmerlicht

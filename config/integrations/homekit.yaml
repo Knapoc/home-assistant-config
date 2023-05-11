@@ -13,11 +13,12 @@
       - climate.netatmo_smart_thermostat
       - input_boolean.loop_livingcolors_1
       - input_boolean.loop_livingcolors_2
-      - light.deckenleuchte
-      - light.stehlampe
-      - light.hue_spot_1
-      - light.hue_spot_2
-      - light.hue_spot_3
+      - light.ceiling_lamp
+      - light.floor_lamp
+      - light.spot_1
+      - light.spot_2
+      - light.spot_3
+      - light.spot_4
       - light.nachttischlampe
       - light.schreibtischlampe
       - light.light_7

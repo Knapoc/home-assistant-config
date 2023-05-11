@@ -18,12 +18,12 @@
         entity_id:
           - media_player.sony_bravia_tv
           - media_player.playstation_4
-          - light.schlafzimmer
+          - light.bedroom
           - light.light_7
           - light.kuche
-          - light.vorzimmer
+          - light.hall
           - light.color_temperature_light_15
-          - light.wohnzimmer
+          - light.living_room
           - input_boolean.loop_livingcolors_1
           - input_boolean.loop_livingcolors_2
 
@@ -45,8 +45,9 @@
   alias: Turn on magic mirror
   trigger:
     - platform: state
-      entity_id: !secret person_1
-      to: home
+      entity_id: binary_sensor.is_home
+      from: 'off'
+      to: 'on'
   action:
     - service: switch.turn_on
       data:
@@ -67,9 +68,9 @@
         entity_id:
           - media_player.sony_bravia_tv
           - media_player.playstation_4
-          - light.schlafzimmer
+          - light.bedroom
           - light.light_7
           - light.kuche
-          - light.vorzimmer
+          - light.hall
           - light.color_temperature_light_15
-          - light.wohnzimmer
+          - light.living_room

@@ -1,9 +1,6 @@
 ---
 # binary sensors
 
-- platform: workday
-  country: !secret workday_country
-  province: !secret workday_province
 - platform: ping
   host: !secret rpi_ip
   name: Raspberry Pi

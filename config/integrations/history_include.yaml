@@ -13,7 +13,7 @@ entities:
   - binary_sensor.motion_sensor_2
   - light.zimmer
   - light.buro
-  - light.wohnzimmer
+  - light.living_room
   - switch.wind_machine
   - sensor.bed_pressure_1
   - sensor.bed_pressure_2

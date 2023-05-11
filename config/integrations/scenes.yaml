@@ -6,9 +6,9 @@
   entities:
     input_boolean.loop_livingcolors_2:
       state: 'on'
-    light.deckenleuchte:
+    light.ceiling_lamp:
       state: 'off'
-    light.stehlampe:
+    light.floor_lamp:
       state: 'on'
     media_player.sony_bravia_tv:
       device_class: tv
@@ -23,7 +23,7 @@
   entities:
     input_boolean.loop_livingcolors_2:
       state: 'on'
-    light.deckenleuchte:
+    light.ceiling_lamp:
       brightness: 2
       color_temp: 451
       friendly_name: Deckenleuchte
@@ -41,7 +41,7 @@
 - id: '1636967350036'
   name: Deckenleuchte Bright
   entities:
-    light.deckenleuchte:
+    light.ceiling_lamp:
       min_mireds: 153
       max_mireds: 454
       supported_color_modes:
@@ -66,7 +66,7 @@
 - id: '1636967380216'
   name: Deckenleuchte Energize
   entities:
-    light.deckenleuchte:
+    light.ceiling_lamp:
       min_mireds: 153
       max_mireds: 454
       supported_color_modes:
@@ -91,7 +91,7 @@
 - id: '1636967402493'
   name: Deckenleuchte Read
   entities:
-    light.deckenleuchte:
+    light.ceiling_lamp:
       min_mireds: 153
       max_mireds: 454
       supported_color_modes:
@@ -116,7 +116,7 @@
 - id: '1636967420154'
   name: Deckenleuchte Nightlight
   entities:
-    light.deckenleuchte:
+    light.ceiling_lamp:
       min_mireds: 153
       max_mireds: 454
       supported_color_modes:
@@ -141,7 +141,7 @@
 - id: '1636976798780'
   name: Deckenspots Bright
   entities:
-    light.deckenspots:
+    light.bathroom_spotsots:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -172,7 +172,7 @@
 - id: '1636976828733'
   name: Deckenspots Energize
   entities:
-    light.deckenspots:
+    light.bathroom_spotsots:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -202,7 +202,7 @@
 - id: '1636976844228'
   name: Deckenspots Read
   entities:
-    light.deckenspots:
+    light.bathroom_spotsots:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -233,7 +233,7 @@
 - id: '1636976862843'
   name: Deckenspots Nightlight
   entities:
-    light.deckenspots:
+    light.bathroom_spotsots:
       min_mireds: 153
       max_mireds: 500
       effect_list:
