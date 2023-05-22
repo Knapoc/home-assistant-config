@@ -17,8 +17,7 @@
                   --ha-card-background: none !important;
                   box-shadow: none !important;
                 }
-              ha-markdown:
-                $: |
+              ha-markdown$: |
                   ha-markdown-element {
                     letter-spacing: 0;
                   }
@@ -152,8 +151,7 @@
                   --ha-card-background: none !important;
                   box-shadow: none !important;
                 }
-              ha-markdown:
-                $: |
+              ha-markdown$: |
                   ha-markdown-element {
                     letter-spacing: 0;
                   }
@@ -208,8 +206,7 @@
                           --ha-card-background: none !important;
                           box-shadow: none !important;
                         }
-                      ha-markdown:
-                        $: |
+                      ha-markdown$: |
                           ha-markdown-element {
                             letter-spacing: 0;
                           }
@@ -271,8 +268,7 @@
                           --ha-card-background: none !important;
                           box-shadow: none !important;
                         }
-                      ha-markdown:
-                        $: |
+                      ha-markdown$: |
                           ha-markdown-element {
                             letter-spacing: 0;
                           }
@@ -334,8 +330,7 @@
                           --ha-card-background: none !important;
                           box-shadow: none !important;
                         }
-                      ha-markdown:
-                        $: |
+                      ha-markdown$: |
                           ha-markdown-element {
                             letter-spacing: 0;
                           }
@@ -360,8 +355,7 @@
                   --ha-card-background: none !important;
                   box-shadow: none !important;
                 }
-              ha-markdown:
-                $: |
+              ha-markdown$: |
                   ha-markdown-element {
                     letter-spacing: 0;
                   }
@@ -568,8 +562,7 @@
                   --ha-card-background: none !important;
                   box-shadow: none !important;
                 }
-              ha-markdown:
-                $: |
+              ha-markdown$: |
                   ha-markdown-element {
                     letter-spacing: 0;
                   }
@@ -813,8 +806,7 @@
                   --ha-card-background: none !important;
                   box-shadow: none !important;
                 }
-              ha-markdown:
-                $: |
+              ha-markdown$: |
                   ha-markdown-element {
                     letter-spacing: 0;
                   }
