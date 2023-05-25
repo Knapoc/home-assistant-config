@@ -1,0 +1,131 @@
+---
+#
+# Soft Theme
+#
+
+soft_ui:
+  card-mod-theme: soft_ui
+  card-mod-card: |
+    ha-card.soft-ui-standard {
+      margin: 2px 5px;
+      border-radius: 15px;
+      background-color: var(--primary-background-color);
+      #box-shadow: -4px -4px 4px 0 var(--softui-boxshadow-top),4px 4px 4px 0 var(--softui-boxshadow-bottom);
+      box-shadow: -5px -5px 8px 0 var(--softui-boxshadow-top),5px 5px 8px 0 var(--softui-boxshadow-bottom);
+    }
+    ha-card.soft-ui-button {
+      margin: 2px;
+      border-radius: 15px;
+      background-color: var(--primary-background-color);
+      box-shadow: -5px -5px 8px 0 var(--softui-boxshadow-top),5px 5px 8px 0 var(--softui-boxshadow-bottom);
+    }
+    ha-card.soft-ui-big-button {
+      margin: 20px;
+      border-radius: 15px;
+      background-color: var(--primary-background-color);
+      box-shadow: -5px -5px 8px 0 var(--softui-boxshadow-top),5px 5px 8px 0 var(--softui-boxshadow-bottom);
+      #box-shadow: -8px -8px 8px 0 var(--softui-boxshadow-top),8px 8px 8px 0 var(--softui-boxshadow-bottom);
+    }
+  # Header
+  app-header-background-color: var(--primary-background-color)
+  app-header-text-color: var(--primary-text-color)
+  header-height: "44px"
+  # Main Interface Colors
+  light-primary-color: var(--primary-color)
+  secondary-background-color: var(--primary-background-color)
+  divider-color: var(--primary-background-color)
+  # Cards
+  card-background-color: var(--primary-background-color)
+  ha-card-border-radius: "10px"
+  # ha-card-box-shadow: var(--softui-standard-boxshadow)
+  paper-dialog-background-color: var(--card-background-color)
+  paper-card-background-color: var(--card-background-color)
+  paper-listbox-background-color: var(--card-background-color)
+  # Labels
+  label-badge-background-color: "#F8FAF9"
+  label-badge-text-color: "#4D5575"
+  label-badge-red: "#C7484C"
+  label-badge-green: "#6DC071"
+  label-badge-blue: "#5F9BEA"
+  label-badge-yellow: "#D9B757"
+  label-badge-gray: "#5F6267"
+  # Sidebar Menu
+  sidebar-icon-color: var(--primary-text-color)
+  sidebar-text-color: var(--primary-text-color)
+  sidebar-background-color: var(--primary-background-color)
+  sidebar-selected-background-color: var(--primary-background-color)
+  sidebar-selected-icon-color: var(--primary-color)
+  sidebar-selected-text-color: var(--sidebar-selected-icon-color)
+  # Sliders
+  paper-slider-knob-color: var(--primary-color)
+  paper-slider-knob-start-color: var(--paper-slider-knob-color)
+  paper-slider-pin-color: var(--paper-slider-knob-color)
+  paper-slider-active-color: var(--paper-slider-knob-color)
+  paper-slider-secondary-color: var(--light-primary-color)
+  # States and Badges
+  state-icon-color: var(--secondary-text-color)
+  state-icon-active-color: var(--primary-color)
+  state-icon-unavailable-color: var(--disabled-text-color)
+  # Switches
+  switch-checked-button-color: var(--primary-color)
+  switch-unchecked-button-color: var(--secondary-text-color)
+  # Toggles
+  paper-toggle-button-checked-button-color: var(--switch-checked-button-color)
+  paper-toggle-button-checked-bar-color: var(--switch-checked-track-color)
+  paper-toggle-button-unchecked-button-color: var(--switch-unchecked-button-color)
+  paper-toggle-button-unchecked-bar-color: var(--switch-unchecked-track-color)
+  # Table
+  table-row-background-color: var(--primary-background-color)
+  table-row-alternative-background-color: var(--secondary-background-color)
+  data-table-background-color: var(--primary-background-color)
+  # Dropdowns
+  material-background-color: var(--paper-card-background-color)
+  material-secondary-background-color: var(--primary-background-color)
+  mdc-theme-surface: var(--paper-card-background-color)
+  # HACS
+  hacs-chip-background-color: var(--primary-color)
+  # soft-ui
+  softui-onoffbutton-active-boxshadow: "inset -4px -4px 8px 0 var(--softui-boxshadow-top), inset 4px 4px 8px 0 var(--softui-boxshadow-bottom)"
+  modes:
+    light:
+      # Main Interface Colors
+      primary-color: "#5F9BEA"
+      primary-background-color: "#F8F8F8"
+      # Text
+      primary-text-color: "#424242"
+      secondary-text-color: "#5F6267"
+      text-primary-color: "#FFFFFF"
+      disabled-text-color: "#717171"
+      # Cards
+      # ha-card-box-shadow: 1px 1px 5px 0px rgb(230, 230, 230)
+      ha-card-box-shadow: var(--softui-standard-boxshadow)
+      # Switches
+      switch-checked-track-color: "#75a2f0"
+      switch-unchecked-track-color: "#888b91"
+      # softui
+      softui-boxshadow-top: "rgba(255,255,255,.5)"
+      # softui-boxshadow-top: "#ffffff"
+      softui-boxshadow-bottom: "rgba(0,0,0,.03)"
+      # softui-boxshadow-bottom: "#ebebeb"
+      softui-onoffbutton-active-boxshadow: "inset -4px -4px 8px 0 var(--softui-boxshadow-top), inset 4px 4px 8px 0 var(--softui-boxshadow-bottom)"
+    dark:
+      # Main Interface Colors
+      primary-color: "#575A5F"
+      primary-background-color: "#27282B"
+      # Text
+      primary-text-color: "#e4e5e7"
+      secondary-text-color: "#c9cbcf"
+      text-primary-color: "#e4e5e7"
+      disabled-text-color: "#afb1b6"
+      # Cards
+      # ha-card-box-shadow: 1px 1px 5px 0px rgb(230, 230, 230)
+      ha-card-box-shadow: var(--softui-standard-boxshadow)
+      # Switches
+      switch-checked-track-color: "#3d3f43"
+      switch-unchecked-track-color: "#0c0d0d"
+      # softui
+      softui-boxshadow-top: "rgba(50, 50, 50,.5)"
+      # softui-boxshadow-top: "#2c2c2c"
+      softui-boxshadow-bottom: "rgba(0,0,0,.15)"
+      # softui-boxshadow-bottom: "#191919"
+      softui-onoffbutton-active-boxshadow: "inset -4px -4px 10px 0 var(--softui-boxshadow-top), inset 4px 4px 12px 0 rgba(0,0,0,.3)"
