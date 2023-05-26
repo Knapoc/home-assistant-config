@@ -6,21 +6,10 @@
   trigger:
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: sun.sun
-      to: above_horizon
-    - platform: state
-      entity_id: sun.sun
-      to: below_horizon
   action:
-    - service_template: frontend.set_theme
-      data_template:
-        name: >
-          {% if states('sun.sun') == 'above_horizon' %}
-            home_light
-          {% else %}
-            grey_night
-          {% endif %}
+    - service: frontend.set_theme
+      data:
+        name: soft_ui
 
 - alias: Update notifications
   id: '1500779868'
