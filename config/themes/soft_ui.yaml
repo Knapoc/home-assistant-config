@@ -23,7 +23,7 @@ soft_ui:
   # Cards
   card-background-color: var(--primary-background-color)
   ha-card-border-radius: "10px"
-  # ha-card-box-shadow: var(--softui-standard-boxshadow)
+  ha-card-box-shadow: "-5px -5px 15px var(--softui-boxshadow-top),5px 5px 15px var(--softui-boxshadow-bottom)"
   paper-dialog-background-color: var(--card-background-color)
   paper-card-background-color: var(--card-background-color)
   paper-listbox-background-color: var(--card-background-color)
@@ -82,8 +82,6 @@ soft_ui:
       secondary-text-color: "#5F6267"
       text-primary-color: "#FFFFFF"
       disabled-text-color: "#717171"
-      # Cards
-      ha-card-box-shadow: var(--softui-standard-boxshadow)
       # Switches
       switch-checked-track-color: "#75a2f0"
       switch-unchecked-track-color: "#888b91"
@@ -99,8 +97,6 @@ soft_ui:
       secondary-text-color: "#c9cbcf"
       text-primary-color: "#e4e5e7"
       disabled-text-color: "#afb1b6"
-      # Cards
-      ha-card-box-shadow: var(--softui-standard-boxshadow)
       # Switches
       switch-checked-track-color: "#3d3f43"
       switch-unchecked-track-color: "#0c0d0d"
