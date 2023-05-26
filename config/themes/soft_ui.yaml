@@ -6,25 +6,11 @@
 soft_ui:
   card-mod-theme: soft_ui
   card-mod-card: |
-    ha-card.soft-ui-standard {
+    ha-card.soft-ui {
       margin: 2px 5px;
       border-radius: 15px;
       background-color: var(--primary-background-color);
-      #box-shadow: -4px -4px 4px 0 var(--softui-boxshadow-top),4px 4px 4px 0 var(--softui-boxshadow-bottom);
       box-shadow: -5px -5px 8px 0 var(--softui-boxshadow-top),5px 5px 8px 0 var(--softui-boxshadow-bottom);
-    }
-    ha-card.soft-ui-button {
-      margin: 2px;
-      border-radius: 15px;
-      background-color: var(--primary-background-color);
-      box-shadow: -5px -5px 8px 0 var(--softui-boxshadow-top),5px 5px 8px 0 var(--softui-boxshadow-bottom);
-    }
-    ha-card.soft-ui-big-button {
-      margin: 20px;
-      border-radius: 15px;
-      background-color: var(--primary-background-color);
-      box-shadow: -5px -5px 8px 0 var(--softui-boxshadow-top),5px 5px 8px 0 var(--softui-boxshadow-bottom);
-      #box-shadow: -8px -8px 8px 0 var(--softui-boxshadow-top),8px 8px 8px 0 var(--softui-boxshadow-bottom);
     }
   # Header
   app-header-background-color: var(--primary-background-color)
@@ -97,16 +83,13 @@ soft_ui:
       text-primary-color: "#FFFFFF"
       disabled-text-color: "#717171"
       # Cards
-      # ha-card-box-shadow: 1px 1px 5px 0px rgb(230, 230, 230)
       ha-card-box-shadow: var(--softui-standard-boxshadow)
       # Switches
       switch-checked-track-color: "#75a2f0"
       switch-unchecked-track-color: "#888b91"
       # softui
       softui-boxshadow-top: "rgba(255,255,255,.5)"
-      # softui-boxshadow-top: "#ffffff"
       softui-boxshadow-bottom: "rgba(0,0,0,.03)"
-      # softui-boxshadow-bottom: "#ebebeb"
       softui-onoffbutton-active-boxshadow: "inset -4px -4px 8px 0 var(--softui-boxshadow-top), inset 4px 4px 8px 0 var(--softui-boxshadow-bottom)"
     dark:
       # Main Interface Colors
@@ -118,14 +101,11 @@ soft_ui:
       text-primary-color: "#e4e5e7"
       disabled-text-color: "#afb1b6"
       # Cards
-      # ha-card-box-shadow: 1px 1px 5px 0px rgb(230, 230, 230)
       ha-card-box-shadow: var(--softui-standard-boxshadow)
       # Switches
       switch-checked-track-color: "#3d3f43"
       switch-unchecked-track-color: "#0c0d0d"
       # softui
       softui-boxshadow-top: "rgba(50, 50, 50,.5)"
-      # softui-boxshadow-top: "#2c2c2c"
       softui-boxshadow-bottom: "rgba(0,0,0,.15)"
-      # softui-boxshadow-bottom: "#191919"
       softui-onoffbutton-active-boxshadow: "inset -4px -4px 10px 0 var(--softui-boxshadow-top), inset 4px 4px 12px 0 rgba(0,0,0,.3)"
