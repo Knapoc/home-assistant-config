@@ -401,13 +401,16 @@
         - type: custom:stack-in-card
           card_mod:
             class: soft-ui
+            style: |
+              ha-card {
+                height: 130px;
+              }
           mode: vertical
           cards:
             - type: entities
               entities:
                 - entity: vacuum.valetudo_roborock
                   type: custom:multiple-entity-row
-                  name: Roborock
                   show_state: false
                   entities:
                     - entity: vacuum.valetudo_roborock
@@ -427,7 +430,7 @@
                 - type: custom:button-card
                   color: auto
                   entity: vacuum.valetudo_roborock
-                  size: 30%
+                  size: 25%
                   icon: mdi:play
                   show_name: false
                   styles:
@@ -441,7 +444,7 @@
                 - type: custom:button-card
                   color: auto
                   entity: vacuum.valetudo_roborock
-                  size: 30%
+                  size: 25%
                   icon: mdi:pause
                   show_name: false
                   styles:
@@ -455,7 +458,7 @@
                 - type: custom:button-card
                   color: auto
                   entity: vacuum.valetudo_roborock
-                  size: 30%
+                  size: 25%
                   icon: mdi:stop
                   show_name: false
                   styles:
@@ -469,7 +472,7 @@
                 - type: custom:button-card
                   color: auto
                   entity: vacuum.valetudo_roborock
-                  size: 30%
+                  size: 25%
                   icon: mdi:broom
                   show_name: false
                   styles:
@@ -483,7 +486,7 @@
                 - type: custom:button-card
                   color: auto
                   entity: vacuum.valetudo_roborock
-                  size: 30%
+                  size: 25%
                   icon: mdi:map-marker
                   show_name: false
                   styles:
@@ -497,7 +500,7 @@
                 - type: custom:button-card
                   color: auto
                   entity: vacuum.valetudo_roborock
-                  size: 30%
+                  size: 25%
                   icon: mdi:home-map-marker
                   show_name: false
                   styles:
