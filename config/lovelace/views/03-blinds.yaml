@@ -52,7 +52,7 @@
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'open'
                   card_mod:
-                    class: soft-ui-big-button
+                    class: soft-ui
                   styles:
                     card:
                       - width: 80px
@@ -78,7 +78,7 @@
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'open'
                   card_mod:
-                    class: soft-ui-big-button
+                    class: soft-ui
                   styles:
                     card:
                       - width: 80px
@@ -108,7 +108,7 @@
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'open'
                   card_mod:
-                    class: soft-ui-big-button
+                    class: soft-ui
                   styles:
                     card:
                       - width: 80px
@@ -171,7 +171,7 @@
                   - box-shadow: var(--softui-onoffbutton-active-boxshadow)
               value: 'open'
           card_mod:
-            class: soft-ui-big-button
+            class: soft-ui
           styles:
             card:
               - width: 80px
@@ -221,4 +221,4 @@
             - entity: input_datetime.time_close_covers_night
               name: Blind closing time
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui

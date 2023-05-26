@@ -28,7 +28,7 @@
         - type: custom:stack-in-card
           mode: vertical
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
           cards:
             - type: entities
               show_header_toggle: false
@@ -73,7 +73,7 @@
         - type: custom:stack-in-card
           mode: vertical
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
           cards:
             - type: entities
               show_header_toggle: false
@@ -118,7 +118,7 @@
         - type: custom:stack-in-card
           mode: vertical
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
           cards:
             - type: glance
               # title: wemosd1 - 1
@@ -156,7 +156,7 @@
         - type: custom:stack-in-card
           mode: vertical
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
           cards:
             - type: glance
               # title: wemosd1 - 1

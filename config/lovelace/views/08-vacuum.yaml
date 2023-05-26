@@ -33,7 +33,7 @@
                   }
         - type: custom:stack-in-card
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
             style: |
               ha-card {
                 height: 130px;
@@ -180,7 +180,7 @@
           show_home_button: false
           show_locate_button: false
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
             style: |
               ha-card {
                 height: 410px;
@@ -227,7 +227,7 @@
               name: Sensor
               icon: mdi:progress-clock
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
         - type: markdown
           content: |
             # Schedule
@@ -264,4 +264,4 @@
             - entity: input_boolean.vacuum_weekends
               name: Vacuum on weekends/holidays
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui

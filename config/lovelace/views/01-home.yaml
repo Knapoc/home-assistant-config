@@ -35,16 +35,16 @@
             - !secret person_1
             - !secret person_2
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
         - type: custom:simple-weather-card
           entity: weather.openweathermap
           name: at home
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
         - type: custom:search-card
           max_results: 10
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
         - type: markdown  ### Scenes
           content: |
             # Scenes
@@ -77,7 +77,7 @@
                   show_icon: true
                   show_name: false
                   card_mod:
-                    class: soft-ui-big-button
+                    class: soft-ui
                   styles:
                     card:
                       - width: 80px
@@ -120,7 +120,7 @@
                   show_icon: true
                   show_name: false
                   card_mod:
-                    class: soft-ui-big-button
+                    class: soft-ui
                   styles:
                     card:
                       - width: 80px
@@ -163,7 +163,7 @@
                   show_icon: true
                   show_name: false
                   card_mod:
-                    class: soft-ui-big-button
+                    class: soft-ui
                   styles:
                     card:
                       - width: 80px
@@ -241,7 +241,7 @@
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
                   card_mod:
-                    class: soft-ui-button
+                    class: soft-ui
                   styles:
                     card:
                       - width: 55px
@@ -265,7 +265,7 @@
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
                   card_mod:
-                    class: soft-ui-button
+                    class: soft-ui
                   styles:
                     card:
                       - width: 55px
@@ -294,7 +294,7 @@
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
                   card_mod:
-                    class: soft-ui-button
+                    class: soft-ui
                   styles:
                     card:
                       - width: 55px
@@ -323,7 +323,7 @@
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
                   card_mod:
-                    class: soft-ui-button
+                    class: soft-ui
                   styles:
                     card:
                       - width: 55px
@@ -347,7 +347,7 @@
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
                   card_mod:
-                    class: soft-ui-button
+                    class: soft-ui
                   styles:
                     card:
                       - width: 55px
@@ -386,7 +386,7 @@
           hide:
             info: true
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
         - type: custom:mini-media-player  # ps4
           entity: media_player.playstation_4
           source: icon
@@ -397,10 +397,10 @@
             play_stop: false
             controls: true
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
         - type: custom:stack-in-card
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
           mode: vertical
           cards:
             - type: entities
@@ -538,7 +538,7 @@
               show_icon: true
               show_name: false
               card_mod:
-                class: soft-ui-standard
+                class: soft-ui
               styles:
                 card:
                   - width: 55px
@@ -564,7 +564,7 @@
               show_icon: true
               show_name: false
               card_mod:
-                class: soft-ui-standard
+                class: soft-ui
               styles:
                 card:
                   - width: 55px
@@ -588,7 +588,7 @@
               show_icon: true
               show_name: false
               card_mod:
-                class: soft-ui-standard
+                class: soft-ui
               styles:
                 card:
                   - width: 55px
@@ -603,7 +603,7 @@
               show_icon: true
               show_name: false
               card_mod:
-                class: soft-ui-button
+                class: soft-ui
               styles:
                 card:
                   - width: 55px
@@ -618,7 +618,7 @@
               show_icon: true
               show_name: false
               card_mod:
-                class: soft-ui-button
+                class: soft-ui
               styles:
                 card:
                   - width: 55px

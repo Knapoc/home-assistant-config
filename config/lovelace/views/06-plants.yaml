@@ -36,10 +36,10 @@
             - type: plant-status
               entity: plant.howea_forsteriana
               card_mod:
-                class: soft-ui-standard
+                class: soft-ui
         - type: horizontal-stack  # yucca
           cards:
             - type: plant-status
               entity: plant.yucca_aloifolia
               card_mod:
-                class: soft-ui-standard
+                class: soft-ui

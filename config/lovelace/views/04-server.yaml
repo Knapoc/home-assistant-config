@@ -42,7 +42,7 @@
               name: Cert expiry
               icon: mdi:certificate
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
         - type: horizontal-stack
           cards:
             - type: custom:mini-graph-card
@@ -52,7 +52,7 @@
               font_size: 55
               font_size_header: 12
               card_mod:
-                class: soft-ui-standard
+                class: soft-ui
               entities:
                 - sensor.cpu_speed
             - type: custom:mini-graph-card
@@ -68,7 +68,7 @@
                 - blue
                 - green
               card_mod:
-                class: soft-ui-standard
+                class: soft-ui
               entities:
                 - entity: sensor.load_1m
                   name: 1m
@@ -89,7 +89,7 @@
                 green: 0
                 amber: 45
               card_mod:
-                class: soft-ui-standard
+                class: soft-ui
               style: |
                   .gauge-a {
                     background-color: var(--ha-card-background);
@@ -108,7 +108,7 @@
                 green: 0
                 amber: 45
               card_mod:
-                class: soft-ui-standard
+                class: soft-ui
                 style: |
                   .gauge-a {
                     background-color: var(--ha-card-background);
@@ -127,7 +127,7 @@
                 green: 0
                 amber: 45
               card_mod:
-                class: soft-ui-standard
+                class: soft-ui
                 style: |
                   .gauge-a {
                     background-color: var(--ha-card-background);
@@ -163,7 +163,7 @@
             name: outside
             indicator: inside
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
             style: |
               bar-card-value {
                   margin: auto;
@@ -211,7 +211,7 @@
             - entity: sensor.database_size_nc
               name: Nextcloud
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
         - type: markdown  ### column
           content: |
             # Network
@@ -242,7 +242,7 @@
               name: Public IP
               icon: mdi:wan
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
     - type: vertical-stack  # right column
       cards:
         - type: markdown  ### column
@@ -282,7 +282,7 @@
             - entity: !secret f2b_jail5_sensor
               name: !secret f2b_jail5_sensor_name
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
         - type: markdown  ### column
           content: |
             # Home-Assistant
@@ -308,7 +308,7 @@
                   }
         - type: custom:stack-in-card
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
           mode: vertical
           cards:
             - type: glance

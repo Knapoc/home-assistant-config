@@ -34,7 +34,7 @@
         - type: custom:stack-in-card
           mode: vertical
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
           # title: Wake up light
           cards:
             - type: entities
@@ -69,4 +69,4 @@
             - entity: input_datetime.time_turnoff_devices
               name: Turn-off time living room
           card_mod:
-            class: soft-ui-standard
+            class: soft-ui
