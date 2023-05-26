@@ -238,7 +238,7 @@
                         icon:
                           - color: var(--paper-item-icon-active-color)
                         card:
-                          - box-shadow: var(--softui-onoffbutton-active-boxshadow)
+                          - box-shadow: var(--soft-ui-pressed)
                       value: 'on'
                   card_mod:
                     class: soft-ui
@@ -262,7 +262,7 @@
                         icon:
                           - color: var(--paper-item-icon-active-color)
                         card:
-                          - box-shadow: var(--softui-onoffbutton-active-boxshadow)
+                          - box-shadow: var(--soft-ui-pressed)
                       value: 'on'
                   card_mod:
                     class: soft-ui
@@ -291,7 +291,7 @@
                         icon:
                           - color: var(--paper-item-icon-active-color)
                         card:
-                          - box-shadow: var(--softui-onoffbutton-active-boxshadow)
+                          - box-shadow: var(--soft-ui-pressed)
                       value: 'on'
                   card_mod:
                     class: soft-ui
@@ -320,7 +320,7 @@
                         icon:
                           - color: var(--paper-item-icon-active-color)
                         card:
-                          - box-shadow: var(--softui-onoffbutton-active-boxshadow)
+                          - box-shadow: var(--soft-ui-pressed)
                       value: 'on'
                   card_mod:
                     class: soft-ui
@@ -344,7 +344,7 @@
                         icon:
                           - color: var(--paper-item-icon-active-color)
                         card:
-                          - box-shadow: var(--softui-onoffbutton-active-boxshadow)
+                          - box-shadow: var(--soft-ui-pressed)
                       value: 'on'
                   card_mod:
                     class: soft-ui

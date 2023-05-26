@@ -10,7 +10,7 @@ soft_ui:
       margin: 2px 5px;
       border-radius: 15px;
       background-color: var(--primary-background-color);
-      box-shadow: -5px -5px 8px 0 var(--softui-boxshadow-top),5px 5px 8px 0 var(--softui-boxshadow-bottom);
+      box-shadow: -5px -5px 15px var(--softui-boxshadow-top),5px 5px 15px var(--softui-boxshadow-bottom);
     }
   # Header
   app-header-background-color: var(--primary-background-color)
@@ -71,7 +71,7 @@ soft_ui:
   # HACS
   hacs-chip-background-color: var(--primary-color)
   # soft-ui
-  softui-onoffbutton-active-boxshadow: "inset -4px -4px 8px 0 var(--softui-boxshadow-top), inset 4px 4px 8px 0 var(--softui-boxshadow-bottom)"
+  soft-ui-pressed: "inset -4px -4px 5px var(--softui-boxshadow-top), inset 4px 4px 5px var(--softui-boxshadow-bottom)"
   modes:
     light:
       # Main Interface Colors
@@ -88,9 +88,8 @@ soft_ui:
       switch-checked-track-color: "#75a2f0"
       switch-unchecked-track-color: "#888b91"
       # softui
-      softui-boxshadow-top: "rgba(255,255,255,.5)"
-      softui-boxshadow-bottom: "rgba(0,0,0,.03)"
-      softui-onoffbutton-active-boxshadow: "inset -4px -4px 8px 0 var(--softui-boxshadow-top), inset 4px 4px 8px 0 var(--softui-boxshadow-bottom)"
+      softui-boxshadow-top: "#ffffff"
+      softui-boxshadow-bottom: "#ebebeb"
     dark:
       # Main Interface Colors
       primary-color: "#575A5F"
@@ -106,6 +105,5 @@ soft_ui:
       switch-checked-track-color: "#3d3f43"
       switch-unchecked-track-color: "#0c0d0d"
       # softui
-      softui-boxshadow-top: "rgba(50, 50, 50,.5)"
-      softui-boxshadow-bottom: "rgba(0,0,0,.15)"
-      softui-onoffbutton-active-boxshadow: "inset -4px -4px 10px 0 var(--softui-boxshadow-top), inset 4px 4px 12px 0 rgba(0,0,0,.3)"
+      softui-boxshadow-top: "#2c2c2c"
+      softui-boxshadow-bottom: "#191919"
