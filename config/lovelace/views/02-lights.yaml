@@ -34,15 +34,6 @@
           cards:
             - type: horizontal-stack
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.ceiling_lamp
                   icon: 'mdi:wall-sconce-flat'
@@ -55,28 +46,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.floor_lamp
                   icon: 'mdi:floor-lamp'
@@ -89,28 +70,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: input_boolean.loop_livingcolors_2
                   icon: 'mdi:sync'
@@ -123,13 +94,12 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -164,25 +134,15 @@
             - type: horizontal-stack  # Bright Scene
               cards:
                 - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 80px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-                - type: 'custom:button-card'
                   icon: 'mdi:brightness-5'
                   show_icon: true
                   show_name: false
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-bigbutton-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -214,37 +174,18 @@
                             font-size: 15px !important;
                             margin-block-start: 0.2em !important;
                           }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 10px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: horizontal-stack  # Energize Scene
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 80px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'
                   icon: 'mdi:white-balance-sunny'
                   show_icon: true
                   show_name: false
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-bigbutton-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -276,37 +217,18 @@
                             font-size: 15px !important;
                             margin-block-start: 0.2em !important;
                           }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 10px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: horizontal-stack  # Read Scene
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 80px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'
                   icon: 'mdi:book-open-page-variant'
                   show_icon: true
                   show_name: false
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-bigbutton-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -338,37 +260,18 @@
                             font-size: 15px !important;
                             margin-block-start: 0.2em !important;
                           }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 10px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: horizontal-stack  # Night Scene
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 80px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'
                   icon: 'mdi:weather-night'
                   show_icon: true
                   show_name: false
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-bigbutton-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -429,15 +332,6 @@
           cards:
             - type: horizontal-stack
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.bathroom_spotsots
                   icon: 'mdi:track-light'
@@ -450,28 +344,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.spot_1
                   icon: 'mdi:lightbulb'
@@ -484,28 +368,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.spot_2
                   icon: 'mdi:lightbulb'
@@ -518,28 +392,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.spot_3
                   icon: 'mdi:lightbulb'
@@ -552,28 +416,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: input_boolean.loop_livingcolors_1
                   icon: 'mdi:sync'
@@ -586,13 +440,12 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -627,25 +480,15 @@
             - type: horizontal-stack  # Bright Scene
               cards:
                 - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 80px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-                - type: 'custom:button-card'
                   icon: 'mdi:brightness-5'
                   show_icon: true
                   show_name: false
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-bigbutton-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -677,37 +520,18 @@
                             font-size: 15px !important;
                             margin-block-start: 0.2em !important;
                           }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 10px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: horizontal-stack  # Energize Scene
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 80px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'
                   icon: 'mdi:white-balance-sunny'
                   show_icon: true
                   show_name: false
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-bigbutton-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -739,37 +563,18 @@
                             font-size: 15px !important;
                             margin-block-start: 0.2em !important;
                           }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 10px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: horizontal-stack  # Read Scene
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 80px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'
                   icon: 'mdi:book-open-page-variant'
                   show_icon: true
                   show_name: false
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-bigbutton-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -801,37 +606,18 @@
                             font-size: 15px !important;
                             margin-block-start: 0.2em !important;
                           }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 10px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: horizontal-stack  # Night Scene
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 80px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'
                   icon: 'mdi:weather-night'
                   show_icon: true
                   show_name: false
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-bigbutton-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -892,15 +678,6 @@
           cards:
             - type: horizontal-stack
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.kuche
                   icon: 'mdi:silverware-fork-knife'
@@ -913,28 +690,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.light_10
                   icon: 'mdi:lightbulb'
@@ -947,28 +714,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.light_11
                   icon: 'mdi:lightbulb'
@@ -981,13 +738,12 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -1021,15 +777,6 @@
           cards:
             - type: horizontal-stack
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.light_7
                   icon: 'mdi:shower'
@@ -1042,28 +789,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.color_temperature_light_15
                   icon: 'mdi:paper-roll'
@@ -1076,28 +813,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.hall
                   icon: 'mdi:ceiling-light'
@@ -1110,28 +837,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.nachttischlampe
                   icon: 'mdi:coach-lamp'
@@ -1144,28 +861,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.schreibtischlampe
                   icon: 'mdi:desk-lamp'
@@ -1178,13 +885,12 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -1225,15 +931,6 @@
           cards:
             - type: horizontal-stack
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: switch.adaptive_lighting_main_lights
                   icon: 'mdi:theme-light-dark'
@@ -1246,13 +943,12 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -1265,15 +961,6 @@
                     service_data:
                       entity_id: switch.adaptive_lighting_main_lights
                       manual_control: false
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: switch.adaptive_lighting_adapt_brightness_main_lights
                   icon: 'mdi:brightness-6'
@@ -1286,28 +973,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: switch.adaptive_lighting_adapt_color_main_lights
                   icon: 'mdi:contrast'
@@ -1320,28 +997,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: switch.adaptive_lighting_sleep_mode_main_lights
                   icon: 'mdi:weather-night'
@@ -1354,25 +1021,15 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-        - type: 'custom:button-card'  # Spacer
-          show_icon: false
-          show_name: false
-          styles:
-            card:
-              - width: 5px
-              - height: 10px
-              - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-              - --ha-card-background: 'rgba(11, 11, 11, 0.00)'

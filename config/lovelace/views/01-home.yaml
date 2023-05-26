@@ -29,117 +29,22 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-        - type: horizontal-stack  # Users
-          cards:
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-            - type: entities
-              show_header_toggle: false
-              entities:
-                - !secret person_1
-                - !secret person_2
-              card_mod:
-                style: |
-                  ha-card {
-                    background-color: var(--primary-background-color);
-                    border-radius: 15px;
-                    box-shadow: var(--softui-standard-boxshadow);
-                  }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-        - type: 'custom:button-card'
-          show_icon: false
-          show_name: false
-          styles:
-            card:
-              - width: 5px
-              - height: 10px
-              - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-              - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-        - type: horizontal-stack  # weather
-          cards:
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-            - type: custom:simple-weather-card
-              entity: weather.openweathermap
-              name: at home
-              card_mod:
-                style: |
-                  ha-card {
-                    --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                    border-radius: 15px;
-                    box-shadow: var(--softui-standard-boxshadow);
-                  }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-        - type: 'custom:button-card'
-          show_icon: false
-          show_name: false
-          styles:
-            card:
-              - width: 5px
-              - height: 10px
-              - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-              - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-        - type: horizontal-stack  # search
-          cards:
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-            - type: custom:search-card
-              max_results: 10
-              card_mod:
-                style: |
-                   ha-card {
-                     background-color: var(--primary-background-color);
-                     border-radius: 15px;
-                     box-shadow: var(--softui-standard-boxshadow);
-                   }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
+        - type: entities
+          show_header_toggle: false
+          entities:
+            - !secret person_1
+            - !secret person_2
+          card_mod:
+            class: soft-ui-standard
+        - type: custom:simple-weather-card
+          entity: weather.openweathermap
+          name: at home
+          card_mod:
+            class: soft-ui-standard
+        - type: custom:search-card
+          max_results: 10
+          card_mod:
+            class: soft-ui-standard
         - type: markdown  ### Scenes
           content: |
             # Scenes
@@ -168,25 +73,15 @@
             - type: horizontal-stack  # Netflix Scene
               cards:
                 - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 80px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-                - type: 'custom:button-card'
                   icon: 'mdi:movie-open'
                   show_icon: true
                   show_name: false
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-bigbutton-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -218,37 +113,18 @@
                             font-size: 15px !important;
                             margin-block-start: 0.2em !important;
                           }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 10px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: horizontal-stack  # Gaming Scene
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 80px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'
                   icon: 'mdi:gamepad-square'
                   show_icon: true
                   show_name: false
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-bigbutton-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -280,37 +156,18 @@
                             font-size: 15px !important;
                             margin-block-start: 0.2em !important;
                           }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 10px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: horizontal-stack  # Bright Scene
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 80px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'
                   icon: 'mdi:brightness-5'
                   show_icon: true
                   show_name: false
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-bigbutton-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -371,15 +228,6 @@
           cards:
             - type: horizontal-stack
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.ceiling_lamp
                   icon: 'mdi:wall-sconce-flat'
@@ -392,28 +240,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.floor_lamp
                   icon: 'mdi:floor-lamp'
@@ -426,13 +264,12 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -444,15 +281,6 @@
                     service: input_boolean.toggle
                     service_data:
                       entity_id: input_boolean.loop_livingcolors_2
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.bathroom_spotsots
                   icon: 'mdi:track-light'
@@ -465,13 +293,12 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -483,15 +310,6 @@
                     service: input_boolean.toggle
                     service_data:
                       entity_id: input_boolean.loop_livingcolors_1
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.kuche
                   icon: 'mdi:silverware-fork-knife'
@@ -504,28 +322,18 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 2px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # button
                   entity: light.light_7
                   icon: 'mdi:shower'
@@ -538,13 +346,12 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'on'
+                  card_mod:
+                    class: soft-ui-button
                   styles:
                     card:
                       - width: 55px
                       - height: 55px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -574,227 +381,133 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-        - type: horizontal-stack
+        - type: custom:mini-media-player  # tv
+          entity: media_player.sony_bravia_tv
+          hide:
+            info: true
+          card_mod:
+            class: soft-ui-standard
+        - type: custom:mini-media-player  # ps4
+          entity: media_player.playstation_4
+          source: icon
+          toggle_power: true
+          hide:
+            volume: true
+            play_pause: true
+            play_stop: false
+            controls: true
+          card_mod:
+            class: soft-ui-standard
+        - type: custom:stack-in-card
+          card_mod:
+            class: soft-ui-standard
+          mode: vertical
           cards:
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-            - type: custom:mini-media-player  # tv
-              entity: media_player.sony_bravia_tv
-              hide:
-                info: true
-              card_mod:
-                style: |
-                  ha-card {
-                    --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                    border-radius: 15px;
-                    box-shadow: var(--softui-standard-boxshadow);
-                  }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-        - type: 'custom:button-card'
-          show_icon: false
-          show_name: false
-          styles:
-            card:
-              - width: 5px
-              - height: 10px
-              - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-              - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-        - type: horizontal-stack
-          cards:
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-            - type: custom:mini-media-player  # ps4
-              entity: media_player.playstation_4
-              source: icon
-              toggle_power: true
-              hide:
-                volume: true
-                play_pause: true
-                play_stop: false
-                controls: true
-              card_mod:
-                style: |
-                  ha-card {
-                    --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                    border-radius: 15px;
-                    box-shadow: var(--softui-standard-boxshadow);
-                  }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-        - type: 'custom:button-card'
-          show_icon: false
-          show_name: false
-          styles:
-            card:
-              - width: 5px
-              - height: 10px
-              - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-              - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-        - type: horizontal-stack
-          cards:
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-            - type: custom:stack-in-card
-              card_mod:
-                style: |
-                  ha-card {
-                    height: 115px;
-                    background-color: var(--primary-background-color);
-                    border-radius: 15px;
-                    box-shadow: var(--softui-standard-boxshadow);
-                  }
-              mode: vertical
-              cards:
-                - type: entities
+            - type: entities
+              entities:
+                - entity: vacuum.valetudo_roborock
+                  type: custom:multiple-entity-row
+                  name: Roborock
+                  show_state: false
                   entities:
                     - entity: vacuum.valetudo_roborock
-                      type: custom:multiple-entity-row
-                      name: Roborock
-                      show_state: false
-                      entities:
-                        - entity: vacuum.valetudo_roborock
-                          name: Status
-                        - attribute: battery_level
-                          name: Battery
-                          unit: '%'
-                        - entity: counter.vacuum_dustbin
-                          name: Count
-                  card_mod:
-                    style: |
-                      ha-card {
-                        height: 70px;
-                      }
-                - type: horizontal-stack
-                  cards:
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 30%
-                      icon: mdi:play
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.start
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 30%
-                      icon: mdi:pause
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.pause
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 30%
-                      icon: mdi:stop
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.stop
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 30%
-                      icon: mdi:broom
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.clean_spot
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 30%
-                      icon: mdi:map-marker
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.locate
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 30%
-                      icon: mdi:home-map-marker
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.return_to_base
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
+                      name: Status
+                    - attribute: battery_level
+                      name: Battery
+                      unit: '%'
+                    - entity: counter.vacuum_dustbin
+                      name: Count
+              card_mod:
+                style: |
+                  ha-card {
+                    height: 70px;
+                  }
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 30%
+                  icon: mdi:play
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.start
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 30%
+                  icon: mdi:pause
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.pause
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 30%
+                  icon: mdi:stop
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.stop
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 30%
+                  icon: mdi:broom
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.clean_spot
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 30%
+                  icon: mdi:map-marker
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.locate
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 30%
+                  icon: mdi:home-map-marker
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.return_to_base
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
         - type: markdown  # Miscellaneous
           content: |
             # Miscellaneous
@@ -820,26 +533,16 @@
                   }
         - type: horizontal-stack
           cards:
-            - type: 'custom:button-card'  # Spacer
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: 'custom:button-card'  # Lights
               icon: 'mdi:lightbulb'
               show_icon: true
               show_name: false
+              card_mod:
+                class: soft-ui-standard
               styles:
                 card:
                   - width: 55px
                   - height: 55px
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-                  - box-shadow: var(--softui-standard-boxshadow)
                 icon:
                   - color: var(--primary-text-color)
               tap_action:
@@ -856,26 +559,16 @@
                     - light.color_temperature_light_15
                     - light.hall
                     - light.living_room
-            - type: 'custom:button-card'  # Spacer
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 2px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: 'custom:button-card'  # Blinds
               icon: 'mdi:window-closed'
               show_icon: true
               show_name: false
+              card_mod:
+                class: soft-ui-standard
               styles:
                 card:
                   - width: 55px
                   - height: 55px
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-                  - box-shadow: var(--softui-standard-boxshadow)
                 icon:
                   - color: var(--primary-text-color)
               tap_action:
@@ -890,87 +583,48 @@
                     - cover.fyrtur_2
                     - cover.fyrtur_3
                     - cover.fyrtur_4
-            - type: 'custom:button-card'  # Spacer
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 2px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: 'custom:button-card'  # Plants
               icon: 'mdi:sprout'
               show_icon: true
               show_name: false
+              card_mod:
+                class: soft-ui-standard
               styles:
                 card:
                   - width: 55px
                   - height: 55px
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-                  - box-shadow: var(--softui-standard-boxshadow)
                 icon:
                   - color: var(--primary-text-color)
               tap_action:
                 action: navigate
                 navigation_path: /lovelace/plants
-            - type: 'custom:button-card'  # Spacer
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 2px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: 'custom:button-card'  # Vacuum
               icon: 'mdi:robot-vacuum'
               show_icon: true
               show_name: false
+              card_mod:
+                class: soft-ui-button
               styles:
                 card:
                   - width: 55px
                   - height: 55px
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-                  - box-shadow: var(--softui-standard-boxshadow)
                 icon:
                   - color: var(--primary-text-color)
               tap_action:
                 action: navigate
                 navigation_path: /lovelace/vacuum
-            - type: 'custom:button-card'  # Spacer
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 2px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
             - type: 'custom:button-card'  # Alarm
               icon: 'mdi:alarm'
               show_icon: true
               show_name: false
+              card_mod:
+                class: soft-ui-button
               styles:
                 card:
                   - width: 55px
                   - height: 55px
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-                  - box-shadow: var(--softui-standard-boxshadow)
                 icon:
                   - color: var(--primary-text-color)
               tap_action:
                 action: navigate
                 navigation_path: /lovelace/alarm
-        - type: 'custom:button-card'  # Spacer
-          show_icon: false
-          show_name: false
-          styles:
-            card:
-              - width: 5px
-              - height: 10px
-              - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-              - --ha-card-background: 'rgba(11, 11, 11, 0.00)'

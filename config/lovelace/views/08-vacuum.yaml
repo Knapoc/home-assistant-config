@@ -31,141 +31,119 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-        - type: horizontal-stack
+        - type: custom:stack-in-card
+          card_mod:
+            class: soft-ui-standard
+            style: |
+              ha-card {
+                height: 130px;
+              }
+          mode: vertical
           cards:
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-            - type: custom:stack-in-card
+            - type: entities
+              entities:
+                - entity: vacuum.valetudo_roborock
+                  type: custom:multiple-entity-row
+                  show_state: false
+                  entities:
+                    - entity: vacuum.valetudo_roborock
+                      name: Status
+                    - attribute: battery_level
+                      name: Battery
+                      unit: '%'
+                    - entity: counter.vacuum_dustbin
+                      name: Count
               card_mod:
                 style: |
                   ha-card {
-                    height: 130px;
-                    background-color: var(--primary-background-color);
-                    border-radius: 15px;
-                    box-shadow: var(--softui-standard-boxshadow);
+                    height: 70px;
                   }
-              mode: vertical
+            - type: horizontal-stack
               cards:
-                - type: entities
-                  entities:
-                    - entity: vacuum.valetudo_roborock
-                      type: custom:multiple-entity-row
-                      show_state: false
-                      entities:
-                        - entity: vacuum.valetudo_roborock
-                          name: Status
-                        - attribute: battery_level
-                          name: Battery
-                          unit: '%'
-                        - entity: counter.vacuum_dustbin
-                          name: Count
-                  card_mod:
-                    style: |
-                      ha-card {
-                        height: 70px;
-                      }
-                - type: horizontal-stack
-                  cards:
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 25%
-                      icon: mdi:play
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.start
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 25%
-                      icon: mdi:pause
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.pause
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 25%
-                      icon: mdi:stop
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.stop
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 25%
-                      icon: mdi:broom
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.clean_spot
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 25%
-                      icon: mdi:map-marker
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.locate
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-                    - type: custom:button-card
-                      color: auto
-                      entity: vacuum.valetudo_roborock
-                      size: 25%
-                      icon: mdi:home-map-marker
-                      show_name: false
-                      styles:
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
-                        service: vacuum.return_to_base
-                        service_data:
-                          entity_id: vacuum.valetudo_roborock
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 25%
+                  icon: mdi:play
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.start
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 25%
+                  icon: mdi:pause
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.pause
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 25%
+                  icon: mdi:stop
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.stop
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 25%
+                  icon: mdi:broom
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.clean_spot
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 25%
+                  icon: mdi:map-marker
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.locate
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
+                - type: custom:button-card
+                  color: auto
+                  entity: vacuum.valetudo_roborock
+                  size: 25%
+                  icon: mdi:home-map-marker
+                  show_name: false
+                  styles:
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    service: vacuum.return_to_base
+                    service_data:
+                      entity_id: vacuum.valetudo_roborock
         - type: markdown
           content: |
             # Map
@@ -189,46 +167,24 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-        - type: horizontal-stack
-          cards:
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-            - type: 'custom:valetudo-map-card'
-              title: ''
-              vacuum: valetudo_roborock
-              dock_icon: mdi:dots-vertical
-              dock_color: '--secondary-text-color'
-              show_status: false
-              show_battery_level: false
-              show_start_button: false
-              show_pause_button: false
-              show_stop_button: false
-              show_home_button: false
-              show_locate_button: false
-              card_mod:
-                style: |
-                  ha-card {
-                    height: 410px;
-                    --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                    border-radius: 15px;
-                    box-shadow: var(--softui-standard-boxshadow);
-                  }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
+        - type: 'custom:valetudo-map-card'
+          title: ''
+          vacuum: valetudo_roborock
+          dock_icon: mdi:dots-vertical
+          dock_color: '--secondary-text-color'
+          show_status: false
+          show_battery_level: false
+          show_start_button: false
+          show_pause_button: false
+          show_stop_button: false
+          show_home_button: false
+          show_locate_button: false
+          card_mod:
+            class: soft-ui-standard
+            style: |
+              ha-card {
+                height: 410px;
+              }
     - type: vertical-stack
       cards:
         - type: markdown
@@ -254,49 +210,24 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-        - type: horizontal-stack
-          cards:
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-            - type: entities
-              # title: Anderes
-              show_header_toggle: false
-              entities:
-                - entity: sensor.valetudo_roborock_main_brush_hours
-                  name: Main brush
-                  icon: mdi:progress-wrench
-                - entity: sensor.valetudo_roborock_right_side_brush_hours
-                  name: Side brush
-                  icon: mdi:progress-wrench
-                - entity: sensor.valetudo_roborock_main_filter_hours
-                  name: Filter
-                  icon: mdi:progress-wrench
-                - entity: sensor.valetudo_roborock_sensor_hours
-                  name: Sensor
-                  icon: mdi:progress-clock
-              card_mod:
-                style: |
-                  ha-card {
-                    --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                    border-radius: 15px;
-                    box-shadow: var(--softui-standard-boxshadow);
-                  }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
+        - type: entities
+          # title: Anderes
+          show_header_toggle: false
+          entities:
+            - entity: sensor.valetudo_roborock_main_brush_hours
+              name: Main brush
+              icon: mdi:progress-wrench
+            - entity: sensor.valetudo_roborock_right_side_brush_hours
+              name: Side brush
+              icon: mdi:progress-wrench
+            - entity: sensor.valetudo_roborock_main_filter_hours
+              name: Filter
+              icon: mdi:progress-wrench
+            - entity: sensor.valetudo_roborock_sensor_hours
+              name: Sensor
+              icon: mdi:progress-clock
+          card_mod:
+            class: soft-ui-standard
         - type: markdown
           content: |
             # Schedule
@@ -320,51 +251,17 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-        - type: horizontal-stack
-          cards:
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-            - type: entities
-              # title: Anderes
-              show_header_toggle: false
+        - type: entities
+          # title: Anderes
+          show_header_toggle: false
+          entities:
+            - type: custom:multiple-entity-row
+              entity: input_datetime.vacuum_schedule_1_to
+              name: Main schedule
               entities:
-                - type: custom:multiple-entity-row
-                  entity: input_datetime.vacuum_schedule_1_to
-                  name: Main schedule
-                  entities:
-                    - entity: input_datetime.vacuum_schedule_1_from
-                      name: false
-                - entity: input_boolean.vacuum_weekends
-                  name: Vacuum on weekends/holidays
-              card_mod:
-                style: |
-                  ha-card {
-                    --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                    border-radius: 15px;
-                    box-shadow: var(--softui-standard-boxshadow);
-                  }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-        - type: 'custom:button-card'
-          show_icon: false
-          show_name: false
-          styles:
-            card:
-              - width: 5px
-              - height: 10px
-              - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-              - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
+                - entity: input_datetime.vacuum_schedule_1_from
+                  name: false
+            - entity: input_boolean.vacuum_weekends
+              name: Vacuum on weekends/holidays
+          card_mod:
+            class: soft-ui-standard

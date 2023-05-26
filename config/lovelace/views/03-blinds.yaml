@@ -41,15 +41,6 @@
           cards:
             - type: horizontal-stack
               cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # group
                   entity: cover.living_room_group
                   icon: mdi:sofa
@@ -60,13 +51,12 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'open'
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: var(--primary-text-color)
                   tap_action:
@@ -78,15 +68,6 @@
                       entity_id: cover.living_room_group
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 10px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # fyrtur 1
                   entity: cover.fyrtur_1
                   show_icon: true
@@ -96,13 +77,12 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'open'
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: >
                           [[[
@@ -118,15 +98,6 @@
                       entity_id: cover.fyrtur_1
                   hold_action:
                     action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 10px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
                 - type: 'custom:button-card'  # fyrtur 2
                   entity: cover.fyrtur_2
                   show_icon: true
@@ -136,13 +107,12 @@
                         card:
                           - box-shadow: var(--softui-onoffbutton-active-boxshadow)
                       value: 'open'
+                  card_mod:
+                    class: soft-ui-big-button
                   styles:
                     card:
                       - width: 80px
                       - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
                     icon:
                       - color: >
                           [[[
@@ -161,12 +131,12 @@
         - type: markdown  ### blinds bed room
           content: |
             # Bed room
-            {% set entities = 'cover.fyrtur_3', 'cover.fyrtur_4' %}
-            {% if (states | selectattr('entity_id','in', entities) | selectattr('attributes.current_position','==',0) | list | length) == 2 %}
+            {% set entities = 'cover.shellyplus2pm_b8d61a89016c' %}
+            {% if (states | selectattr('entity_id','in', entities) | selectattr('attributes.current_position','==',0) | list | length) == 1 %}
               ## All blinds are closed
-            {% elif (states | selectattr('entity_id','in', entities) | selectattr('attributes.current_position','==',100) | list | length) != 2 %}
+            {% elif (states | selectattr('entity_id','in', entities) | selectattr('attributes.current_position','==',100) | list | length) != 1 %}
               ## The blinds are partially closed
-            {% elif (states | selectattr('entity_id','in', entities) | selectattr('attributes.current_position','==',100) | list | length) == 2 %}
+            {% elif (states | selectattr('entity_id','in', entities) | selectattr('attributes.current_position','==',100) | list | length) == 1 %}
               ## All blinds are open
             {% endif %}
           card_mod:
@@ -188,127 +158,35 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-        - type: vertical-stack  ### Bed room buttons
-          cards:
-            - type: horizontal-stack
-              cards:
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 5px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-                - type: 'custom:button-card'  # group
-                  entity: cover.bed_room_group
-                  icon: mdi:bed-empty
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        card:
-                          - box-shadow: var(--softui-onoffbutton-active-boxshadow)
-                      value: 'open'
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  double_tap_action:
-                    action: call-service
-                    service: cover.stop_cover
-                    service_data:
-                      entity_id: cover.bed_room_group
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 10px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-                - type: 'custom:button-card'  # fyrtur 3
-                  entity: cover.fyrtur_3
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        card:
-                          - box-shadow: var(--softui-onoffbutton-active-boxshadow)
-                      value: 'open'
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
-                    icon:
-                      - color: >
-                          [[[
-                            if (states['binary_sensor.window_openclose_3'].state == 'on') return 'var(--paper-item-icon-active-color)';
-                            else return 'var(--primary-text-color)';
-                          ]]]
-                  tap_action:
-                    action: toggle
-                  double_tap_action:
-                    action: call-service
-                    service: cover.stop_cover
-                    service_data:
-                      entity_id: cover.fyrtur_3
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'
-                  show_icon: false
-                  show_name: false
-                  styles:
-                    card:
-                      - width: 10px
-                      - height: 60px
-                      - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                      - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-                - type: 'custom:button-card'  # fyrtur 4
-                  entity: cover.fyrtur_4
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        card:
-                          - box-shadow: var(--softui-onoffbutton-active-boxshadow)
-                      value: 'open'
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                      - border-radius: 15px
-                      - background-color: var(--primary-background-color)
-                      - box-shadow: var(--softui-onoffbutton-inactive-boxshadow)
-                    icon:
-                      - color: >
-                          [[[
-                            if (states['binary_sensor.window_openclose_4'].state == 'on') return 'var(--paper-item-icon-active-color)';
-                            else return 'var(--primary-text-color)';
-                          ]]]
-                  tap_action:
-                    action: toggle
-                  double_tap_action:
-                    action: call-service
-                    service: cover.stop_cover
-                    service_data:
-                      entity_id: cover.fyrtur_4
-                  hold_action:
-                    action: more-info
+        - type: 'custom:button-card'  # group
+          entity: cover.shellyplus2pm_b8d61a89016c
+          icon: mdi:bed-empty
+          show_icon: true
+          show_name: false
+          state:
+            - styles:
+                icon:
+                  - color: var(--paper-item-icon-active-color)
+                card:
+                  - box-shadow: var(--softui-onoffbutton-active-boxshadow)
+              value: 'open'
+          card_mod:
+            class: soft-ui-big-button
+          styles:
+            card:
+              - width: 80px
+              - height: 80px
+            icon:
+              - color: var(--primary-text-color)
+          tap_action:
+            action: toggle
+          double_tap_action:
+            action: call-service
+            service: cover.stop_cover
+            service_data:
+              entity_id: cover.shellyplus2pm_b8d61a89016c
+          hold_action:
+            action: more-info
         - type: markdown  ### column
           content: |
             # Settings
@@ -332,49 +210,15 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-        - type: horizontal-stack
-          cards:
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 10px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-            - type: entities
-              show_header_toggle: false
-              entities:
-                - entity: sensor.wakeup_open_time_covers
-                  name: Blind opening time
-                  icon: mdi:clock
-                - entity: input_number.wakeup_cover_open_delay
-                  name: Delay
-                - entity: input_datetime.time_close_covers_night
-                  name: Blind closing time
-              card_mod:
-                style: |
-                  ha-card {
-                    background-color: var(--primary-background-color);
-                    border-radius: 15px;
-                    box-shadow: var(--softui-standard-boxshadow);
-                  }
-            - type: 'custom:button-card'
-              show_icon: false
-              show_name: false
-              styles:
-                card:
-                  - width: 5px
-                  - height: 10px
-                  - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-                  - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
-        - type: 'custom:button-card'
-          show_icon: false
-          show_name: false
-          styles:
-            card:
-              - width: 5px
-              - height: 10px
-              - box-shadow: '2px 2px rgba(0,0,0,0.0)'
-              - --ha-card-background: 'rgba(11, 11, 11, 0.00)'
+        - type: entities
+          show_header_toggle: false
+          entities:
+            - entity: sensor.wakeup_open_time_covers
+              name: Blind opening time
+              icon: mdi:clock
+            - entity: input_number.wakeup_cover_open_delay
+              name: Delay
+            - entity: input_datetime.time_close_covers_night
+              name: Blind closing time
+          card_mod:
+            class: soft-ui-standard
