@@ -106,16 +106,16 @@
       data_template:
         message: >
           Vacuum has to be maintained.
-          {% if states('sensor.valetudo_roborock_main_brush') | int <= 1 %}
+          {% if states('sensor.valetudo_roborock_main_brush') <= 1 %}
             Main brush: {{ states('sensor.valetudo_roborock_main_brush_hours') }}h left.
           {% endif %}
-          {% if states('sensor.valetudo_roborock_right_side_brush') | int <= 1 %}
+          {% if states('sensor.valetudo_roborock_right_brush') <= 1 %}
             Side brush: {{ states('sensor.valetudo_roborock_right_side_brush_hours') }}h left.
           {% endif %}
-          {% if states('sensor.valetudo_roborock_main_filter') | int <= 1 %}
+          {% if states('sensor.valetudo_roborock_main_filter') <= 1 %}
             Filter: {{ states('sensor.valetudo_roborock_main_filter_hours') }}h left.
           {% endif %}
-          {% if states('sensor.valetudo_roborock_sensor') | int <= 1 %}
+          {% if states('sensor.valetudo_roborock_sensor_cleaning') <= 1 %}
             Sensor: {{ states('sensor.valetudo_roborock_sensor_hours') }}h left.
           {% endif %}
 
