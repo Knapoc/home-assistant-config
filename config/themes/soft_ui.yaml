@@ -50,7 +50,6 @@ soft_ui:
   paper-slider-secondary-color: var(--light-primary-color)
   # States and Badges
   state-icon-color: var(--secondary-text-color)
-  state-icon-active-color: var(--primary-color)
   state-icon-unavailable-color: var(--disabled-text-color)
   # Switches
   switch-checked-button-color: var(--primary-color)
@@ -82,6 +81,8 @@ soft_ui:
       secondary-text-color: "#5F6267"
       text-primary-color: "#FFFFFF"
       disabled-text-color: "#717171"
+      # State
+      state-icon-active-color: var(--primary-color)
       # Switches
       switch-checked-track-color: "#75a2f0"
       switch-unchecked-track-color: "#888b91"
@@ -97,6 +98,8 @@ soft_ui:
       secondary-text-color: "#c9cbcf"
       text-primary-color: "#e4e5e7"
       disabled-text-color: "#afb1b6"
+      # State
+      state-icon-active-color: "#D9B757"
       # Switches
       switch-checked-track-color: "#3d3f43"
       switch-unchecked-track-color: "#0c0d0d"
