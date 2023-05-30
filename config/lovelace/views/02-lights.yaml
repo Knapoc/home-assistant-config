@@ -773,134 +773,132 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-        - type: vertical-stack  ### Light Buttons
+        - type: horizontal-stack
           cards:
-            - type: horizontal-stack
-              cards:
-                - type: 'custom:button-card'  # button
-                  entity: light.light_7
-                  icon: 'mdi:shower'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
+            - type: 'custom:button-card'  # button
+              entity: light.light_7
+              icon: 'mdi:shower'
+              show_icon: true
+              show_name: false
+              state:
+                - styles:
                     icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'  # button
-                  entity: light.color_temperature_light_15
-                  icon: 'mdi:paper-roll'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
+                      - color: var(--paper-item-icon-active-color)
                     card:
-                      - width: 55px
-                      - height: 55px
+                      - box-shadow: var(--soft-ui-pressed)
+                  value: 'on'
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: toggle
+              hold_action:
+                action: more-info
+            - type: 'custom:button-card'  # button
+              entity: light.color_temperature_light_15
+              icon: 'mdi:paper-roll'
+              show_icon: true
+              show_name: false
+              state:
+                - styles:
                     icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'  # button
-                  entity: light.hall
-                  icon: 'mdi:ceiling-light'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
+                      - color: var(--paper-item-icon-active-color)
                     card:
-                      - width: 55px
-                      - height: 55px
+                      - box-shadow: var(--soft-ui-pressed)
+                  value: 'on'
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: toggle
+              hold_action:
+                action: more-info
+            - type: 'custom:button-card'  # button
+              entity: light.light_8
+              icon: 'mdi:table-furniture'
+              show_icon: true
+              show_name: false
+              state:
+                - styles:
                     icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'  # button
-                  entity: light.nachttischlampe
-                  icon: 'mdi:coach-lamp'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
+                      - color: var(--paper-item-icon-active-color)
                     card:
-                      - width: 55px
-                      - height: 55px
+                      - box-shadow: var(--soft-ui-pressed)
+                  value: 'on'
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: toggle
+              hold_action:
+                action: more-info
+            - type: 'custom:button-card'  # button
+              entity: light.nachttischlampe
+              icon: 'mdi:coach-lamp'
+              show_icon: true
+              show_name: false
+              state:
+                - styles:
                     icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'  # button
-                  entity: light.schreibtischlampe
-                  icon: 'mdi:desk-lamp'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
+                      - color: var(--paper-item-icon-active-color)
                     card:
-                      - width: 55px
-                      - height: 55px
+                      - box-shadow: var(--soft-ui-pressed)
+                  value: 'on'
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: toggle
+              hold_action:
+                action: more-info
+            - type: 'custom:button-card'  # button
+              entity: light.schreibtischlampe
+              icon: 'mdi:desk-lamp'
+              show_icon: true
+              show_name: false
+              state:
+                - styles:
                     icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
+                      - color: var(--paper-item-icon-active-color)
+                    card:
+                      - box-shadow: var(--soft-ui-pressed)
+                  value: 'on'
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: toggle
+              hold_action:
+                action: more-info
         - type: markdown  ### column
           content: |
             # Adaptive lighting
-            {% if state_attr('switch.adaptive_lighting_main_lights', 'manual_control')|length > 0 %}
+            {% if is_state('switch.adaptive_lighting_main_lights', 'on') and state_attr('switch.adaptive_lighting_main_lights', 'manual_control')|length > 0 %}
               ## Manually controlled:{{ " " }}
               {%- for i in state_attr('switch.adaptive_lighting_main_lights', 'manual_control') -%}
                 {{ state_attr(i, 'friendly_name') }}{{ ", " if not loop.last }}
@@ -927,109 +925,107 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-        - type: vertical-stack  ### Light Buttons
+        - type: horizontal-stack
           cards:
-            - type: horizontal-stack
-              cards:
-                - type: 'custom:button-card'  # button
-                  entity: switch.adaptive_lighting_main_lights
-                  icon: 'mdi:theme-light-dark'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
+            - type: 'custom:button-card'  # button
+              entity: switch.adaptive_lighting_main_lights
+              icon: 'mdi:theme-light-dark'
+              show_icon: true
+              show_name: false
+              state:
+                - styles:
                     icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-                  double_tap_action:
-                    action: call-service
-                    service: adaptive_lighting.set_manual_control
-                    service_data:
-                      entity_id: switch.adaptive_lighting_main_lights
-                      manual_control: false
-                - type: 'custom:button-card'  # button
-                  entity: switch.adaptive_lighting_adapt_brightness_main_lights
-                  icon: 'mdi:brightness-6'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
+                      - color: var(--paper-item-icon-active-color)
                     card:
-                      - width: 55px
-                      - height: 55px
+                      - box-shadow: var(--soft-ui-pressed)
+                  value: 'on'
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: toggle
+              hold_action:
+                action: more-info
+              double_tap_action:
+                action: call-service
+                service: adaptive_lighting.set_manual_control
+                service_data:
+                  entity_id: switch.adaptive_lighting_main_lights
+                  manual_control: false
+            - type: 'custom:button-card'  # button
+              entity: switch.adaptive_lighting_adapt_brightness_main_lights
+              icon: 'mdi:brightness-6'
+              show_icon: true
+              show_name: false
+              state:
+                - styles:
                     icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'  # button
-                  entity: switch.adaptive_lighting_adapt_color_main_lights
-                  icon: 'mdi:contrast'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
+                      - color: var(--paper-item-icon-active-color)
                     card:
-                      - width: 55px
-                      - height: 55px
+                      - box-shadow: var(--soft-ui-pressed)
+                  value: 'on'
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: toggle
+              hold_action:
+                action: more-info
+            - type: 'custom:button-card'  # button
+              entity: switch.adaptive_lighting_adapt_color_main_lights
+              icon: 'mdi:contrast'
+              show_icon: true
+              show_name: false
+              state:
+                - styles:
                     icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'  # button
-                  entity: switch.adaptive_lighting_sleep_mode_main_lights
-                  icon: 'mdi:weather-night'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
+                      - color: var(--paper-item-icon-active-color)
                     card:
-                      - width: 55px
-                      - height: 55px
+                      - box-shadow: var(--soft-ui-pressed)
+                  value: 'on'
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: toggle
+              hold_action:
+                action: more-info
+            - type: 'custom:button-card'  # button
+              entity: switch.adaptive_lighting_sleep_mode_main_lights
+              icon: 'mdi:weather-night'
+              show_icon: true
+              show_name: false
+              state:
+                - styles:
                     icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
+                      - color: var(--paper-item-icon-active-color)
+                    card:
+                      - box-shadow: var(--soft-ui-pressed)
+                  value: 'on'
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: toggle
+              hold_action:
+                action: more-info

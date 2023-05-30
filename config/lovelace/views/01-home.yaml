@@ -9,7 +9,7 @@
         - type: markdown  ### HOME column
           content: |
             # Home
-            ## The temperature is {{states('sensor.living_room_temperature')}}°C with a humidity of {{states('sensor.living_room_humidity')}}%
+            ## The temperature is {{states('sensor.netatmo_smart_thermostat_current_temperature')}}°C with a humidity of {{states('sensor.living_room_humidity')}}%
           card_mod:
             style:
               .: |
@@ -311,8 +311,8 @@
                     service_data:
                       entity_id: input_boolean.loop_livingcolors_1
                 - type: 'custom:button-card'  # button
-                  entity: light.kuche
-                  icon: 'mdi:silverware-fork-knife'
+                  entity: light.light_8
+                  icon: 'mdi:table-furniture'
                   show_icon: true
                   show_name: false
                   state:
