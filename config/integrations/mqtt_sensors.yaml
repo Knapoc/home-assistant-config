@@ -2,81 +2,47 @@
 # mqtt sensors
 
 - name: disk_use_percent_lv
-  state_topic: 'telegraf/intelnuc/disk'
+  state_topic: 'telegraf/intelnuc/disk/ubuntu--vg-ubuntu--lv'
   unit_of_measurement: '%'
-  value_template: >-
-    {% if value_json['tags'].device == 'mapper/ubuntu--vg-ubuntu--lv' %}
-      {{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}
-    {% else %}
-      {{ states('sensor.disk_use_percent_lv') }}
-    {% endif %}
+  value_template: "{{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}"
 
 - name: disk_use_percent_lv0
-  state_topic: 'telegraf/intelnuc/disk'
+  state_topic: 'telegraf/intelnuc/disk/ubuntu--vg-lv--0'
   unit_of_measurement: '%'
-  value_template: >-
-    {% if value_json['tags'].device == 'mapper/ubuntu--vg-lv--0' %}
-      {{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}
-    {% else %}
-      {{ states('sensor.disk_use_percent_lv0') }}
-    {% endif %}
+  value_template: "{{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}"
 
 - name: disk_use_percent_lv1
-  state_topic: 'telegraf/intelnuc/disk'
+  state_topic: 'telegraf/intelnuc/disk/ubuntu--vg-lv--1'
   unit_of_measurement: '%'
-  value_template: >-
-    {% if value_json['tags'].device == 'mapper/ubuntu--vg-lv--1' %}
-      {{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}
-    {% else %}
-      {{ states('sensor.disk_use_percent_lv1') }}
-    {% endif %}
+  value_template: "{{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}"
 
 - name: disk_use_percent_sdb1
-  state_topic: 'telegraf/intelnuc/disk'
+  state_topic: 'telegraf/intelnuc/disk/sdb1'
   unit_of_measurement: '%'
-  value_template: >-
-    {% if value_json['tags'].path == '/mnt/timemachine' %}
-      {{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}
-    {% else %}
-      {{ states('sensor.disk_use_percent_sdb1') }}
-    {% endif %}
+  value_template: "{{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}"
 
 - name: disk_use_percent_sdb2
-  state_topic: 'telegraf/intelnuc/disk'
+  state_topic: 'telegraf/intelnuc/disk/sdb2'
   unit_of_measurement: '%'
-  value_template: >-
-    {% if value_json['tags'].path == '/mnt/data' %}
-      {{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}
-    {% else %}
-      {{ states('sensor.disk_use_percent_sdb2') }}
-    {% endif %}
+  value_template: "{{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}"
 
-- name: disk_use_percent_sdb3
-  state_topic: 'telegraf/intelnuc/disk'
-  unit_of_measurement: '%'
-  value_template: >-
-    {% if value_json['tags'].path == '/mnt/hdd' %}
-      {{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}
-    {% else %}
-      {{ states('sensor.disk_use_percent_sdb3') }}
-    {% endif %}
+# - name: disk_use_percent_sdb3
+#   state_topic: 'telegraf/intelnuc/disk'
+#   unit_of_measurement: '%'
+#   value_template: >-
+#     {% if value_json['tags'].path == '/mnt/hdd' %}
+#       {{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}
+#     {% else %}
+#       {{ states('sensor.disk_use_percent_sdb3') }}
+#     {% endif %}
 
 - name: disk_use_percent_sda1
-  state_topic: 'telegraf/intelnuc/disk'
+  state_topic: 'telegraf/intelnuc/disk/sda1'
   unit_of_measurement: '%'
-  value_template: >-
-    {% if value_json['tags'].path == '/mnt/ssd' %}
-      {{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}
-    {% else %}
-      {{ states('sensor.disk_use_percent_sda1') }}
-    {% endif %}
+  value_template: "{{ (value_json['fields'].used_percent | float(default=0)) | round(2) }}"
 
 - name: CPU Temperature
-  state_topic: 'telegraf/intelnuc/temp'
+  state_topic: 'telegraf/intelnuc/temp/coretemp_package_id_0'
+  device_class: temperature
   unit_of_measurement: '°C'
-  value_template: >-
-    {% if value_json['tags'].sensor == 'coretemp_package_id_0' %}
-      {{ (value_json['fields'].temp | float(default=0)) | round(2) }}
-    {% else %}
-      {{ states('sensor.cpu_temperature') }}
-    {% endif %}
+  value_template: "{{ (value_json['fields'].temp | float(default=0)) | round(2) }}"
