@@ -147,7 +147,7 @@
         - type: markdown
           content: |
             # Map
-            ## Room map and last run
+            ## Last run: {{(states('sensor.valetudo_roborock_current_statistics_area') | float(default=0) / 10000) | round(2)}} m<sup>2</sup> in {{(states('sensor.valetudo_roborock_current_statistics_time') | float(default=0) / 3600) | round(2) }} hours
           card_mod:
             style:
               .: |

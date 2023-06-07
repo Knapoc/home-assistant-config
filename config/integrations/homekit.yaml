@@ -30,6 +30,7 @@
       - switch.pi_hole_*
       - switch.adaptive_lighting_*
       - cover.*_group
+      - media_player.homepod_*
   entity_config:
     cover.fyrtur_1:
       name: "Rollo 1"
