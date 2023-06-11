@@ -16,3 +16,5 @@
   device_class: humidity
 "sensor.fail2ban_*":
   icon: mdi:shield
+"light.silicon_labs_ezsp_*":
+  is_zha_group: true

@@ -11,39 +11,25 @@
       - cover
     include_entity_globs:
       - input_boolean.loop_livingcolors_*
-      - light.spot_*
-      - light.light_*
+      - light.hue_*
+      - light.tradfri_*
     include_entities:
       - climate.netatmo_smart_thermostat
-      - light.ceiling_lamp
-      - light.floor_lamp
-      - light.nachttischlampe
-      - light.schreibtischlampe
-      - light.color_temperature_light_15
       - media_player.playstation_4
       - script.adaptive_lighting_manual_control_reset
       - sensor.living_room_humidity
       - sensor.living_room_temperature
       - sensor.netatmo_smart_thermostat_current_temperature
       - vacuum.valetudo_roborock
+    exclude_entities:
+      - light.hue_lwa004_light
+      - light.hue_lwb010_light
     exclude_entity_globs:
       - switch.pi_hole_*
       - switch.adaptive_lighting_*
       - cover.*_group
       - media_player.homepod_*
   entity_config:
-    cover.fyrtur_1:
-      name: "Rollo 1"
-      linked_battery_sensor: sensor.fyrtur_block_out_roller_blind_battery_level_1
-    cover.fyrtur_2:
-      name: "Rollo 2"
-      linked_battery_sensor: sensor.fyrtur_block_out_roller_blind_battery_level_2
-    cover.fyrtur_3:
-      name: "Rollo 3"
-      linked_battery_sensor: sensor.fyrtur_block_out_roller_blind_battery_level_3
-    cover.fyrtur_4:
-      name: "Rollo 4"
-      linked_battery_sensor: sensor.fyrtur_block_out_roller_blind_battery_level_4
     input_boolean.loop_livingcolors_1:
       name: "Loop 1"
     input_boolean.loop_livingcolors_2:
