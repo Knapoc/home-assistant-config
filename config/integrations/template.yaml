@@ -79,7 +79,7 @@
     - name: count_lights
       state: "{{ states.light | list | length }}"
     - name: lights_on
-      state: "{{ states.light | selectattr('state', 'equalto', 'on') | rejectattr('attributes.is_deconz_group') | list | length }}"
+      state: "{{ states.light | selectattr('state', 'equalto', 'on') | rejectattr('attributes.is_zha_group') | list | length }}"
     - name: esp32_living_room_uptime
       state: "{{ ((states('sensor.esp32_living_room_uptime_raw') | float(default=0)) / 60 / 60) | round(2) }}"
       unit_of_measurement: "h"
