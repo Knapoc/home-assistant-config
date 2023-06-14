@@ -96,7 +96,9 @@ panel_iframe:
     title: 'Valetudo'
     url: !secret valetudo_url
     icon: mdi:robot-vacuum
-  phoscon:
-    title: 'Phoscon'
-    url: !secret phoscon_url
-    icon: mdi:zigbee
+
+zha:
+  zigpy_config:
+    ota:
+      ikea_provider: true
+      otau_directory: /mnt/zha-otau
