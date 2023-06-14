@@ -126,11 +126,11 @@
       event_type: mobile_app_notification_action
       event_data:
         action: "EMPTY_ROBOROCK_NOW"
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        unique_id: 00:15:8d:00:04:23:f2:45
-        event: 1002
+    - platform: device
+      device_id: e8da140be2c247fb98554b9f9fe492d8
+      domain: zha
+      type: remote_button_long_release
+      subtype: button
   condition:
     condition: state
     entity_id: !secret person_1

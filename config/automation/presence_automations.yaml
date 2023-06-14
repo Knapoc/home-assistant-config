@@ -19,10 +19,10 @@
           - media_player.sony_bravia_tv
           - media_player.playstation_4
           - light.bedroom
-          - light.light_7
+          - light.silicon_labs_ezsp_bathroom_lights
           - light.kuche
           - light.hall
-          - light.color_temperature_light_15
+          - light.tradfri_gu10_light
           - light.living_room
           - input_boolean.loop_livingcolors_1
           - input_boolean.loop_livingcolors_2
@@ -69,8 +69,8 @@
           - media_player.sony_bravia_tv
           - media_player.playstation_4
           - light.bedroom
-          - light.light_7
+          - light.silicon_labs_ezsp_bathroom_lights
           - light.kuche
           - light.hall
-          - light.color_temperature_light_15
+          - light.tradfri_gu10_light
           - light.living_room

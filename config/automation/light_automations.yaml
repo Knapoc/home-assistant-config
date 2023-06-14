@@ -27,51 +27,26 @@
     - service: adaptive_lighting.set_manual_control
       data:
         entity_id: switch.adaptive_lighting_main_lights
-        lights: light.bathroom_spotsots
+        lights: light.tradfri_e27_light_3
         manual_control: true
     - service: light.turn_on
       data:
-        entity_id: light.bathroom_spotsots
+        entity_id: light.tradfri_e27_light_3
         brightness: 2
         color_temp: 497
     - delay:
         seconds: 1
     - service: light.turn_on
       data_template:
-        entity_id: light.bathroom_spotsots
+        entity_id: light.tradfri_e27_light_3
         brightness: "{{ states('input_number.wakeup_target_brightness') | int }}"
         transition: "{{ states('input_number.wakeup_duration') | multiply(60) | int }}"
     - delay: "{{ states('input_number.wakeup_duration') | multiply(120) | int }}"
     - service: adaptive_lighting.set_manual_control
       data:
         entity_id: switch.adaptive_lighting_main_lights
-        lights: light.bathroom_spotsots
+        lights: light.tradfri_e27_light_3
         manual_control: false
-
-- alias: Random light - Deckenspots
-  id: '1500581871'
-  trigger:
-    - platform: time_pattern
-      minutes: /2
-      seconds: 0
-    - platform: state
-      entity_id: input_boolean.loop_livingcolors_1
-      to: 'on'
-  condition:
-    condition: state
-    entity_id: input_boolean.loop_livingcolors_1
-    state: 'on'
-  action:
-    service: light.turn_on
-    entity_id: light.bathroom_spotsots
-    data_template:
-      # entity_id: light.bathroom_spotsots
-      # effect: random
-      hs_color:
-        - "{{ range(360)|random }}"
-        - "{{ range(80,101)|random }}"
-      transition: 5
-      brightness: 255
 
 - alias: Random light - Stehlampe
   id: '1500581872'
@@ -88,9 +63,9 @@
     state: 'on'
   action:
     service: light.turn_on
-    entity_id: light.floor_lamp
+    entity_id: light.hue_lct015_light
     data_template:
-      # entity_id: light.floor_lamp
+      # entity_id: light.hue_lct015_light
       # effect: random
       hs_color:
         - "{{ range(360)|random }}"
@@ -102,19 +77,14 @@
   alias: Turn off loop-effect
   trigger:
     - platform: state
-      entity_id: light.floor_lamp
-      to: 'off'
-    - platform: state
-      entity_id: light.bathroom_spotsots
+      entity_id: light.hue_lct015_light
       to: 'off'
   action:
     - service: input_boolean.turn_off
       data_template:
         entity_id: >
-          {% if trigger.entity_id == 'light.floor_lamp' -%}
+          {% if trigger.entity_id == 'light.hue_lct015_light' -%}
             input_boolean.loop_livingcolors_2
-          {% elif trigger.entity_id == 'light.bathroom_spotsots' -%}
-            input_boolean.loop_livingcolors_1
           {% endif %}
 
 - id: '1555301145'
@@ -138,7 +108,7 @@
         entity_id: input_boolean.loop_livingcolors_2
     - service: light.turn_off
       data:
-        entity_id: light.ceiling_lamp
+        entity_id: light.hue_ltc001_light
 
 - id: '1555301146'
   alias: Stop playing PS4
@@ -189,7 +159,7 @@
       no_motion_wait: '180'
       motion_entity: binary_sensor.motion_sensor
       light_target:
-        entity_id: light.color_temperature_light_15
+        entity_id: light.tradfri_gu10_light
 
 - id: '1609948156902'
   alias: Motion-activated bathroom light
@@ -200,7 +170,7 @@
       no_motion_wait: '300'
       motion_entity: binary_sensor.motion_sensor_2
       light_target:
-        entity_id: light.light_7
+        entity_id: light.silicon_labs_ezsp_bathroom_lights
 
 - id: '1609948156899'
   alias: turn toilet lights off
@@ -209,7 +179,7 @@
     path: knapoc/light_off_time.yaml
     input:
       on_time: '600'
-      light_entity: light.color_temperature_light_15
+      light_entity: light.tradfri_gu10_light
 
 - id: '1609948156900'
   alias: turn bathroom lights off
@@ -218,7 +188,7 @@
     path: knapoc/light_off_time.yaml
     input:
       on_time: '2700'
-      light_entity: light.light_7
+      light_entity: light.silicon_labs_ezsp_bathroom_lights
 
 # - id: '1609948156901'
 #   alias: turn hall lights off
@@ -252,10 +222,9 @@
           entity_id: light.nachttischlampe
           domain: light
       one_to_one:
-        - type: toggle
-          device_id: c415d227da5448fc83453f4441dde0c7
-          entity_id: light.bathroom_spotsots
-          domain: light
+        - service: light.toggle
+          target:
+            entity_id: light.tradfri_e27_light_3
 
 - id: '1614239882832'
   alias: Tag nightstandlamp is scanned
@@ -269,32 +238,37 @@
       domain: light
   mode: single
 - id: '1636754173406'
-  alias: deCONZ - Philips Hue Dimmer Switch - Custom Actions
-  description: ''
+  description: 'RWL021 living room'
+  alias: ZHA - Philips Hue Dimmer Switch Config
   use_blueprint:
-    path: knapoc/deconz-rwl021-customized.yaml
+    path: knapoc/ZHA - Hue Dimmer Fully Configurable.yaml
     input:
       remote: 938228f202a949d19fa3e810ee9520d3
-      button_one_short_release:
+      button_on_short_release:
         - service: light.turn_on
-          target:
-            entity_id: light.ceiling_lamp
           data:
             transition: 1
-      button_one_hold:
-        - service: light.turn_on
           target:
-            entity_id: light.floor_lamp
-      button_two_short_release:
+            entity_id: light.hue_ltc001_light
+      button_on_long_press:
+        - service: light.turn_on
+          data:
+            transition: 1
+          target:
+            entity_id: light.hue_lct015_light
+      button_up_double_press:
         - condition: state
-          entity_id: light.ceiling_lamp
-          state: 'on'
+          entity_id: light.hue_ltc001_light
+          state: "on"
         - service: scene.turn_on
           data_template:
             transition: 1
-            entity_id: >
-              scene.{{states("input_select.main_light_living_room_scene").replace(" ","_") | regex_replace(find="[\(\)]", replace="")}}
+            entity_id: >-
+              scene.{{states("input_select.main_light_living_room_scene").replace(" ","_") |
+              regex_replace(find="[\(\)]", replace="")}}
         - service: input_select.select_next
+          data:
+            cycle: true
           target:
             entity_id: input_select.main_light_living_room_scene
         - delay:
@@ -305,28 +279,32 @@
         - service: input_select.select_first
           target:
             entity_id: input_select.main_light_living_room_scene
-      button_two_hold:
+      button_up_long_press:
         - service: light.turn_on
-          target:
-            entity_id: light.ceiling_lamp
           data:
             transition: 1
             brightness_step_pct: 10
-      button_three_hold:
+          target:
+            entity_id: light.hue_ltc001_light
+      button_down_double_press:
+        - service: input_boolean.toggle
+          target:
+            entity_id: input_boolean.loop_livingcolors_2
+      button_down_long_press:
         - service: light.turn_on
-          target:
-            entity_id: light.ceiling_lamp
           data:
-            transition: 1
+            transition: 0
             brightness_step_pct: -10
-      button_four_short_release:
+          target:
+            entity_id: light.hue_ltc001_light
+      button_off_short_release:
         - service: light.turn_off
           target:
-            entity_id: light.ceiling_lamp
-      button_four_hold:
+            entity_id: light.hue_ltc001_light
+      button_off_long_press:
         - service: light.turn_off
           target:
-            entity_id: light.floor_lamp
+            entity_id: light.hue_lct015_light
 - id: '1670407983636'
   alias: bathroom - light switch
   description: ''
@@ -337,65 +315,39 @@
       light:
         entity_id: light.bathroom_spots
 - id: '1636754173407'
-  alias: deCONZ - Philips Hue Dimmer Switch - Custom Actions
-  description: ''
+  description: 'RWL021 dining room'
+  alias: ZHA - Philips Hue Dimmer Switch Config
   use_blueprint:
-    path: knapoc/deconz-rwl021-customized.yaml
+    path: knapoc/ZHA - Hue Dimmer Fully Configurable.yaml
     input:
       remote: 9384270cc5b44d75918cd75e753cc28c
-      button_one_short_release:
+      button_on_short_release:
         - service: light.turn_on
           target:
-            entity_id: light.light_8
-          data:
-            transition: 1
-      # button_one_hold:
-      #   - service: light.turn_on
-      #     target:
-      #       entity_id: light.nachttischlampe
-      # button_two_short_release:
-      #   - condition: state
-      #     entity_id: light.bathroom_spotsots
-      #     state: 'on'
-      #   - service: scene.turn_on
-      #     data_template:
-      #       transition: 1
-      #       entity_id: >
-      #         scene.{{states("input_select.main_light_bed_room_scene").replace(" ","_") | regex_replace(find="[\(\)]", replace="")}}
-      #   - service: input_select.select_next
-      #     target:
-      #       entity_id: input_select.main_light_bed_room_scene
-      #   - delay:
-      #       hours: 0
-      #       minutes: 0
-      #       seconds: 30
-      #       milliseconds: 0
-      #   - service: input_select.select_first
-      #     target:
-      #       entity_id: input_select.main_light_bed_room_scene
-      button_two_hold:
+            entity_id: light.tradfri_e27_light
+      button_on_long_release:
         - service: light.turn_on
           target:
-            entity_id: light.light_8
+            entity_id: light.tradfri_e27_light_4
+      button_off_short_release:
+        - service: light.turn_off
+          target:
+            entity_id: light.tradfri_e27_light
+      button_off_long_release:
+        - service: light.turn_off
+          target:
+            entity_id: light.tradfri_e27_light_4
+      button_up_long_press:
+        - service: light.turn_on
           data:
             transition: 1
             brightness_step_pct: 10
-      # button_three_short_release:
-      #   - service: light.toggle
-      #     target:
-      #       entity_id: light.schreibtischlampe
-      button_three_hold:
-        - service: light.turn_on
           target:
-            entity_id: light.light_8
+            entity_id: light.tradfri_e27_light
+      button_down_long_press:
+        - service: light.turn_on
           data:
             transition: 1
             brightness_step_pct: -10
-      button_four_short_release:
-        - service: light.turn_off
           target:
-            entity_id: light.light_8
-      # button_four_hold:
-      #   - service: light.turn_off
-      #     target:
-      #       entity_id: light.nachttischlampe
+            entity_id: light.tradfri_e27_light
