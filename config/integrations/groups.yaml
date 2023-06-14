@@ -5,5 +5,5 @@ wohnzimmer:
   entities:
     - media_player.sony_bravia_tv
     - media_player.playstation_4
-    - light.ceiling_lamp
-    - light.floor_lamp
+    - light.hue_ltc001_light
+    - light.hue_lct015_light
