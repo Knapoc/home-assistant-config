@@ -35,7 +35,7 @@
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'  # button
-                  entity: light.ceiling_lamp
+                  entity: light.hue_ltc001_light
                   icon: 'mdi:wall-sconce-flat'
                   show_icon: true
                   show_name: false
@@ -59,7 +59,7 @@
                   hold_action:
                     action: more-info
                 - type: 'custom:button-card'  # button
-                  entity: light.floor_lamp
+                  entity: light.hue_lct015_light
                   icon: 'mdi:floor-lamp'
                   show_icon: true
                   show_name: false
@@ -308,352 +308,6 @@
         - type: markdown  ### column
           content: |
             # Bed room
-            ## Lights and effects
-          card_mod:
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown$: |
-                  ha-markdown-element {
-                    letter-spacing: 0;
-                  }
-                  h1 {
-                    font-size: 20px !important;
-                    margin-block-end: 0.2em !important;
-                  }
-                  h2 {
-                    font-size: 15px !important;
-                    margin-block-start: 0.2em !important;
-                  }
-        - type: vertical-stack  ### Light Buttons
-          cards:
-            - type: horizontal-stack
-              cards:
-                - type: 'custom:button-card'  # button
-                  entity: light.bathroom_spotsots
-                  icon: 'mdi:track-light'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'  # button
-                  entity: light.spot_1
-                  icon: 'mdi:lightbulb'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'  # button
-                  entity: light.spot_2
-                  icon: 'mdi:lightbulb'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'  # button
-                  entity: light.spot_3
-                  icon: 'mdi:lightbulb'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-                - type: 'custom:button-card'  # button
-                  entity: input_boolean.loop_livingcolors_1
-                  icon: 'mdi:sync'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
-                  card_mod:
-                    class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
-        - type: markdown  ### Scenes
-          content: |
-            # Bed room
-            ## Light scenes
-          card_mod:
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown$: |
-                  ha-markdown-element {
-                    letter-spacing: 0;
-                  }
-                  h1 {
-                    font-size: 20px !important;
-                    margin-block-end: 0.2em !important;
-                  }
-                  h2 {
-                    font-size: 15px !important;
-                    margin-block-start: 0.2em !important;
-                  }
-        - type: vertical-stack
-          cards:
-            - type: horizontal-stack  # Bright Scene
-              cards:
-                - type: 'custom:button-card'
-                  icon: 'mdi:brightness-5'
-                  show_icon: true
-                  show_name: false
-                  card_mod:
-                    class: soft-ui
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
-                      entity_id: scene.deckenspots_bright
-                    haptic: medium
-                - type: markdown
-                  content: |
-                    # Bright
-                    ## Warm white on full brightness
-                  card_mod:
-                    style:
-                      .: |
-                        ha-card {
-                          --ha-card-background: none !important;
-                          box-shadow: none !important;
-                        }
-                      ha-markdown$: |
-                          ha-markdown-element {
-                            letter-spacing: 0;
-                          }
-                          h1 {
-                            font-size: 20px !important;
-                            margin-block-end: 0.2em !important;
-                          }
-                          h2 {
-                            font-size: 15px !important;
-                            margin-block-start: 0.2em !important;
-                          }
-            - type: horizontal-stack  # Energize Scene
-              cards:
-                - type: 'custom:button-card'
-                  icon: 'mdi:white-balance-sunny'
-                  show_icon: true
-                  show_name: false
-                  card_mod:
-                    class: soft-ui
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
-                      entity_id: scene.deckenspots_energize
-                    haptic: medium
-                - type: markdown
-                  content: |
-                    # Energize
-                    ## Cool daylight
-                  card_mod:
-                    style:
-                      .: |
-                        ha-card {
-                          --ha-card-background: none !important;
-                          box-shadow: none !important;
-                        }
-                      ha-markdown$: |
-                          ha-markdown-element {
-                            letter-spacing: 0;
-                          }
-                          h1 {
-                            font-size: 20px !important;
-                            margin-block-end: 0.2em !important;
-                          }
-                          h2 {
-                            font-size: 15px !important;
-                            margin-block-start: 0.2em !important;
-                          }
-            - type: horizontal-stack  # Read Scene
-              cards:
-                - type: 'custom:button-card'
-                  icon: 'mdi:book-open-page-variant'
-                  show_icon: true
-                  show_name: false
-                  card_mod:
-                    class: soft-ui
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
-                      entity_id: scene.deckenspots_read
-                    haptic: medium
-                - type: markdown
-                  content: |
-                    # Read
-                    ## Daylight to read
-                  card_mod:
-                    style:
-                      .: |
-                        ha-card {
-                          --ha-card-background: none !important;
-                          box-shadow: none !important;
-                        }
-                      ha-markdown$: |
-                          ha-markdown-element {
-                            letter-spacing: 0;
-                          }
-                          h1 {
-                            font-size: 20px !important;
-                            margin-block-end: 0.2em !important;
-                          }
-                          h2 {
-                            font-size: 15px !important;
-                            margin-block-start: 0.2em !important;
-                          }
-            - type: horizontal-stack  # Night Scene
-              cards:
-                - type: 'custom:button-card'
-                  icon: 'mdi:weather-night'
-                  show_icon: true
-                  show_name: false
-                  card_mod:
-                    class: soft-ui
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
-                      entity_id: scene.deckenspots_nightlight
-                    haptic: medium
-                - type: markdown
-                  content: |
-                    # Nightlight
-                    ## Warm light dimmed
-                  card_mod:
-                    style:
-                      .: |
-                        ha-card {
-                          --ha-card-background: none !important;
-                          box-shadow: none !important;
-                        }
-                      ha-markdown$: |
-                          ha-markdown-element {
-                            letter-spacing: 0;
-                          }
-                          h1 {
-                            font-size: 20px !important;
-                            margin-block-end: 0.2em !important;
-                          }
-                          h2 {
-                            font-size: 15px !important;
-                            margin-block-start: 0.2em !important;
-                          }
-    - type: vertical-stack  # right column
-      cards:
-        - type: markdown  ### column
-          content: |
-            # Kitchen
             ## Lights
           card_mod:
             style:
@@ -679,8 +333,8 @@
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'  # button
-                  entity: light.kuche
-                  icon: 'mdi:silverware-fork-knife'
+                  entity: light.tradfri_e27_light_3
+                  icon: 'mdi:bed-queen-outline'
                   show_icon: true
                   show_name: false
                   state:
@@ -703,8 +357,59 @@
                   hold_action:
                     action: more-info
                 - type: 'custom:button-card'  # button
-                  entity: light.light_10
-                  icon: 'mdi:lightbulb'
+                  entity: light.hue_lwe007_light
+                  icon: 'mdi:coach-lamp'
+                  show_icon: true
+                  show_name: false
+                  state:
+                    - styles:
+                        icon:
+                          - color: var(--paper-item-icon-active-color)
+                        card:
+                          - box-shadow: var(--soft-ui-pressed)
+                      value: 'on'
+                  card_mod:
+                    class: soft-ui
+                  styles:
+                    card:
+                      - width: 55px
+                      - height: 55px
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+        - type: markdown  ### column
+          content: |
+            # Dining room
+            ## Lights
+          card_mod:
+            style:
+              .: |
+                ha-card {
+                  --ha-card-background: none !important;
+                  box-shadow: none !important;
+                }
+              ha-markdown$: |
+                  ha-markdown-element {
+                    letter-spacing: 0;
+                  }
+                  h1 {
+                    font-size: 20px !important;
+                    margin-block-end: 0.2em !important;
+                  }
+                  h2 {
+                    font-size: 15px !important;
+                    margin-block-start: 0.2em !important;
+                  }
+        - type: vertical-stack  ### Light Buttons
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: 'custom:button-card'  # button
+                  entity: light.tradfri_e27_light
+                  icon: 'mdi:table-furniture'
                   show_icon: true
                   show_name: false
                   state:
@@ -727,8 +432,8 @@
                   hold_action:
                     action: more-info
                 - type: 'custom:button-card'  # button
-                  entity: light.light_11
-                  icon: 'mdi:lightbulb'
+                  entity: light.tradfri_e27_light_4
+                  icon: 'mdi:floor-lamp'
                   show_icon: true
                   show_name: false
                   state:
@@ -776,7 +481,7 @@
         - type: horizontal-stack
           cards:
             - type: 'custom:button-card'  # button
-              entity: light.light_7
+              entity: light.silicon_labs_ezsp_bathroom_lights
               icon: 'mdi:shower'
               show_icon: true
               show_name: false
@@ -800,7 +505,7 @@
               hold_action:
                 action: more-info
             - type: 'custom:button-card'  # button
-              entity: light.color_temperature_light_15
+              entity: light.tradfri_gu10_light
               icon: 'mdi:paper-roll'
               show_icon: true
               show_name: false
@@ -824,8 +529,8 @@
               hold_action:
                 action: more-info
             - type: 'custom:button-card'  # button
-              entity: light.light_8
-              icon: 'mdi:table-furniture'
+              entity: light.tradfri_e27_light_2
+              icon: 'mdi:chair-rolling'
               show_icon: true
               show_name: false
               state:
@@ -848,32 +553,8 @@
               hold_action:
                 action: more-info
             - type: 'custom:button-card'  # button
-              entity: light.nachttischlampe
-              icon: 'mdi:coach-lamp'
-              show_icon: true
-              show_name: false
-              state:
-                - styles:
-                    icon:
-                      - color: var(--paper-item-icon-active-color)
-                    card:
-                      - box-shadow: var(--soft-ui-pressed)
-                  value: 'on'
-              card_mod:
-                class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: toggle
-              hold_action:
-                action: more-info
-            - type: 'custom:button-card'  # button
-              entity: light.schreibtischlampe
-              icon: 'mdi:desk-lamp'
+              entity: light.tradfri_e27_light_5
+              icon: 'mdi:wardrobe'
               show_icon: true
               show_name: false
               state:

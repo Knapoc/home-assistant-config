@@ -84,11 +84,7 @@
                       - width: 80px
                       - height: 80px
                     icon:
-                      - color: >
-                          [[[
-                            if (states['binary_sensor.window_openclose_1'].state == 'on') return 'var(--paper-item-icon-active-color)';
-                            else return 'var(--primary-text-color)';
-                          ]]]
+                      - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   double_tap_action:
@@ -114,11 +110,7 @@
                       - width: 80px
                       - height: 80px
                     icon:
-                      - color: >
-                          [[[
-                            if (states['binary_sensor.window_openclose_2'].state == 'on') return 'var(--paper-item-icon-active-color)';
-                            else return 'var(--primary-text-color)';
-                          ]]]
+                      - color: var(--primary-text-color)
                   tap_action:
                     action: toggle
                   double_tap_action:

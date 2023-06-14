@@ -122,7 +122,7 @@
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'  # button
-                  entity: light.ceiling_lamp
+                  entity: light.hue_ltc001_light
                   icon: 'mdi:wall-sconce-flat'
                   show_icon: true
                   show_name: false
@@ -146,7 +146,7 @@
                   hold_action:
                     action: more-info
                 - type: 'custom:button-card'  # button
-                  entity: light.floor_lamp
+                  entity: light.hue_lct015_light
                   icon: 'mdi:floor-lamp'
                   show_icon: true
                   show_name: false
@@ -175,8 +175,8 @@
                     service_data:
                       entity_id: input_boolean.loop_livingcolors_2
                 - type: 'custom:button-card'  # button
-                  entity: light.bathroom_spotsots
-                  icon: 'mdi:track-light'
+                  entity: light.tradfri_e27_light_3
+                  icon: 'mdi:bed-queen-outline'
                   show_icon: true
                   show_name: false
                   state:
@@ -198,13 +198,8 @@
                     action: toggle
                   hold_action:
                     action: more-info
-                  double_tap_action:
-                    action: call-service
-                    service: input_boolean.toggle
-                    service_data:
-                      entity_id: input_boolean.loop_livingcolors_1
                 - type: 'custom:button-card'  # button
-                  entity: light.light_8
+                  entity: light.tradfri_e27_light
                   icon: 'mdi:table-furniture'
                   show_icon: true
                   show_name: false
@@ -228,7 +223,7 @@
                   hold_action:
                     action: more-info
                 - type: 'custom:button-card'  # button
-                  entity: light.light_7
+                  entity: light.silicon_labs_ezsp_bathroom_lights
                   icon: 'mdi:shower'
                   show_icon: true
                   show_name: false
@@ -512,10 +507,10 @@
                 service: light.toggle
                 service_data:
                   entity_id:
-                    - light.light_7
+                    - light.silicon_labs_ezsp_bathroom_lights
                     - light.kuche
                     - light.bedroom
-                    - light.color_temperature_light_15
+                    - light.tradfri_gu10_light
                     - light.hall
                     - light.living_room
             - type: 'custom:button-card'  # Blinds
