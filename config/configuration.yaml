@@ -39,6 +39,18 @@ logger:
     # pyhap: debug
     # pydeconz: debug
     # homeassistant.components.deconz: debug
+    # homeassistant.core: debug
+    # homeassistant.components.zha: debug
+    # bellows.zigbee.application: debug
+    # bellows.ezsp: debug
+    # zigpy: debug
+    # zigpy_deconz.zigbee.application: debug
+    # zigpy_deconz.api: debug
+    # zigpy_xbee.zigbee.application: debug
+    # zigpy_xbee.api: debug
+    # zigpy_zigate: debug
+    # zigpy_znp: debug
+    # zhaquirks: debug
   filters:
     homeassistant.components.shell_command:
       - '^Error running command\:.*ssh.*sudo shutdown -h now.*return code: 255$'
@@ -100,5 +112,5 @@ panel_iframe:
 zha:
   zigpy_config:
     ota:
-      ikea_provider: true
+      ikea_provider: false
       otau_directory: /mnt/zha-otau
