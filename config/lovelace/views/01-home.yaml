@@ -41,59 +41,6 @@
           name: at home
           card_mod:
             class: soft-ui
-        - type: markdown  ### Scenes
-          content: |
-            # Media players
-          card_mod:
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown$: |
-                  ha-markdown-element {
-                    letter-spacing: 0;
-                  }
-                  h1 {
-                    font-size: 20px !important;
-                    margin-block-end: 0.2em !important;
-                  }
-        - type: horizontal-stack
-          cards:
-            - type: custom:mini-media-player
-              entity: media_player.homepod_livingroom
-              hide:
-                power: true
-              card_mod:
-                class: soft-ui
-            - type: custom:mini-media-player
-              entity: media_player.sonos_esszimmer
-              hide:
-                power: true
-                mute: true
-              card_mod:
-                class: soft-ui
-
-        - type: custom:mini-media-player  # tv
-          entity: media_player.sony_bravia_tv
-          hide:
-            info: true
-          card_mod:
-            class: soft-ui
-        - type: custom:mini-media-player  # ps4
-          entity: media_player.playstation_4
-          source: icon
-          toggle_power: true
-          hide:
-            volume: true
-            play_pause: true
-            play_stop: false
-            controls: true
-          card_mod:
-            class: soft-ui
-    - type: vertical-stack  # right column
-      cards:
         - type: markdown  ### Lights
           content: |
             # Lights
@@ -325,6 +272,196 @@
                 service_data:
                   entity_id: scene.deckenleuchte_bright
                 haptic: medium
+        - type: markdown  # Miscellaneous
+          content: |
+            # Miscellaneous
+            ## Lights, plants and settings
+          card_mod:
+            style:
+              .: |
+                ha-card {
+                  --ha-card-background: none !important;
+                  box-shadow: none !important;
+                }
+              ha-markdown$: |
+                  ha-markdown-element {
+                    letter-spacing: 0;
+                  }
+                  h1 {
+                    font-size: 20px !important;
+                    margin-block-end: 0.2em !important;
+                  }
+                  h2 {
+                    font-size: 15px !important;
+                    margin-block-start: 0.2em !important;
+                  }
+        - type: horizontal-stack
+          cards:
+            - type: 'custom:button-card'  # Lights
+              icon: 'mdi:lightbulb'
+              show_icon: true
+              show_name: false
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: navigate
+                navigation_path: /lovelace/lights
+              hold_action:
+                action: call-service
+                service: light.toggle
+                service_data:
+                  entity_id:
+                    - light.silicon_labs_ezsp_bathroom_lights
+                    - light.kuche
+                    - light.bedroom
+                    - light.tradfri_gu10_light
+                    - light.hall
+                    - light.living_room
+            - type: 'custom:button-card'  # Blinds
+              icon: 'mdi:window-closed'
+              show_icon: true
+              show_name: false
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: navigate
+                navigation_path: /lovelace/blinds
+              hold_action:
+                action: call-service
+                service: cover.toggle
+                service_data:
+                  entity_id:
+                    - cover.fyrtur_1
+                    - cover.fyrtur_2
+                    - cover.fyrtur_3
+                    - cover.fyrtur_4
+            - type: 'custom:button-card'  # Plants
+              icon: 'mdi:sprout'
+              show_icon: true
+              show_name: false
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: navigate
+                navigation_path: /lovelace/plants
+            - type: 'custom:button-card'  # Vacuum
+              icon: 'mdi:robot-vacuum'
+              show_icon: true
+              show_name: false
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: navigate
+                navigation_path: /lovelace/vacuum
+            - type: 'custom:button-card'  # Alarm
+              icon: 'mdi:alarm'
+              show_icon: true
+              show_name: false
+              card_mod:
+                class: soft-ui
+              styles:
+                card:
+                  - width: 55px
+                  - height: 55px
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: navigate
+                navigation_path: /lovelace/alarm
+    - type: vertical-stack  # right column
+      cards:
+        - type: markdown  ### Scenes
+          content: |
+            # Media players
+          card_mod:
+            style:
+              .: |
+                ha-card {
+                  --ha-card-background: none !important;
+                  box-shadow: none !important;
+                }
+              ha-markdown$: |
+                  ha-markdown-element {
+                    letter-spacing: 0;
+                  }
+                  h1 {
+                    font-size: 20px !important;
+                    margin-block-end: 0.2em !important;
+                  }
+        - type: horizontal-stack
+          cards:
+            - type: custom:mini-media-player
+              entity: media_player.homepod_livingroom
+              info: scroll
+              hide:
+                power: true
+              card_mod:
+                class: soft-ui
+            - type: custom:mini-media-player
+              entity: media_player.homepod_study
+              info: scroll
+              hide:
+                power: true
+              card_mod:
+                class: soft-ui
+        - type: horizontal-stack
+          cards:
+            - type: custom:mini-media-player
+              entity: media_player.homepod_kitchen
+              info: scroll
+              hide:
+                power: true
+              card_mod:
+                class: soft-ui
+            - type: custom:mini-media-player
+              entity: media_player.sonos_esszimmer
+              info: scroll
+              hide:
+                power: true
+                mute: true
+              card_mod:
+                class: soft-ui
+        - type: custom:mini-media-player  # tv
+          entity: media_player.sony_bravia_tv
+          hide:
+            info: true
+          card_mod:
+            class: soft-ui
+        - type: custom:mini-media-player  # ps4
+          entity: media_player.playstation_4
+          source: icon
+          toggle_power: true
+          hide:
+            volume: true
+            play_pause: true
+            play_stop: false
+            controls: true
+          card_mod:
+            class: soft-ui
         - type: markdown
           content: |
             # Vacuum
@@ -462,123 +599,3 @@
                     service: vacuum.return_to_base
                     service_data:
                       entity_id: vacuum.valetudo_roborock
-        - type: markdown  # Miscellaneous
-          content: |
-            # Miscellaneous
-            ## Lights, plants and settings
-          card_mod:
-            style:
-              .: |
-                ha-card {
-                  --ha-card-background: none !important;
-                  box-shadow: none !important;
-                }
-              ha-markdown$: |
-                  ha-markdown-element {
-                    letter-spacing: 0;
-                  }
-                  h1 {
-                    font-size: 20px !important;
-                    margin-block-end: 0.2em !important;
-                  }
-                  h2 {
-                    font-size: 15px !important;
-                    margin-block-start: 0.2em !important;
-                  }
-        - type: horizontal-stack
-          cards:
-            - type: 'custom:button-card'  # Lights
-              icon: 'mdi:lightbulb'
-              show_icon: true
-              show_name: false
-              card_mod:
-                class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/lights
-              hold_action:
-                action: call-service
-                service: light.toggle
-                service_data:
-                  entity_id:
-                    - light.silicon_labs_ezsp_bathroom_lights
-                    - light.kuche
-                    - light.bedroom
-                    - light.tradfri_gu10_light
-                    - light.hall
-                    - light.living_room
-            - type: 'custom:button-card'  # Blinds
-              icon: 'mdi:window-closed'
-              show_icon: true
-              show_name: false
-              card_mod:
-                class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/blinds
-              hold_action:
-                action: call-service
-                service: cover.toggle
-                service_data:
-                  entity_id:
-                    - cover.fyrtur_1
-                    - cover.fyrtur_2
-                    - cover.fyrtur_3
-                    - cover.fyrtur_4
-            - type: 'custom:button-card'  # Plants
-              icon: 'mdi:sprout'
-              show_icon: true
-              show_name: false
-              card_mod:
-                class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/plants
-            - type: 'custom:button-card'  # Vacuum
-              icon: 'mdi:robot-vacuum'
-              show_icon: true
-              show_name: false
-              card_mod:
-                class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/vacuum
-            - type: 'custom:button-card'  # Alarm
-              icon: 'mdi:alarm'
-              show_icon: true
-              show_name: false
-              card_mod:
-                class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/alarm
