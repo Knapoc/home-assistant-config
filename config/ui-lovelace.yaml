@@ -12,3 +12,84 @@ x-vacuum-buttons: &vacuum-buttons
 excluded_entities: !include /config/lovelace/excluded-entities.yaml
 
 views: !include_dir_merge_list lovelace/views/
+
+button_card_templates:
+  small_button:
+    show_icon: true
+    show_name: false
+    styles:
+      card:
+        - width: 55px
+        - height: 55px
+      icon:
+        - color: var(--primary-text-color)
+  big_button:
+    show_icon: true
+    show_name: false
+    styles:
+      card:
+        - width: 80px
+        - height: 80px
+      icon:
+        - color: var(--primary-text-color)
+  toggleable_small_button_on_off:
+    template: small_button
+    state:
+      - styles:
+          icon:
+            - color: var(--paper-item-icon-active-color)
+          card:
+            - box-shadow: var(--soft-ui-pressed)
+        value: 'on'
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+  toggleable_big_button_open_close:
+    template: big_button
+    state:
+      - styles:
+          icon:
+            - color: var(--paper-item-icon-active-color)
+          card:
+            - box-shadow: var(--soft-ui-pressed)
+        value: 'open'
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+  scene_button:
+    template: big_button
+    variables:
+      scene_name: ""
+    tap_action:
+      action: call-service
+      service: scene.turn_on
+      service_data:
+        entity_id: '[[[ return variables.scene_name ]]]'
+      haptic: medium
+  navigate_button:
+    template: small_button
+    variables:
+      navigation_path: ""
+    tap_action:
+      action: navigate
+      navigation_path: '[[[ return variables.navigation_path ]]]'
+  vacuum_mini_button:
+    variables:
+      vacuum: ""
+      service_type: ""
+    entity: '[[[ return variables.vacuum ]]]'
+    color: auto
+    size: 25%
+    show_name: false
+    show_icon: true
+    styles:
+      icon:
+        - color: var(--primary-text-color)
+    tap_action:
+      action: call-service
+      service: '[[[ return variables.service_type ]]]'
+      service_data:
+        entity_id: '[[[ return variables.vacuum ]]]'
+

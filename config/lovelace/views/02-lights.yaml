@@ -35,77 +35,23 @@
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: light.hue_ltc001_light
                   icon: 'mdi:wall-sconce-flat'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: light.hue_lct015_light
                   icon: 'mdi:floor-lamp'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: input_boolean.loop_livingcolors_2
                   icon: 'mdi:sync'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
         - type: markdown  ### Scenes
           content: |
             # Living room
@@ -134,23 +80,12 @@
             - type: horizontal-stack  # Bright Scene
               cards:
                 - type: 'custom:button-card'
+                  template: scene_button
+                  variables:
+                    scene_name: "scene.deckenleuchte_bright"
                   icon: 'mdi:brightness-5'
-                  show_icon: true
-                  show_name: false
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
-                      entity_id: scene.deckenleuchte_bright
-                    haptic: medium
                 - type: markdown
                   content: |
                     # Bright
@@ -177,23 +112,12 @@
             - type: horizontal-stack  # Energize Scene
               cards:
                 - type: 'custom:button-card'
+                  template: scene_button
+                  variables:
+                    scene_name: "scene.deckenleuchte_energize"
                   icon: 'mdi:white-balance-sunny'
-                  show_icon: true
-                  show_name: false
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
-                      entity_id: scene.deckenleuchte_energize
-                    haptic: medium
                 - type: markdown
                   content: |
                     # Energize
@@ -220,23 +144,12 @@
             - type: horizontal-stack  # Read Scene
               cards:
                 - type: 'custom:button-card'
+                  template: scene_button
+                  variables:
+                    scene_name: "scene.deckenleuchte_read"
                   icon: 'mdi:book-open-page-variant'
-                  show_icon: true
-                  show_name: false
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
-                      entity_id: scene.deckenleuchte_read
-                    haptic: medium
                 - type: markdown
                   content: |
                     # Read
@@ -263,23 +176,12 @@
             - type: horizontal-stack  # Night Scene
               cards:
                 - type: 'custom:button-card'
+                  template: scene_button
+                  variables:
+                    scene_name: "scene.deckenleuchte_nightlight"
                   icon: 'mdi:weather-night'
-                  show_icon: true
-                  show_name: false
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 80px
-                      - height: 80px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: scene.turn_on
-                    service_data:
-                      entity_id: scene.deckenleuchte_nightlight
-                    haptic: medium
                 - type: markdown
                   content: |
                     # Nightlight
@@ -333,53 +235,17 @@
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: light.tradfri_e27_light_3
                   icon: 'mdi:bed-queen-outline'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: light.hue_lwe007_light
                   icon: 'mdi:coach-lamp'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
         - type: markdown  ### column
           content: |
             # Dining room
@@ -408,53 +274,17 @@
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: light.tradfri_e27_light
                   icon: 'mdi:table-furniture'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: light.tradfri_e27_light_4
                   icon: 'mdi:floor-lamp'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
         - type: markdown  ### column
           content: |
             # Other
@@ -481,101 +311,29 @@
         - type: horizontal-stack
           cards:
             - type: 'custom:button-card'  # button
+              template: toggleable_small_button_on_off
               entity: light.silicon_labs_ezsp_bathroom_lights
               icon: 'mdi:shower'
-              show_icon: true
-              show_name: false
-              state:
-                - styles:
-                    icon:
-                      - color: var(--paper-item-icon-active-color)
-                    card:
-                      - box-shadow: var(--soft-ui-pressed)
-                  value: 'on'
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: toggle
-              hold_action:
-                action: more-info
             - type: 'custom:button-card'  # button
+              template: toggleable_small_button_on_off
               entity: light.tradfri_gu10_light
               icon: 'mdi:paper-roll'
-              show_icon: true
-              show_name: false
-              state:
-                - styles:
-                    icon:
-                      - color: var(--paper-item-icon-active-color)
-                    card:
-                      - box-shadow: var(--soft-ui-pressed)
-                  value: 'on'
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: toggle
-              hold_action:
-                action: more-info
             - type: 'custom:button-card'  # button
+              template: toggleable_small_button_on_off
               entity: light.tradfri_e27_light_2
               icon: 'mdi:chair-rolling'
-              show_icon: true
-              show_name: false
-              state:
-                - styles:
-                    icon:
-                      - color: var(--paper-item-icon-active-color)
-                    card:
-                      - box-shadow: var(--soft-ui-pressed)
-                  value: 'on'
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: toggle
-              hold_action:
-                action: more-info
             - type: 'custom:button-card'  # button
+              template: toggleable_small_button_on_off
               entity: light.tradfri_e27_light_5
               icon: 'mdi:wardrobe'
-              show_icon: true
-              show_name: false
-              state:
-                - styles:
-                    icon:
-                      - color: var(--paper-item-icon-active-color)
-                    card:
-                      - box-shadow: var(--soft-ui-pressed)
-                  value: 'on'
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: toggle
-              hold_action:
-                action: more-info
         - type: markdown  ### column
           content: |
             # Adaptive lighting
@@ -609,29 +367,11 @@
         - type: horizontal-stack
           cards:
             - type: 'custom:button-card'  # button
+              template: toggleable_small_button_on_off
               entity: switch.adaptive_lighting_main_lights
               icon: 'mdi:theme-light-dark'
-              show_icon: true
-              show_name: false
-              state:
-                - styles:
-                    icon:
-                      - color: var(--paper-item-icon-active-color)
-                    card:
-                      - box-shadow: var(--soft-ui-pressed)
-                  value: 'on'
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: toggle
-              hold_action:
-                action: more-info
               double_tap_action:
                 action: call-service
                 service: adaptive_lighting.set_manual_control
@@ -639,74 +379,20 @@
                   entity_id: switch.adaptive_lighting_main_lights
                   manual_control: false
             - type: 'custom:button-card'  # button
+              template: toggleable_small_button_on_off
               entity: switch.adaptive_lighting_adapt_brightness_main_lights
               icon: 'mdi:brightness-6'
-              show_icon: true
-              show_name: false
-              state:
-                - styles:
-                    icon:
-                      - color: var(--paper-item-icon-active-color)
-                    card:
-                      - box-shadow: var(--soft-ui-pressed)
-                  value: 'on'
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: toggle
-              hold_action:
-                action: more-info
             - type: 'custom:button-card'  # button
+              template: toggleable_small_button_on_off
               entity: switch.adaptive_lighting_adapt_color_main_lights
               icon: 'mdi:contrast'
-              show_icon: true
-              show_name: false
-              state:
-                - styles:
-                    icon:
-                      - color: var(--paper-item-icon-active-color)
-                    card:
-                      - box-shadow: var(--soft-ui-pressed)
-                  value: 'on'
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: toggle
-              hold_action:
-                action: more-info
             - type: 'custom:button-card'  # button
+              template: toggleable_small_button_on_off
               entity: switch.adaptive_lighting_sleep_mode_main_lights
               icon: 'mdi:weather-night'
-              show_icon: true
-              show_name: false
-              state:
-                - styles:
-                    icon:
-                      - color: var(--paper-item-icon-active-color)
-                    card:
-                      - box-shadow: var(--soft-ui-pressed)
-                  value: 'on'
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: toggle
-              hold_action:
-                action: more-info

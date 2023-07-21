@@ -69,130 +69,40 @@
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: light.hue_ltc001_light
                   icon: 'mdi:wall-sconce-flat'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: light.hue_lct015_light
                   icon: 'mdi:floor-lamp'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
                   double_tap_action:
                     action: call-service
                     service: input_boolean.toggle
                     service_data:
                       entity_id: input_boolean.loop_livingcolors_2
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: light.tradfri_e27_light_3
                   icon: 'mdi:bed-queen-outline'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: light.tradfri_e27_light
                   icon: 'mdi:table-furniture'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
                 - type: 'custom:button-card'  # button
+                  template: toggleable_small_button_on_off
                   entity: light.silicon_labs_ezsp_bathroom_lights
                   icon: 'mdi:shower'
-                  show_icon: true
-                  show_name: false
-                  state:
-                    - styles:
-                        icon:
-                          - color: var(--paper-item-icon-active-color)
-                        card:
-                          - box-shadow: var(--soft-ui-pressed)
-                      value: 'on'
                   card_mod:
                     class: soft-ui
-                  styles:
-                    card:
-                      - width: 55px
-                      - height: 55px
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: toggle
-                  hold_action:
-                    action: more-info
         - type: markdown  ### Scenes
           content: |
             # Scenes
@@ -219,59 +129,26 @@
         - type: horizontal-stack  # Netflix Scene
           cards:
             - type: 'custom:button-card'
+              template: scene_button
+              variables:
+                scene_name: "scene.tv_at_night"
               icon: 'mdi:movie-open'
-              show_icon: true
-              show_name: false
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 80px
-                  - height: 80px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: call-service
-                service: scene.turn_on
-                service_data:
-                  entity_id: scene.tv_at_night
-                haptic: medium
             - type: 'custom:button-card'
+              template: scene_button
+              variables:
+                scene_name: "scene.gaming"
               icon: 'mdi:gamepad-square'
-              show_icon: true
-              show_name: false
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 80px
-                  - height: 80px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: call-service
-                service: scene.turn_on
-                service_data:
-                  entity_id: scene.gaming
-                haptic: medium
             - type: 'custom:button-card'
+              template: scene_button
+              variables:
+                scene_name: "scene.deckenleuchte_bright"
               icon: 'mdi:brightness-5'
-              show_icon: true
-              show_name: false
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 80px
-                  - height: 80px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: call-service
-                service: scene.turn_on
-                service_data:
-                  entity_id: scene.deckenleuchte_bright
-                haptic: medium
         - type: markdown  # Miscellaneous
           content: |
             # Miscellaneous
@@ -298,20 +175,12 @@
         - type: horizontal-stack
           cards:
             - type: 'custom:button-card'  # Lights
+              template: navigate_button
+              variables:
+                navigation_path: "/lovelace/lights"
               icon: 'mdi:lightbulb'
-              show_icon: true
-              show_name: false
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/lights
               hold_action:
                 action: call-service
                 service: light.toggle
@@ -324,20 +193,12 @@
                     - light.hall
                     - light.living_room
             - type: 'custom:button-card'  # Blinds
+              template: navigate_button
+              variables:
+                navigation_path: "/lovelace/blinds"
               icon: 'mdi:window-closed'
-              show_icon: true
-              show_name: false
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/blinds
               hold_action:
                 action: call-service
                 service: cover.toggle
@@ -348,50 +209,26 @@
                     - cover.fyrtur_3
                     - cover.fyrtur_4
             - type: 'custom:button-card'  # Plants
+              template: navigate_button
+              variables:
+                navigation_path: "/lovelace/plants"
               icon: 'mdi:sprout'
-              show_icon: true
-              show_name: false
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/plants
             - type: 'custom:button-card'  # Vacuum
+              template: navigate_button
+              variables:
+                navigation_path: "/lovelace/vacuum"
               icon: 'mdi:robot-vacuum'
-              show_icon: true
-              show_name: false
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/vacuum
             - type: 'custom:button-card'  # Alarm
+              template: navigate_button
+              variables:
+                navigation_path: "/lovelace/alarm"
               icon: 'mdi:alarm'
-              show_icon: true
-              show_name: false
               card_mod:
                 class: soft-ui
-              styles:
-                card:
-                  - width: 55px
-                  - height: 55px
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/alarm
     - type: vertical-stack  # right column
       cards:
         - type: markdown  ### Scenes
@@ -516,86 +353,38 @@
             - type: horizontal-stack
               cards:
                 - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
+                  template: vacuum_mini_button
+                  variables:
+                    vacuum: "vacuum.valetudo_roborock"
+                    service_type: "vacuum.start"
                   icon: mdi:play
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.start
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
                 - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
+                  template: vacuum_mini_button
+                  variables:
+                    vacuum: "vacuum.valetudo_roborock"
+                    service_type: "vacuum.pause"
                   icon: mdi:pause
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.pause
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
                 - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
+                  template: vacuum_mini_button
+                  variables:
+                    vacuum: "vacuum.valetudo_roborock"
+                    service_type: "vacuum.stop"
                   icon: mdi:stop
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.stop
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
                 - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
+                  template: vacuum_mini_button
+                  variables:
+                    vacuum: "vacuum.valetudo_roborock"
+                    service_type: "vacuum.clean_spot"
                   icon: mdi:broom
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.clean_spot
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
                 - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
+                  template: vacuum_mini_button
+                  variables:
+                    vacuum: "vacuum.valetudo_roborock"
+                    service_type: "vacuum.locate"
                   icon: mdi:map-marker
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.locate
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
                 - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
+                  template: vacuum_mini_button
+                  variables:
+                    vacuum: "vacuum.valetudo_roborock"
+                    service_type: "vacuum.return_to_base"
                   icon: mdi:home-map-marker
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.return_to_base
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
