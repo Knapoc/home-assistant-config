@@ -14,9 +14,11 @@
       - light.hue_*
       - light.tradfri_*
     include_entities:
+      - binary_sensor.eve_motion_f78d
       - climate.netatmo_smart_thermostat
       - media_player.playstation_4
       - script.adaptive_lighting_manual_control_reset
+      - sensor.eve_motion_f78d_light_level
       - sensor.living_room_humidity
       - sensor.living_room_temperature
       - sensor.netatmo_smart_thermostat_current_temperature
@@ -30,6 +32,9 @@
       - cover.*_group
       - media_player.homepod_*
   entity_config:
+    binary_sensor.eve_motion_f78d:
+      linked_battery_sensor: sensor.eve_motion_f78d_battery
+      low_battery_threshold: 20
     input_boolean.loop_livingcolors_1:
       name: "Loop 1"
     input_boolean.loop_livingcolors_2:
