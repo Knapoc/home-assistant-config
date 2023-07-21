@@ -156,7 +156,7 @@
   use_blueprint:
     path: homeassistant/motion_light.yaml
     input:
-      motion_entity: binary_sensor.lumi_lumi_sensor_motion_aq2_motion
+      motion_entity: binary_sensor.eve_motion_f78d
       light_target:
         entity_id: light.tradfri_gu10_light
       no_motion_wait: 180
@@ -200,31 +200,27 @@
 #       light_entity: light.light_9
 
 - id: '1609056340356'
-  alias: Mi Magic Cube
-  description: ''
+  description: ""
+  alias: Aqara Magic Cube
   use_blueprint:
-    path: bergstrom/mi-magic-cube-deconz-45-actions.yaml
+    path: Mikkelmoeller/aqara-magic-cube-zha-51-actions.yaml
     input:
       remote: a0b7f469e80183add666c9a85c9c1084
       cube_shake:
-        - type: toggle
-          device_id: f9c4b764194911eb9b57a98c1840daa3
-          entity_id: light.nachttischlampe
-          domain: light
-      rotate_clockwise:
-        - type: brightness_increase
-          device_id: f9c4b764194911eb9b57a98c1840daa3
-          entity_id: light.nachttischlampe
-          domain: light
-      rotate_counter_clockwise:
-        - type: brightness_decrease
-          device_id: f9c4b764194911eb9b57a98c1840daa3
-          entity_id: light.nachttischlampe
-          domain: light
-      one_to_one:
         - service: light.toggle
+          data: {}
           target:
-            entity_id: light.tradfri_e27_light_3
+            entity_id: light.hue_lwe007_light
+      rotate_right:
+        - device_id: 63240b95629720d5d3c8293e25b59565
+          domain: light
+          entity_id: light.hue_lwe007_light
+          type: brightness_increase
+      rotate_left:
+        - device_id: 63240b95629720d5d3c8293e25b59565
+          domain: light
+          entity_id: light.hue_lwe007_light
+          type: brightness_decrease
 
 - id: '1614239882832'
   alias: Tag nightstandlamp is scanned
@@ -325,7 +321,7 @@
         - service: light.turn_on
           target:
             entity_id: light.tradfri_e27_light
-      button_on_long_release:
+      button_on_long_press:
         - service: light.turn_on
           target:
             entity_id: light.tradfri_e27_light_4
@@ -333,7 +329,7 @@
         - service: light.turn_off
           target:
             entity_id: light.tradfri_e27_light
-      button_off_long_release:
+      button_off_long_press:
         - service: light.turn_off
           target:
             entity_id: light.tradfri_e27_light_4
