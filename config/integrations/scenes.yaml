@@ -11,13 +11,9 @@
     light.hue_lct015_light:
       state: 'on'
     media_player.sony_bravia_tv:
-      device_class: tv
-      friendly_name: Sony Bravia TV
-      icon: mdi:television
-      source: 'Netflix'
       state: 'on'
-      supported_features: 24509
-      volume_level: 0.11
+      media_content_type: app
+      media_content_id: "Apple TV"
 - id: '1579373198256'
   name: Gaming
   entities:
