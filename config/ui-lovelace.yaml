@@ -92,4 +92,3 @@ button_card_templates:
       service: '[[[ return variables.service_type ]]]'
       service_data:
         entity_id: '[[[ return variables.vacuum ]]]'
-
