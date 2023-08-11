@@ -19,7 +19,6 @@
     - type: load_15m
 
 - platform: fail2ban
-  file_path: !secret path_fail2ban
   scan_interval: 180
   jails:
     - !secret f2b_jail1
