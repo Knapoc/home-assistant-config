@@ -60,7 +60,7 @@ mobile_app:
 my:
 network:
 recorder:
-  db_url: !secret mysql_db
+  db_url: !secret db_url
   purge_keep_days: 30
   include: !include integrations/recorder_include.yaml
   exclude: !include integrations/recorder_exclude.yaml
@@ -77,16 +77,20 @@ cover: !include integrations/cover.yaml
 group: !include integrations/groups.yaml
 homekit: !include integrations/homekit.yaml
 input_boolean: !include integrations/input_boolean.yaml
+input_button:
 input_datetime: !include integrations/input_datetime.yaml
 input_number: !include integrations/input_number.yaml
 input_select: !include integrations/input_select.yaml
+input_text:
 media_player: !include integrations/media_player.yaml
 notify: !include integrations/notify.yaml
 plant: !include integrations/plant.yaml
+schedule:
 sensor: !include_dir_merge_list integrations/sensor/
 shell_command: !include integrations/shell_command.yaml
 switch: !include integrations/switch.yaml
 template: !include integrations/template.yaml
+timer:
 zone: !include integrations/zone.yaml
 
 ### other components
