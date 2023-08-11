@@ -13,6 +13,8 @@ from homeassistant.components.light import (
     ATTR_COLOR_TEMP_KELVIN,
     ATTR_HS_COLOR,
     ATTR_RGB_COLOR,
+    ATTR_RGBW_COLOR,
+    ATTR_RGBWW_COLOR,
     ATTR_TRANSITION,
     ATTR_XY_COLOR,
 )
@@ -27,7 +29,10 @@ COLOR_ATTRS = {  # Should ATTR_PROFILE be in here?
     ATTR_HS_COLOR,
     ATTR_RGB_COLOR,
     ATTR_XY_COLOR,
+    ATTR_RGBW_COLOR,
+    ATTR_RGBWW_COLOR,
 }
+
 
 BRIGHTNESS_ATTRS = {
     ATTR_BRIGHTNESS,
@@ -136,6 +141,7 @@ class AdaptationData:
     context: Context
     sleep_time: float
     service_call_datas: AsyncGenerator[ServiceData, None]
+    force: bool
     max_length: int
     which: Literal["brightness", "color", "both"]
     initial_sleep: bool = False
@@ -143,6 +149,20 @@ class AdaptationData:
     async def next_service_call_data(self) -> ServiceData | None:
         """Return data for the next service call, or none if no more data exists."""
         return await anext(self.service_call_datas, None)
+
+    def __str__(self) -> str:
+        """Return a string representation of the data."""
+        return (
+            f"{self.__class__.__name__}("
+            f"entity_id={self.entity_id}, "
+            f"context_id={self.context.id}, "
+            f"sleep_time={self.sleep_time}, "
+            f"force={self.force}, "
+            f"max_length={self.max_length}, "
+            f"which={self.which}, "
+            f"initial_sleep={self.initial_sleep}"
+            ")"
+        )
 
 
 class NoColorOrBrightnessInServiceDataError(Exception):
@@ -174,6 +194,7 @@ def prepare_adaptation_data(
     service_data: ServiceData,
     split: bool,
     filter_by_state: bool,
+    force: bool,
 ) -> AdaptationData:
     """Prepares a data object carrying all data required to execute an adaptation."""
     _LOGGER.debug(
@@ -204,6 +225,7 @@ def prepare_adaptation_data(
         context=context,
         sleep_time=sleep_time,
         service_call_datas=service_data_iterator,
+        force=force,
         max_length=service_datas_length,
         which=lighting_type,
     )
