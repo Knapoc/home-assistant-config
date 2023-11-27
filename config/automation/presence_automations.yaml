@@ -48,6 +48,10 @@
       entity_id: binary_sensor.is_home
       from: 'off'
       to: 'on'
+  condition:
+    condition: state
+    entity_id: binary_sensor.raspberry_pi
+    state: 'off'
   action:
     - service: switch.turn_on
       data:

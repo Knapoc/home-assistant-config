@@ -163,7 +163,7 @@
   mode: single
   trigger:
     - platform: template
-      value_template: "{{ version(states('sensor.hypfer_valetudo_latest_tag')) > (device_attr('vacuum.valetudo_roborock', 'sw_version').split(' ')[0]) }}"
+      value_template: "{{ version(states('sensor.hypfer_valetudo_latest_tag')) > (device_attr('vacuum.valetudo_roborock', 'sw_version').split(' ')[1]) }}"
   action:
     - service: persistent_notification.create
       data:
