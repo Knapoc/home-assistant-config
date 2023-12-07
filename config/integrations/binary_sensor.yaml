@@ -1,11 +1,6 @@
 ---
 # binary sensors
 
-- platform: ping
-  host: !secret rpi_ip
-  name: Raspberry Pi
-  count: 5
-  scan_interval: 60
 - platform: meteoalarm
   country: !secret meteo_country
   province: !secret meteo_province
