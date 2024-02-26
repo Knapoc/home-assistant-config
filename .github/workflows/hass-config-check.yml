@@ -15,7 +15,7 @@ jobs:
   yaml-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: YAML Lint
         uses: ibiqlik/action-yamllint@v3
         with:
@@ -29,7 +29,7 @@ jobs:
       matrix:
         version: ["stable", "beta"]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Run Home Assistant Configuration Check
         uses: frenck/action-home-assistant@v1
         with:
