@@ -85,3 +85,54 @@
 
 
           Is effective on {{as_datetime(state_attr('binary_sensor.meteoalarm', 'effective'))}}.
+- id: '1707664879654'
+  alias: Heating Off
+  description: Turn heating off when window is open
+  trigger:
+    - type: opened
+      platform: device
+      device_id: 14423fd9e2a59453630becf97956e896
+      entity_id: 8b9ef118ebaaa118896182c382ecd866
+      domain: binary_sensor
+      for:
+        hours: 0
+        minutes: 1
+        seconds: 0
+  condition:
+    - condition: device
+      device_id: 88f536dd455073e66b17687ec3f776fa
+      domain: climate
+      entity_id: ea2a31b656e647cd7eb46acdc735a8b9
+      type: is_hvac_mode
+      hvac_mode: heat
+  action:
+    - device_id: 88f536dd455073e66b17687ec3f776fa
+      domain: climate
+      entity_id: ea2a31b656e647cd7eb46acdc735a8b9
+      type: set_hvac_mode
+      hvac_mode: 'off'
+  mode: single
+- id: '1707665331477'
+  alias: Open Cover
+  description: open cover when window is opened
+  trigger:
+    - type: opened
+      platform: device
+      device_id: 5f2fc311dce06e260e9d375665dc8576
+      entity_id: a029c6d9ac4f1e3855b09a2a1e5afe69
+      domain: binary_sensor
+  condition:
+    - condition: device
+      device_id: d4ff25e33bb75dccf5c824175d7be0bb
+      domain: cover
+      entity_id: 7cfb0d771d472e73dd3a24cac40b1510
+      type: is_position
+      below: 60
+  action:
+    - service: cover.open_cover
+      metadata: {}
+      data: {}
+      target:
+        device_id: d4ff25e33bb75dccf5c824175d7be0bb
+  mode: single
+
