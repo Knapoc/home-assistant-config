@@ -55,7 +55,6 @@ logger:
     homeassistant.components.shell_command:
       - '^Error running command\:.*ssh.*sudo shutdown -h now.*return code: 255$'
 lovelace: !include lovelace/lovelace.yaml
-map:
 mobile_app:
 my:
 network:
@@ -106,12 +105,6 @@ owntracks:
 sonos:
   media_player:
     advertise_addr: !secret host_ip
-
-panel_iframe:
-  valetudo:
-    title: 'Valetudo'
-    url: !secret valetudo_url
-    icon: mdi:robot-vacuum
 
 zha:
   zigpy_config:
