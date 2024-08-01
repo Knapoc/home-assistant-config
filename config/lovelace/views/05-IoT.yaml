@@ -35,21 +35,21 @@
               entities:
                 - entity: switch.magic_mirror
                   name: Magic Mirror
-                - entity: switch.sonoff_s20_magicmirror_relay
+                - entity: switch.sonoffs20magicmirror_relay
                   name: S20 - Magic Mirror
             - type: glance
               # title: S20 - MM
               entities:
-                - entity: sensor.sonoffs20_magicmirror_version
+                - entity: sensor.sonoffs20magicmirror_version
                   name: Version
                   icon: mdi:alpha-v-box
-                - entity: sensor.sonoffs20_magicmirror_ip_address
+                - entity: sensor.sonoffs20magicmirror_ip_address
                   name: IP
                   icon: mdi:map-marker
-                - entity: sensor.sonoffs20_magicmirror_uptime
+                - entity: sensor.sonoffs20magicmirror_uptime
                   name: Uptime
                   icon: mdi:arrow-up-thick
-                - entity: sensor.sonoffs20_magicmirror_wifi_signal_sensor
+                - entity: sensor.sonoffs20magicmirror_wifi_signal_sensor
                   name: RSSI
                   icon: mdi:signal-variant
         - type: markdown

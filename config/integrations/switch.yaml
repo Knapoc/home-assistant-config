@@ -13,7 +13,7 @@
       turn_on:
         service: switch.turn_on
         data:
-          entity_id: switch.sonoff_s20_magicmirror_relay
+          entity_id: switch.sonoffs20magicmirror_relay
       turn_off:
         service: script.magic_mirror_shutdown
     tv_mute:

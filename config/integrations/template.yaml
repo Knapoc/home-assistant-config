@@ -107,8 +107,8 @@
       unit_of_measurement: "h"
     - name: sonoffs20_desk_version
       state: "{{ states('sensor.sonoffs20_desk_version_raw').split(' ',1)[0] }}"
-    - name: sonoffs20_magicmirror_uptime
-      state: "{{ ((states('sensor.sonoffs20_magicmirror_uptime_raw') | float(default=0)) / 60 / 60) | round(2) }}"
+    - name: sonoffs20magicmirror_uptime
+      state: "{{ ((states('sensor.sonoffs20magicmirror_ptime_raw') | float(default=0)) / 60 / 60) | round(2) }}"
       unit_of_measurement: "h"
-    - name: sonoffs20_magicmirror_version
-      state: "{{ states('sensor.sonoffs20_magicmirror_version_raw').split(' ',1)[0] }}"
+    - name: sonoffs20magicmirror_version
+      state: "{{ states('sensor.sonoffs20magicmirror_version_raw').split(' ',1)[0] }}"

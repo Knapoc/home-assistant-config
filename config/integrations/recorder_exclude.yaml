@@ -6,8 +6,8 @@ domains:
 entity_globs:
   - binary_sensor.window_openclose_*
   - binary_sensor.sonoff_s20_desk_*
-  - sensor.sonoffs20_magicmirror_version*
-  - sensor.sonoffs20_magicmirror_uptime*
+  - sensor.sonoffs20magicmirror_version*
+  - sensor.sonoffs20magicmirror_uptime*
   - sensor.sonoffs20_desk_version*
   - sensor.sonoffs20_desk_uptime*
   - sensor.wakeup_*
