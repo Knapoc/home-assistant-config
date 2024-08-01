@@ -31,119 +31,30 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-        - type: custom:stack-in-card
+        - type: tile
+          entity: vacuum.valetudo_roborock
+          state_content:
+            - state
+            - battery_level
+          hold_action:
+             action: more-info
+             entity: counter.vacuum_dustbin
+          features:
+            - type: "vacuum-commands"
+              commands:
+                - start_pause
+                - stop
+                - clean_spot
+                - locate
+                - return_home
           card_mod:
             class: soft-ui
-            style: |
-              ha-card {
-                height: 130px;
-              }
-          mode: vertical
-          cards:
-            - type: entities
-              entities:
-                - entity: vacuum.valetudo_roborock
-                  type: custom:multiple-entity-row
-                  show_state: false
-                  entities:
-                    - entity: vacuum.valetudo_roborock
-                      name: Status
-                    - attribute: battery_level
-                      name: Battery
-                      unit: '%'
-                    - entity: counter.vacuum_dustbin
-                      name: Count
-              card_mod:
-                style: |
-                  ha-card {
-                    height: 70px;
-                  }
-            - type: horizontal-stack
-              cards:
-                - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
-                  icon: mdi:play
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.start
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
-                - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
-                  icon: mdi:pause
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.pause
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
-                - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
-                  icon: mdi:stop
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.stop
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
-                - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
-                  icon: mdi:broom
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.clean_spot
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
-                - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
-                  icon: mdi:map-marker
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.locate
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
-                - type: custom:button-card
-                  color: auto
-                  entity: vacuum.valetudo_roborock
-                  size: 25%
-                  icon: mdi:home-map-marker
-                  show_name: false
-                  styles:
-                    icon:
-                      - color: var(--primary-text-color)
-                  tap_action:
-                    action: call-service
-                    service: vacuum.return_to_base
-                    service_data:
-                      entity_id: vacuum.valetudo_roborock
+            style:
+              ha-tile-info$: |
+                .secondary:after {
+                  visibility: visible;
+                  content: " ⸱ runs: {{ states('counter.vacuum_dustbin') }}";
+                }
         - type: markdown
           content: |
             # Map

@@ -9,13 +9,15 @@
         - type: markdown  ### HOME column
           content: |
             # Home
-            ## The temperature is {{states('sensor.netatmo_smart_thermostat_current_temperature')}}°C with a humidity of {{states('sensor.living_room_humidity')}}%
           card_mod:
             style:
               .: |
                 ha-card {
                   --ha-card-background: none !important;
                   box-shadow: none !important;
+                }
+                ha-markdown {
+                  padding-bottom: 0px !important;
                 }
               ha-markdown$: |
                   ha-markdown-element {
@@ -25,20 +27,27 @@
                     font-size: 20px !important;
                     margin-block-end: 0.2em !important;
                   }
-                  h2 {
-                    font-size: 15px !important;
-                    margin-block-start: 0.2em !important;
-                  }
-        - type: entities
-          show_header_toggle: false
-          entities:
-            - !secret person_1
-            - !secret person_2
-          card_mod:
-            class: soft-ui
+        - type: horizontal-stack
+          cards:
+            - type: tile
+              entity: !secret person_2
+              show_entity_picture: true
+              card_mod:
+                class: soft-ui
+            - type: tile
+              entity: !secret person_1
+              show_entity_picture: true
+              card_mod:
+                class: soft-ui
         - type: custom:simple-weather-card
           entity: weather.openweathermap
           name: at home
+          card_mod:
+            class: soft-ui
+        - type: tile
+          entity: climate.netatmo_smart_thermostat
+          features:
+            - type: "target-temperature"
           card_mod:
             class: soft-ui
         - type: markdown  ### Lights
@@ -51,6 +60,10 @@
                 ha-card {
                   --ha-card-background: none !important;
                   box-shadow: none !important;
+                }
+                ha-markdown {
+                  padding-top: 5px !important;
+                  padding-bottom: 5px !important;
                 }
               ha-markdown$: |
                   ha-markdown-element {
@@ -114,6 +127,10 @@
                   --ha-card-background: none !important;
                   box-shadow: none !important;
                 }
+                ha-markdown {
+                  padding-top: 5px !important;
+                  padding-bottom: 5px !important;
+                }
               ha-markdown$: |
                   ha-markdown-element {
                     letter-spacing: 0;
@@ -159,6 +176,10 @@
                 ha-card {
                   --ha-card-background: none !important;
                   box-shadow: none !important;
+                }
+                ha-markdown {
+                  padding-top: 5px !important;
+                  padding-bottom: 5px !important;
                 }
               ha-markdown$: |
                   ha-markdown-element {
@@ -241,6 +262,9 @@
                   --ha-card-background: none !important;
                   box-shadow: none !important;
                 }
+                ha-markdown {
+                  padding-bottom: 0px !important;
+                }
               ha-markdown$: |
                   ha-markdown-element {
                     letter-spacing: 0;
@@ -310,6 +334,10 @@
                   --ha-card-background: none !important;
                   box-shadow: none !important;
                 }
+                ha-markdown {
+                  padding-top: 5px !important;
+                  padding-bottom: 5px !important;
+                }
               ha-markdown$: |
                   ha-markdown-element {
                     letter-spacing: 0;
@@ -322,69 +350,27 @@
                     font-size: 15px !important;
                     margin-block-start: 0.2em !important;
                   }
-
-        - type: custom:stack-in-card
+        - type: tile
+          entity: vacuum.valetudo_roborock
+          state_content:
+            - state
+            - battery_level
+          hold_action:
+             action: more-info
+             entity: counter.vacuum_dustbin
+          features:
+            - type: "vacuum-commands"
+              commands:
+                - start_pause
+                - stop
+                - clean_spot
+                - locate
+                - return_home
           card_mod:
             class: soft-ui
-            style: |
-              ha-card {
-                height: 130px;
-              }
-          mode: vertical
-          cards:
-            - type: entities
-              entities:
-                - entity: vacuum.valetudo_roborock
-                  type: custom:multiple-entity-row
-                  show_state: false
-                  entities:
-                    - entity: vacuum.valetudo_roborock
-                      name: Status
-                    - attribute: battery_level
-                      name: Battery
-                      unit: '%'
-                    - entity: counter.vacuum_dustbin
-                      name: Count
-              card_mod:
-                style: |
-                  ha-card {
-                    height: 70px;
-                  }
-            - type: horizontal-stack
-              cards:
-                - type: custom:button-card
-                  template: vacuum_mini_button
-                  variables:
-                    vacuum: "vacuum.valetudo_roborock"
-                    service_type: "vacuum.start"
-                  icon: mdi:play
-                - type: custom:button-card
-                  template: vacuum_mini_button
-                  variables:
-                    vacuum: "vacuum.valetudo_roborock"
-                    service_type: "vacuum.pause"
-                  icon: mdi:pause
-                - type: custom:button-card
-                  template: vacuum_mini_button
-                  variables:
-                    vacuum: "vacuum.valetudo_roborock"
-                    service_type: "vacuum.stop"
-                  icon: mdi:stop
-                - type: custom:button-card
-                  template: vacuum_mini_button
-                  variables:
-                    vacuum: "vacuum.valetudo_roborock"
-                    service_type: "vacuum.clean_spot"
-                  icon: mdi:broom
-                - type: custom:button-card
-                  template: vacuum_mini_button
-                  variables:
-                    vacuum: "vacuum.valetudo_roborock"
-                    service_type: "vacuum.locate"
-                  icon: mdi:map-marker
-                - type: custom:button-card
-                  template: vacuum_mini_button
-                  variables:
-                    vacuum: "vacuum.valetudo_roborock"
-                    service_type: "vacuum.return_to_base"
-                  icon: mdi:home-map-marker
+            style:
+              ha-tile-info$: |
+                .secondary:after {
+                  visibility: visible;
+                  content: " ⸱ runs: {{ states('counter.vacuum_dustbin') }}";
+                }

@@ -59,7 +59,7 @@ button_card_templates:
     hold_action:
       action: more-info
   scene_button:
-    template: big_button
+    template: small_button
     variables:
       scene_name: ""
     tap_action:
