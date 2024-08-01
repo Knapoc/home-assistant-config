@@ -13,6 +13,3 @@
   recipient:
     - !secret mail_acc_3
   sender_name: Home Assistant
-- name: file
-  platform: file
-  filename: notifications.log
