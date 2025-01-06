@@ -1,9 +1,6 @@
 ---
 # system sensors
 
-- platform: cert_expiry
-  host: !secret ssl_domain
-
 - platform: fail2ban
   scan_interval: 180
   jails:
