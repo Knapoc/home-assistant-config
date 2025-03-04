@@ -177,3 +177,26 @@
         entity_id:
           - cover.fyrtur_1
           - cover.fyrtur_2
+# - id: '1707665331477'
+#   alias: Open Cover
+#   description: open cover when window is opened
+#   trigger:
+#     - type: opened
+#       platform: device
+#       device_id: 5f2fc311dce06e260e9d375665dc8576
+#       entity_id: a029c6d9ac4f1e3855b09a2a1e5afe69
+#       domain: binary_sensor
+#   condition:
+#     - condition: device
+#       device_id: d4ff25e33bb75dccf5c824175d7be0bb
+#       domain: cover
+#       entity_id: 7cfb0d771d472e73dd3a24cac40b1510
+#       type: is_position
+#       below: 60
+#   action:
+#     - service: cover.open_cover
+#       metadata: {}
+#       data: {}
+#       target:
+#         device_id: d4ff25e33bb75dccf5c824175d7be0bb
+#   mode: single

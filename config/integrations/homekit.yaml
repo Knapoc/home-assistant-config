@@ -24,7 +24,6 @@
       - sensor.netatmo_smart_thermostat_current_temperature
       - vacuum.valetudo_roborock
     exclude_entities:
-      - light.hue_lwa004_light
       - light.hue_lwb010_light
     exclude_entity_globs:
       - switch.pi_hole_*

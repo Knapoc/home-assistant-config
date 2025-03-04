@@ -10,5 +10,5 @@
 - platform: group
   name: bed_room_group
   entities:
-    - cover.fyrtur_3
-    - cover.fyrtur_4
+    - cover.ikea_of_sweden_fyrtur_block_out_roller_blind_cover_1
+    - cover.ikea_of_sweden_fyrtur_block_out_roller_blind_cover_2
