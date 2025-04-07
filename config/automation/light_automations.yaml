@@ -252,6 +252,12 @@
             transition: 1
           target:
             entity_id: light.hue_lct015_light
+      button_on_double_press:
+        - service: light.turn_on
+          data:
+            transition: 1
+          target:
+            entity_id: light.hue_lwa004_light
       button_up_double_press:
         - condition: state
           entity_id: light.hue_ltc001_light
@@ -301,6 +307,10 @@
         - service: light.turn_off
           target:
             entity_id: light.hue_lct015_light
+      button_off_double_press:
+        - service: light.turn_off
+          target:
+            entity_id: light.hue_lwa004_light
 - id: '1670407983636'
   alias: bathroom - light switch
   description: ''
@@ -310,40 +320,40 @@
       remote: 7efb7e96b12c4aaea91466a942707f1e
       light:
         entity_id: light.bathroom_spots
-- id: '1636754173407'
-  description: 'RWL021 dining room'
-  alias: ZHA - Philips Hue Dimmer Switch Config
-  use_blueprint:
-    path: knapoc/ZHA - Hue Dimmer Fully Configurable.yaml
-    input:
-      remote: 9384270cc5b44d75918cd75e753cc28c
-      button_on_short_release:
-        - service: light.turn_on
-          target:
-            entity_id: light.tradfri_e27_light
-      button_on_long_press:
-        - service: light.turn_on
-          target:
-            entity_id: light.tradfri_e27_light_4
-      button_off_short_release:
-        - service: light.turn_off
-          target:
-            entity_id: light.tradfri_e27_light
-      button_off_long_press:
-        - service: light.turn_off
-          target:
-            entity_id: light.tradfri_e27_light_4
-      button_up_long_press:
-        - service: light.turn_on
-          data:
-            transition: 1
-            brightness_step_pct: 10
-          target:
-            entity_id: light.tradfri_e27_light
-      button_down_long_press:
-        - service: light.turn_on
-          data:
-            transition: 1
-            brightness_step_pct: -10
-          target:
-            entity_id: light.tradfri_e27_light
+# - id: '1636754173407'
+#   description: 'RWL021 dining room'
+#   alias: ZHA - Philips Hue Dimmer Switch Config
+#   use_blueprint:
+#     path: knapoc/ZHA - Hue Dimmer Fully Configurable.yaml
+#     input:
+#       remote: 9384270cc5b44d75918cd75e753cc28c
+#       button_on_short_release:
+#         - service: light.turn_on
+#           target:
+#             entity_id: light.tradfri_e27_light
+#       button_on_long_press:
+#         - service: light.turn_on
+#           target:
+#             entity_id: light.tradfri_e27_light_4
+#       button_off_short_release:
+#         - service: light.turn_off
+#           target:
+#             entity_id: light.tradfri_e27_light
+#       button_off_long_press:
+#         - service: light.turn_off
+#           target:
+#             entity_id: light.tradfri_e27_light_4
+#       button_up_long_press:
+#         - service: light.turn_on
+#           data:
+#             transition: 1
+#             brightness_step_pct: 10
+#           target:
+#             entity_id: light.tradfri_e27_light
+#       button_down_long_press:
+#         - service: light.turn_on
+#           data:
+#             transition: 1
+#             brightness_step_pct: -10
+#           target:
+#             entity_id: light.tradfri_e27_light
