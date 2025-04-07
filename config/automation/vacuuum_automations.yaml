@@ -29,7 +29,7 @@
             entity_id: binary_sensor.workday_sensor
             state: 'on'
       - condition: template
-        value_template: "{{ state_attr('vacuum.valetudo_roborock', 'battery_level') == 100 }}"
+        value_template: "{{ state_attr('vacuum.valetudo_staubi', 'battery_level') == 100 }}"
       - condition: template
         value_template: "{{ states('sensor.time') >= states('input_datetime.vacuum_schedule_1_from') }}"
       - condition: template
@@ -37,13 +37,13 @@
   action:
     - service: vacuum.start
       data:
-        entity_id: vacuum.valetudo_roborock
+        entity_id: vacuum.valetudo_staubi
 
 - id: '1555971391'
   alias: roborock clean counter
   trigger:
     - platform: state
-      entity_id: vacuum.valetudo_roborock
+      entity_id: vacuum.valetudo_staubi
       from: 'docked'
       to: 'cleaning'
   action:
@@ -74,7 +74,7 @@
         entity_id: counter.vacuum_dustbin
         above: 4
       - condition: template
-        value_template: "{{ states('vacuum.valetudo_roborock') != 'cleaning' }}"
+        value_template: "{{ states('vacuum.valetudo_staubi') != 'cleaning' }}"
   action:
     - service: !secret notify_ios
       data_template:
@@ -90,33 +90,33 @@
   id: '1610223727000'
   trigger:
     - platform: numeric_state
-      entity_id: sensor.valetudo_roborock_main_brush
+      entity_id: sensor.valetudo_staubi_main_brush
       below: 1
     - platform: numeric_state
-      entity_id: sensor.valetudo_roborock_right_side_brush
+      entity_id: sensor.valetudo_staubi_right_side_brush
       below: 1
     - platform: numeric_state
-      entity_id: sensor.valetudo_roborock_main_filter
+      entity_id: sensor.valetudo_staubi_main_filter
       below: 1
     - platform: numeric_state
-      entity_id: sensor.valetudo_roborock_main_sensor
+      entity_id: sensor.valetudo_staubi_main_sensor
       below: 1
   action:
     - service: !secret notify_ios
       data_template:
         message: >
           Vacuum has to be maintained.
-          {% if states('sensor.valetudo_roborock_main_brush') <= 1 %}
-            Main brush: {{ states('sensor.valetudo_roborock_main_brush_hours') }}h left.
+          {% if states('sensor.valetudo_staubi_main_brush') <= 1 %}
+            Main brush: {{ states('sensor.valetudo_staubi_main_brush_hours') }}h left.
           {% endif %}
-          {% if states('sensor.valetudo_roborock_right_brush') <= 1 %}
-            Side brush: {{ states('sensor.valetudo_roborock_right_side_brush_hours') }}h left.
+          {% if states('sensor.valetudo_staubi_right_brush') <= 1 %}
+            Side brush: {{ states('sensor.valetudo_staubi_right_side_brush_hours') }}h left.
           {% endif %}
-          {% if states('sensor.valetudo_roborock_main_filter') <= 1 %}
-            Filter: {{ states('sensor.valetudo_roborock_main_filter_hours') }}h left.
+          {% if states('sensor.valetudo_staubi_main_filter') <= 1 %}
+            Filter: {{ states('sensor.valetudo_staubi_main_filter_hours') }}h left.
           {% endif %}
-          {% if states('sensor.valetudo_roborock_sensor_cleaning') <= 1 %}
-            Sensor: {{ states('sensor.valetudo_roborock_sensor_hours') }}h left.
+          {% if states('sensor.valetudo_staubi_sensor_cleaning') <= 1 %}
+            Sensor: {{ states('sensor.valetudo_staubi_sensor_hours') }}h left.
           {% endif %}
 
 - alias: roborock cleaned
@@ -140,7 +140,7 @@
       data:
         topic: valetudo/roborock/GoToLocationCapability/go/set
         payload: '{"coordinates":{"x":2513,"y":1485}}'
-    - wait_template: "{{ is_state('vacuum.valetudo_roborock', 'returning') }}"
+    - wait_template: "{{ is_state('vacuum.valetudo_staubi', 'returning') }}"
     - service: counter.reset
       data:
         entity_id: counter.vacuum_dustbin
@@ -163,7 +163,7 @@
   mode: single
   trigger:
     - platform: template
-      value_template: "{{ version(states('sensor.hypfer_valetudo_latest_tag')) > (device_attr('vacuum.valetudo_roborock', 'sw_version').split(' ')[1]) }}"
+      value_template: "{{ version(states('sensor.hypfer_valetudo_latest_tag')) > (device_attr('vacuum.valetudo_staubi', 'sw_version').split(' ')[1]) }}"
   action:
     - service: persistent_notification.create
       data:

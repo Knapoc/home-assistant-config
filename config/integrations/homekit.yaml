@@ -22,7 +22,7 @@
       - sensor.living_room_humidity
       - sensor.living_room_temperature
       - sensor.netatmo_smart_thermostat_current_temperature
-      - vacuum.valetudo_roborock
+      - vacuum.valetudo_staubi
     exclude_entities:
       - light.hue_lwb010_light
     exclude_entity_globs:
@@ -50,7 +50,7 @@
       name: "Magic Mirror"
     switch.tv_mute:
       name: "Stummschaltung"
-    vacuum.valetudo_roborock:
+    vacuum.valetudo_staubi:
       name: "Staubsauger"
 - name: Fernseher
   mode: accessory

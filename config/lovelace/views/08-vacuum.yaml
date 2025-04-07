@@ -32,7 +32,7 @@
                     margin-block-start: 0.2em !important;
                   }
         - type: tile
-          entity: vacuum.valetudo_roborock
+          entity: vacuum.valetudo_staubi
           state_content:
             - state
             - battery_level
@@ -58,7 +58,7 @@
         - type: markdown
           content: |
             # Map
-            ## Last run: {{(states('sensor.valetudo_roborock_current_statistics_area') | float(default=0) / 10000) | round(2)}} m<sup>2</sup> in {{(states('sensor.valetudo_roborock_current_statistics_time') | float(default=0) / 3600) | round(2) }} hours
+            ## Last run: {{(states('sensor.valetudo_staubi_current_statistics_area') | float(default=0) / 10000) | round(2)}} m<sup>2</sup> in {{(states('sensor.valetudo_staubi_current_statistics_time') | float(default=0) / 3600) | round(2) }} hours
           card_mod:
             style:
               .: |
@@ -80,7 +80,7 @@
                   }
         - type: 'custom:valetudo-map-card'
           title: ''
-          vacuum: valetudo_roborock
+          vacuum: valetudo_staubi
           dock_icon: mdi:dots-vertical
           dock_color: '--secondary-text-color'
           show_status: false
@@ -125,16 +125,16 @@
           # title: Anderes
           show_header_toggle: false
           entities:
-            - entity: sensor.valetudo_roborock_main_brush_hours
+            - entity: sensor.valetudo_staubi_main_brush_hours
               name: Main brush
               icon: mdi:progress-wrench
-            - entity: sensor.valetudo_roborock_right_side_brush_hours
+            - entity: sensor.valetudo_staubi_right_side_brush_hours
               name: Side brush
               icon: mdi:progress-wrench
-            - entity: sensor.valetudo_roborock_main_filter_hours
+            - entity: sensor.valetudo_staubi_main_filter_hours
               name: Filter
               icon: mdi:progress-wrench
-            - entity: sensor.valetudo_roborock_sensor_hours
+            - entity: sensor.valetudo_staubi_sensor_hours
               name: Sensor
               icon: mdi:progress-clock
           card_mod:

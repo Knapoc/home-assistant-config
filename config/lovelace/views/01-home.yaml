@@ -326,7 +326,7 @@
         - type: markdown
           content: |
             # Vacuum
-            ## Last run: {{(states('sensor.valetudo_roborock_current_statistics_area') | float(default=0) / 10000) | round(2)}} m<sup>2</sup> in {{(states('sensor.valetudo_roborock_current_statistics_time') | float(default=0) / 3600) | round(2) }} hours
+            ## Last run: {{(states('sensor.valetudo_staubi_current_statistics_area') | float(default=0) / 10000) | round(2)}} m<sup>2</sup> in {{(states('sensor.valetudo_staubi_current_statistics_time') | float(default=0) / 3600) | round(2) }} hours
           card_mod:
             style:
               .: |
@@ -351,7 +351,7 @@
                     margin-block-start: 0.2em !important;
                   }
         - type: tile
-          entity: vacuum.valetudo_roborock
+          entity: vacuum.valetudo_staubi
           state_content:
             - state
             - battery_level

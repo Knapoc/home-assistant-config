@@ -29,3 +29,5 @@ resources:
     type: module
   - url: /hacsfiles/custom-brand-icons/custom-brand-icons.js
     type: module
+  - url: /hacsfiles/hass-valetudo-icons/valetudo-icons.js
+    type: module
