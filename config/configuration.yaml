@@ -87,7 +87,6 @@ plant: !include integrations/plant.yaml
 schedule:
 sensor: !include_dir_merge_list integrations/sensor/
 shell_command: !include integrations/shell_command.yaml
-switch: !include integrations/switch.yaml
 template: !include integrations/template.yaml
 timer:
 zone: !include integrations/zone.yaml
@@ -109,5 +108,5 @@ sonos:
 zha:
   zigpy_config:
     ota:
-      ikea_provider: false
-      otau_directory: /mnt/zha-otau
+      extra_providers:
+        - type: ikea
