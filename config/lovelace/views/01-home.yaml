@@ -44,12 +44,12 @@
           name: at home
           card_mod:
             class: soft-ui
-        - type: tile
-          entity: climate.netatmo_smart_thermostat
-          features:
-            - type: "target-temperature"
-          card_mod:
-            class: soft-ui
+        # - type: tile
+        #   entity: climate.netatmo_smart_thermostat
+        #   features:
+        #     - type: "target-temperature"
+        #   card_mod:
+        #     class: soft-ui
         - type: markdown  ### Lights
           content: |
             # Lights
